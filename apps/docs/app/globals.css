@@ -51,7 +51,7 @@
 }
 
 [data-theme='light'] {
-    --x-background: 255 255 255;
+    --x-background: 250 250 252;
     --x-foreground: 15 23 42;
 
     --x-primary: 37 99 235;
@@ -63,12 +63,22 @@
     --x-muted: 248 250 252;
     --x-mutedForeground: 100 116 139;
 
+    --x-accent: 79 70 229;
+    --x-accent-foreground: 255 255 255;
+
     --x-border: 226 232 240;
     --x-input: 226 232 240;
+    --x-ring: 37 99 235;
 
-    --x-glass-bg: rgba(255, 255, 255, 0.7);
-    --x-glass-border: rgba(0, 0, 0, 0.05);
-    --x-glass-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --x-glass-bg: rgba(255, 255, 255, 0.8);
+    --x-glass-border: rgba(0, 0, 0, 0.08);
+    --x-glass-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+
+    --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    --gradient-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%);
+
+    --header-bg: rgba(255, 255, 255, 0.8);
+    --header-border: rgba(0, 0, 0, 0.05);
 }
 
 body {
