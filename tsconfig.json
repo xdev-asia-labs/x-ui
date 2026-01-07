@@ -18,21 +18,7 @@
         "declaration": true,
         "declarationMap": true,
         "sourceMap": true,
-        "jsx": "react-jsx",
-        "paths": {
-            "@xdev-asia/x-ui-core": [
-                "./packages/core/src"
-            ],
-            "@xdev-asia/x-ui-react": [
-                "./packages/react/src"
-            ],
-            "@xdev-asia/x-ui-native": [
-                "./packages/native/src"
-            ],
-            "@x-ui/shared": [
-                "./packages/shared/src"
-            ]
-        }
+        "jsx": "react-jsx"
     },
     "exclude": [
         "node_modules",
