@@ -51,6 +51,4 @@ export type { SpinnerProps } from './components/Spinner';
 export * from './hooks';
 
 // Re-export core utilities (excluding conflicting hooks)
-export { cn, generateId } from '@xdev-asia/x-ui-core';
-export { useTheme, useMediaQuery } from '@xdev-asia/x-ui-core';
-export * from '@xdev-asia/x-ui-core/tokens';
+export { cn, generateId, useTheme, useMediaQuery } from '@xdev-asia/x-ui-core';
