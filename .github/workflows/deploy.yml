@@ -32,6 +32,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Build core package
+        run: pnpm --filter @xdev-asia/x-ui-core build
+
       - name: Build React package
         run: pnpm --filter @xdev-asia/x-ui-react build
 
