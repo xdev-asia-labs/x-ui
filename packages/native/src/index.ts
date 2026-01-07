@@ -47,9 +47,10 @@ export type { CheckboxProps } from './components/Checkbox';
 export { Spinner } from './components/Spinner';
 export type { SpinnerProps } from './components/Spinner';
 
-// Hooks
+// Hooks (native-specific, overrides core's useResponsive with RN version)
 export * from './hooks';
 
-// Re-export core utilities
-export * from '@xdev-asia/x-ui-core';
-
+// Re-export core utilities (excluding conflicting hooks)
+export { cn, generateId } from '@xdev-asia/x-ui-core';
+export { useTheme, useMediaQuery } from '@xdev-asia/x-ui-core';
+export * from '@xdev-asia/x-ui-core/tokens';
