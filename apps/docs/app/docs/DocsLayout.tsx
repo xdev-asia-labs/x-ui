@@ -5,34 +5,42 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Logo from '../components/Logo';
 import ThemeToggle from '../components/ThemeToggle';
+import LanguageToggle from '../components/LanguageToggle';
+import { LanguageProvider, useLanguage } from '../i18n/LanguageProvider';
 
 interface NavItem {
-    title: string;
+    titleKey: string;
     href: string;
     children?: NavItem[];
 }
 
 const navigation: NavItem[] = [
-    { title: 'Getting Started', href: '/docs' },
-    { title: 'Theming', href: '/docs/theming' },
-    { title: 'Colors & Tokens', href: '/docs/colors' },
+    { titleKey: 'nav.gettingStarted', href: '/docs' },
+    { titleKey: 'nav.theming', href: '/docs/theming' },
+    { titleKey: 'nav.colors', href: '/docs/colors' },
     {
-        title: 'Components',
+        titleKey: 'nav.components',
         href: '/docs/components',
         children: [
-            { title: 'Button', href: '/docs/components/button' },
-            { title: 'Input', href: '/docs/components/input' },
-            { title: 'Card', href: '/docs/components/card' },
-            { title: 'Avatar', href: '/docs/components/avatar' },
-            { title: 'Badge', href: '/docs/components/badge' },
-            { title: 'Modal', href: '/docs/components/modal' },
+            { titleKey: 'Button', href: '/docs/components/button' },
+            { titleKey: 'Input', href: '/docs/components/input' },
+            { titleKey: 'Card', href: '/docs/components/card' },
+            { titleKey: 'Avatar', href: '/docs/components/avatar' },
+            { titleKey: 'Badge', href: '/docs/components/badge' },
+            { titleKey: 'Modal', href: '/docs/components/modal' },
         ],
     },
 ];
 
-export default function DocsLayout({ children }: { children: React.ReactNode }) {
+function DocsLayoutContent({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
     const [sidebarOpen, setSidebarOpen] = useState(false);
+    const { t } = useLanguage();
+
+    const getNavTitle = (titleKey: string) => {
+        const translated = t(titleKey);
+        return translated === titleKey ? titleKey : translated;
+    };
 
     return (
         <div style={{
@@ -94,7 +102,8 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
                     </span>
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <LanguageToggle />
                     <ThemeToggle />
                     <a
                         href="https://github.com/xdev-asia/x-ui"
@@ -157,7 +166,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
                                         transition: 'all 0.2s',
                                     }}
                                 >
-                                    {item.title}
+                                    {getNavTitle(item.titleKey)}
                                 </Link>
                                 {item.children && (
                                     <div style={{ marginLeft: '12px', marginTop: '4px' }}>
@@ -181,7 +190,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
                                                     transition: 'all 0.2s',
                                                 }}
                                             >
-                                                {child.title}
+                                                {getNavTitle(child.titleKey)}
                                             </Link>
                                         ))}
                                     </div>
@@ -214,3 +223,14 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
         </div>
     );
 }
+
+export default function DocsLayout({ children }: { children: React.ReactNode }) {
+    return (
+        <LanguageProvider>
+            <DocsLayoutContent>{children}</DocsLayoutContent>
+        </LanguageProvider>
+    );
+}
+
+// Export useLanguage for use in page components
+export { useLanguage } from '../i18n/LanguageProvider';

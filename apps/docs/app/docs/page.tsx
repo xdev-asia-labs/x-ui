@@ -1,10 +1,12 @@
 'use client';
 
 import React from 'react';
-import DocsLayout from './DocsLayout';
+import DocsLayout, { useLanguage } from './DocsLayout';
 import CodeBlock from '../components/CodeBlock';
 
 export default function GettingStartedPage() {
+    const { t } = useLanguage();
+
     return (
         <DocsLayout>
             <div style={{ maxWidth: '700px' }}>
@@ -15,7 +17,7 @@ export default function GettingStartedPage() {
                     color: 'rgb(var(--x-foreground))',
                     letterSpacing: '-0.5px',
                 }}>
-                    Getting Started
+                    {t('getting.title')}
                 </h1>
                 <p style={{
                     fontSize: '18px',
@@ -23,8 +25,7 @@ export default function GettingStartedPage() {
                     marginBottom: '40px',
                     lineHeight: 1.7,
                 }}>
-                    X-UI là thư viện component hiện đại cho React và React Native với thiết kế
-                    glassmorphism, animations mượt mà và hỗ trợ dark/light mode.
+                    {t('getting.description')}
                 </p>
 
                 {/* Installation */}
@@ -35,7 +36,7 @@ export default function GettingStartedPage() {
                         marginBottom: '16px',
                         color: 'rgb(var(--x-foreground))',
                     }}>
-                        Cài đặt
+                        {t('getting.install')}
                     </h2>
                     <p style={{
                         fontSize: '15px',
@@ -43,7 +44,7 @@ export default function GettingStartedPage() {
                         marginBottom: '16px',
                         lineHeight: 1.7,
                     }}>
-                        Cài đặt package qua npm hoặc pnpm:
+                        {t('getting.install.desc')}
                     </p>
                     <CodeBlock
                         language="bash"
@@ -66,7 +67,7 @@ yarn add @xdev-asia/x-ui-react`}
                         marginBottom: '16px',
                         color: 'rgb(var(--x-foreground))',
                     }}>
-                        Setup ThemeProvider
+                        {t('getting.setup')}
                     </h2>
                     <p style={{
                         fontSize: '15px',
@@ -74,7 +75,7 @@ yarn add @xdev-asia/x-ui-react`}
                         marginBottom: '16px',
                         lineHeight: 1.7,
                     }}>
-                        Wrap ứng dụng của bạn với ThemeProvider để sử dụng theme system:
+                        {t('getting.setup.desc')}
                     </p>
                     <CodeBlock
                         code={`import { ThemeProvider } from '@xdev-asia/x-ui-react';
@@ -97,7 +98,7 @@ export default function App({ children }) {
                         marginBottom: '16px',
                         color: 'rgb(var(--x-foreground))',
                     }}>
-                        Sử dụng Components
+                        {t('getting.usage')}
                     </h2>
                     <p style={{
                         fontSize: '15px',
@@ -105,7 +106,7 @@ export default function App({ children }) {
                         marginBottom: '16px',
                         lineHeight: 1.7,
                     }}>
-                        Import và sử dụng các components:
+                        {t('getting.usage.desc')}
                     </p>
                     <CodeBlock
                         code={`import { Button, Card, Input } from '@xdev-asia/x-ui-react';
@@ -114,7 +115,7 @@ function MyComponent() {
     return (
         <Card>
             <Input placeholder="Enter your email" />
-            <Button variant="primary" size="md">
+            <Button variant="solid" size="md">
                 Subscribe
             </Button>
         </Card>
@@ -131,7 +132,7 @@ function MyComponent() {
                         marginBottom: '16px',
                         color: 'rgb(var(--x-foreground))',
                     }}>
-                        Tính năng
+                        {t('getting.features')}
                     </h2>
                     <ul style={{
                         listStyle: 'none',
@@ -139,11 +140,11 @@ function MyComponent() {
                         margin: 0,
                     }}>
                         {[
-                            { icon: '🎨', title: 'Dark/Light Mode', desc: 'Chuyển đổi theme mượt mà với CSS variables' },
-                            { icon: '✨', title: 'Glassmorphism', desc: 'Hiệu ứng glass modern với backdrop blur' },
-                            { icon: '📱', title: 'Cross-platform', desc: 'Hỗ trợ React và React Native' },
-                            { icon: '🎯', title: 'TypeScript', desc: 'Type-safe với IntelliSense đầy đủ' },
-                            { icon: '♿', title: 'Accessible', desc: 'WAI-ARIA compliant components' },
+                            { icon: '🌓', title: 'Dark/Light Mode', desc: t('getting.feature.darkmode') },
+                            { icon: '✨', title: 'Glassmorphism', desc: t('getting.feature.glass') },
+                            { icon: '📱', title: 'Cross-platform', desc: t('getting.feature.crossplatform') },
+                            { icon: '🎯', title: 'TypeScript', desc: t('getting.feature.typescript') },
+                            { icon: '♿', title: 'Accessible', desc: t('getting.feature.accessible') },
                         ].map((feature, i) => (
                             <li key={i} style={{
                                 display: 'flex',

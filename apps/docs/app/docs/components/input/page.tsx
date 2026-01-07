@@ -1,12 +1,14 @@
 'use client';
 
 import React from 'react';
-import DocsLayout from '../../DocsLayout';
+import DocsLayout, { useLanguage } from '../../DocsLayout';
 import ComponentPreview from '../../../components/ComponentPreview';
 import CodeBlock from '../../../components/CodeBlock';
 import { Input } from '@xdev-asia/x-ui-react';
 
 export default function InputPage() {
+    const { t } = useLanguage();
+
     return (
         <DocsLayout>
             <div style={{ maxWidth: '750px' }}>
@@ -17,7 +19,7 @@ export default function InputPage() {
                     color: 'rgb(var(--x-foreground))',
                     letterSpacing: '-0.5px',
                 }}>
-                    Input
+                    {t('input.title')}
                 </h1>
                 <p style={{
                     fontSize: '18px',
@@ -25,7 +27,7 @@ export default function InputPage() {
                     marginBottom: '40px',
                     lineHeight: 1.7,
                 }}>
-                    Input component với nhiều variants, hỗ trợ label, helper text, validation và icons.
+                    {t('input.description')}
                 </p>
 
                 {/* Import */}
@@ -44,7 +46,7 @@ export default function InputPage() {
                         marginBottom: '16px',
                         color: 'rgb(var(--x-foreground))',
                     }}>
-                        Basic Usage
+                        {t('input.basic')}
                     </h2>
 
                     <ComponentPreview
@@ -88,7 +90,7 @@ export default function InputPage() {
                         marginBottom: '16px',
                         color: 'rgb(var(--x-foreground))',
                     }}>
-                        Variants
+                        {t('input.variants')}
                     </h2>
 
                     <ComponentPreview
@@ -128,7 +130,7 @@ export default function InputPage() {
                         marginBottom: '16px',
                         color: 'rgb(var(--x-foreground))',
                     }}>
-                        Sizes
+                        {t('input.sizes')}
                     </h2>
 
                     <ComponentPreview
@@ -151,11 +153,11 @@ export default function InputPage() {
                         marginBottom: '16px',
                         color: 'rgb(var(--x-foreground))',
                     }}>
-                        States
+                        {t('input.states')}
                     </h2>
 
                     <ComponentPreview
-                        title="Disabled"
+                        title={t('common.disabled')}
                         code={`<Input isDisabled placeholder="Disabled input" />`}
                     >
                         <Input isDisabled placeholder="Disabled input" />
@@ -194,7 +196,7 @@ export default function InputPage() {
                         marginBottom: '16px',
                         color: 'rgb(var(--x-foreground))',
                     }}>
-                        API Reference
+                        {t('input.api')}
                     </h2>
 
                     <div style={{
@@ -212,9 +214,9 @@ export default function InputPage() {
                                     background: 'var(--x-glass-bg)',
                                     borderBottom: '1px solid var(--x-glass-border)'
                                 }}>
-                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'rgb(var(--x-foreground))' }}>Prop</th>
-                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'rgb(var(--x-foreground))' }}>Type</th>
-                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'rgb(var(--x-foreground))' }}>Default</th>
+                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'rgb(var(--x-foreground))' }}>{t('common.prop')}</th>
+                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'rgb(var(--x-foreground))' }}>{t('common.type')}</th>
+                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'rgb(var(--x-foreground))' }}>{t('common.default')}</th>
                                 </tr>
                             </thead>
                             <tbody>

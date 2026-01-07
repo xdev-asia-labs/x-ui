@@ -1,12 +1,14 @@
 'use client';
 
 import React from 'react';
-import DocsLayout from '../../DocsLayout';
+import DocsLayout, { useLanguage } from '../../DocsLayout';
 import ComponentPreview from '../../../components/ComponentPreview';
 import CodeBlock from '../../../components/CodeBlock';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, Button } from '@xdev-asia/x-ui-react';
 
 export default function CardPage() {
+    const { t } = useLanguage();
+
     return (
         <DocsLayout>
             <div style={{ maxWidth: '750px' }}>
@@ -17,7 +19,7 @@ export default function CardPage() {
                     color: 'rgb(var(--x-foreground))',
                     letterSpacing: '-0.5px',
                 }}>
-                    Card
+                    {t('card.title')}
                 </h1>
                 <p style={{
                     fontSize: '18px',
@@ -25,7 +27,7 @@ export default function CardPage() {
                     marginBottom: '40px',
                     lineHeight: 1.7,
                 }}>
-                    Card component với hiệu ứng glassmorphism và các compound components.
+                    {t('card.description')}
                 </p>
 
                 {/* Import */}
@@ -51,7 +53,7 @@ export default function CardPage() {
                         marginBottom: '16px',
                         color: 'rgb(var(--x-foreground))',
                     }}>
-                        Basic Usage
+                        {t('card.basic')}
                     </h2>
 
                     <ComponentPreview
@@ -88,7 +90,7 @@ export default function CardPage() {
                         marginBottom: '16px',
                         color: 'rgb(var(--x-foreground))',
                     }}>
-                        With Footer
+                        {t('card.withFooter')}
                     </h2>
 
                     <ComponentPreview
@@ -133,12 +135,11 @@ export default function CardPage() {
                         marginBottom: '16px',
                         color: 'rgb(var(--x-foreground))',
                     }}>
-                        Variants
+                        {t('card.variants')}
                     </h2>
 
                     <ComponentPreview
                         title="Elevated (Default)"
-                        description="Card với shadow effect"
                         code={`<Card variant="elevated">...</Card>`}
                     >
                         <Card variant="elevated" style={{ width: '280px' }}>
@@ -149,7 +150,6 @@ export default function CardPage() {
 
                     <ComponentPreview
                         title="Outlined"
-                        description="Card với border"
                         code={`<Card variant="outlined">...</Card>`}
                     >
                         <Card variant="outlined" style={{ width: '280px' }}>
@@ -160,7 +160,6 @@ export default function CardPage() {
 
                     <ComponentPreview
                         title="Filled"
-                        description="Card với background"
                         code={`<Card variant="filled">...</Card>`}
                     >
                         <Card variant="filled" style={{ width: '280px' }}>
@@ -171,7 +170,6 @@ export default function CardPage() {
 
                     <ComponentPreview
                         title="Glass"
-                        description="Glassmorphism effect"
                         code={`<Card variant="glass">...</Card>`}
                     >
                         <Card variant="glass" style={{ width: '280px' }}>
@@ -189,12 +187,11 @@ export default function CardPage() {
                         marginBottom: '16px',
                         color: 'rgb(var(--x-foreground))',
                     }}>
-                        Interactive Card
+                        {t('card.interactive')}
                     </h2>
 
                     <ComponentPreview
                         title="Interactive & Selected"
-                        description="Card với hover effect và selected state"
                         code={`<Card isInteractive onClick={() => {}}>
     Hover me!
 </Card>
@@ -222,7 +219,7 @@ export default function CardPage() {
                         marginBottom: '16px',
                         color: 'rgb(var(--x-foreground))',
                     }}>
-                        API Reference
+                        {t('card.api')}
                     </h2>
 
                     <div style={{
@@ -240,9 +237,9 @@ export default function CardPage() {
                                     background: 'var(--x-glass-bg)',
                                     borderBottom: '1px solid var(--x-glass-border)'
                                 }}>
-                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'rgb(var(--x-foreground))' }}>Prop</th>
-                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'rgb(var(--x-foreground))' }}>Type</th>
-                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'rgb(var(--x-foreground))' }}>Default</th>
+                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'rgb(var(--x-foreground))' }}>{t('common.prop')}</th>
+                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'rgb(var(--x-foreground))' }}>{t('common.type')}</th>
+                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'rgb(var(--x-foreground))' }}>{t('common.default')}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -274,7 +271,7 @@ export default function CardPage() {
                         marginBottom: '12px',
                         color: 'rgb(var(--x-foreground))',
                     }}>
-                        Compound Components
+                        {t('card.compound')}
                     </h3>
                     <ul style={{
                         listStyle: 'none',
@@ -282,11 +279,11 @@ export default function CardPage() {
                         margin: 0,
                     }}>
                         {[
-                            { name: 'CardHeader', desc: 'Container cho title và description' },
-                            { name: 'CardTitle', desc: 'Tiêu đề của card' },
-                            { name: 'CardDescription', desc: 'Mô tả phụ' },
-                            { name: 'CardContent', desc: 'Nội dung chính' },
-                            { name: 'CardFooter', desc: 'Footer với actions' },
+                            { name: 'CardHeader', desc: 'Container for title and description' },
+                            { name: 'CardTitle', desc: 'Card title' },
+                            { name: 'CardDescription', desc: 'Subtitle / description' },
+                            { name: 'CardContent', desc: 'Main content' },
+                            { name: 'CardFooter', desc: 'Footer with actions' },
                         ].map((item, i) => (
                             <li key={i} style={{
                                 padding: '12px 16px',

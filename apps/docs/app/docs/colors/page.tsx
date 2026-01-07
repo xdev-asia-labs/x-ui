@@ -1,11 +1,11 @@
 'use client';
 
 import React from 'react';
-import DocsLayout from '../DocsLayout';
+import DocsLayout, { useLanguage } from '../DocsLayout';
 
 const colorGroups = [
     {
-        name: 'Semantic Colors',
+        nameKey: 'colors.semantic',
         colors: [
             { name: '--x-background', light: 'rgb(250, 250, 252)', dark: 'rgb(10, 10, 15)', desc: 'Page background' },
             { name: '--x-foreground', light: 'rgb(15, 23, 42)', dark: 'rgb(248, 250, 252)', desc: 'Primary text' },
@@ -19,7 +19,7 @@ const colorGroups = [
         ]
     },
     {
-        name: 'Glass Tokens',
+        nameKey: 'colors.glass',
         colors: [
             { name: '--x-glass-bg', light: 'rgba(255,255,255,0.8)', dark: 'rgba(30,41,59,0.4)', desc: 'Glass background' },
             { name: '--x-glass-border', light: 'rgba(0,0,0,0.08)', dark: 'rgba(255,255,255,0.08)', desc: 'Glass border' },
@@ -28,6 +28,8 @@ const colorGroups = [
 ];
 
 export default function ColorsPage() {
+    const { t } = useLanguage();
+
     return (
         <DocsLayout>
             <div style={{ maxWidth: '800px' }}>
@@ -38,7 +40,7 @@ export default function ColorsPage() {
                     color: 'rgb(var(--x-foreground))',
                     letterSpacing: '-0.5px',
                 }}>
-                    Colors & Design Tokens
+                    {t('colors.title')}
                 </h1>
                 <p style={{
                     fontSize: '18px',
@@ -46,7 +48,7 @@ export default function ColorsPage() {
                     marginBottom: '40px',
                     lineHeight: 1.7,
                 }}>
-                    Bảng màu và design tokens của X-UI, được tối ưu cho cả light và dark mode.
+                    {t('colors.description')}
                 </p>
 
                 {colorGroups.map((group, gi) => (
@@ -57,7 +59,7 @@ export default function ColorsPage() {
                             marginBottom: '20px',
                             color: 'rgb(var(--x-foreground))',
                         }}>
-                            {group.name}
+                            {t(group.nameKey)}
                         </h2>
 
                         <div style={{
@@ -143,7 +145,7 @@ export default function ColorsPage() {
                         marginBottom: '16px',
                         color: 'rgb(var(--x-foreground))',
                     }}>
-                        Sử dụng trong CSS
+                        {t('colors.usage')}
                     </h2>
                     <div style={{
                         padding: '20px',

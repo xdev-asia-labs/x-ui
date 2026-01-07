@@ -1,10 +1,12 @@
 'use client';
 
 import React from 'react';
-import DocsLayout from '../DocsLayout';
+import DocsLayout, { useLanguage } from '../DocsLayout';
 import CodeBlock from '../../components/CodeBlock';
 
 export default function ThemingPage() {
+    const { t } = useLanguage();
+
     return (
         <DocsLayout>
             <div style={{ maxWidth: '700px' }}>
@@ -15,7 +17,7 @@ export default function ThemingPage() {
                     color: 'rgb(var(--x-foreground))',
                     letterSpacing: '-0.5px',
                 }}>
-                    Theming
+                    {t('theming.title')}
                 </h1>
                 <p style={{
                     fontSize: '18px',
@@ -23,7 +25,7 @@ export default function ThemingPage() {
                     marginBottom: '40px',
                     lineHeight: 1.7,
                 }}>
-                    X-UI hỗ trợ dark/light mode với khả năng tùy biến cao thông qua CSS variables và React context.
+                    {t('theming.description')}
                 </p>
 
                 {/* ThemeProvider */}
@@ -34,7 +36,7 @@ export default function ThemingPage() {
                         marginBottom: '16px',
                         color: 'rgb(var(--x-foreground))',
                     }}>
-                        ThemeProvider
+                        {t('theming.provider')}
                     </h2>
                     <p style={{
                         fontSize: '15px',
@@ -42,13 +44,7 @@ export default function ThemingPage() {
                         marginBottom: '16px',
                         lineHeight: 1.7,
                     }}>
-                        Wrap ứng dụng với <code style={{
-                            padding: '2px 6px',
-                            borderRadius: '4px',
-                            background: 'rgba(59, 130, 246, 0.1)',
-                            color: 'rgb(59, 130, 246)',
-                            fontSize: '14px',
-                        }}>ThemeProvider</code> để enable theme system:
+                        {t('theming.provider.desc')}
                     </p>
                     <CodeBlock
                         code={`import { ThemeProvider } from '@xdev-asia/x-ui-react';
@@ -73,7 +69,7 @@ function App() {
                             marginBottom: '12px',
                             color: 'rgb(var(--x-foreground))',
                         }}>
-                            Props
+                            {t('theming.props')}
                         </h4>
                         <table style={{
                             width: '100%',
@@ -118,7 +114,7 @@ function App() {
                         marginBottom: '16px',
                         color: 'rgb(var(--x-foreground))',
                     }}>
-                        useXTheme Hook
+                        {t('theming.hook')}
                     </h2>
                     <p style={{
                         fontSize: '15px',
@@ -126,7 +122,7 @@ function App() {
                         marginBottom: '16px',
                         lineHeight: 1.7,
                     }}>
-                        Sử dụng hook để truy cập và thay đổi theme:
+                        {t('theming.hook.desc')}
                     </p>
                     <CodeBlock
                         code={`import { useXTheme } from '@xdev-asia/x-ui-react';
@@ -160,7 +156,7 @@ function ThemeToggle() {
                             marginBottom: '12px',
                             color: 'rgb(var(--x-foreground))',
                         }}>
-                            Returns
+                            {t('theming.returns')}
                         </h4>
                         <ul style={{
                             listStyle: 'none',
@@ -168,10 +164,10 @@ function ThemeToggle() {
                             margin: 0,
                         }}>
                             {[
-                                { name: 'theme', desc: 'ThemeConfig object chứa colors và glass tokens' },
-                                { name: 'mode', desc: "Theme mode hiện tại ('light' | 'dark')" },
-                                { name: 'setMode', desc: 'Function để set theme mode cụ thể' },
-                                { name: 'toggleMode', desc: 'Function để toggle giữa light/dark' },
+                                { name: 'theme', desc: 'ThemeConfig object with colors and glass tokens' },
+                                { name: 'mode', desc: "Current theme mode ('light' | 'dark')" },
+                                { name: 'setMode', desc: 'Function to set specific theme mode' },
+                                { name: 'toggleMode', desc: 'Function to toggle between light/dark' },
                             ].map((item, i) => (
                                 <li key={i} style={{
                                     padding: '12px 16px',
@@ -203,7 +199,7 @@ function ThemeToggle() {
                         marginBottom: '16px',
                         color: 'rgb(var(--x-foreground))',
                     }}>
-                        CSS Variables
+                        {t('theming.cssVariables')}
                     </h2>
                     <p style={{
                         fontSize: '15px',
@@ -211,7 +207,7 @@ function ThemeToggle() {
                         marginBottom: '16px',
                         lineHeight: 1.7,
                     }}>
-                        ThemeProvider tự động set các CSS variables, bạn có thể sử dụng trong CSS:
+                        {t('theming.cssVariables.desc')}
                     </p>
                     <CodeBlock
                         language="css"
@@ -240,7 +236,7 @@ function ThemeToggle() {
                         marginBottom: '16px',
                         color: 'rgb(var(--x-foreground))',
                     }}>
-                        Mode-specific Styling
+                        {t('theming.modeSpecific')}
                     </h2>
                     <p style={{
                         fontSize: '15px',
@@ -248,17 +244,7 @@ function ThemeToggle() {
                         marginBottom: '16px',
                         lineHeight: 1.7,
                     }}>
-                        Class <code style={{
-                            padding: '2px 6px',
-                            borderRadius: '4px',
-                            background: 'rgba(59, 130, 246, 0.1)',
-                            color: 'rgb(59, 130, 246)',
-                        }}>.light</code> hoặc <code style={{
-                            padding: '2px 6px',
-                            borderRadius: '4px',
-                            background: 'rgba(59, 130, 246, 0.1)',
-                            color: 'rgb(59, 130, 246)',
-                        }}>.dark</code> được thêm vào document root:
+                        {t('theming.modeSpecific.desc')}
                     </p>
                     <CodeBlock
                         language="css"
