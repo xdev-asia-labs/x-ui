@@ -37,9 +37,10 @@ export default function Header() {
                     <Link href="/docs" style={{ color: 'rgb(var(--x-mutedForeground))', fontSize: '14px', fontWeight: 500, transition: 'color 0.2s', textDecoration: 'none' }} className="hover:text-white">Docs</Link>
                     <Link href="/#features" style={{ color: 'rgb(var(--x-mutedForeground))', fontSize: '14px', fontWeight: 500, transition: 'color 0.2s', textDecoration: 'none' }} className="hover:text-white">Features</Link>
                     <Link href="/icons" style={{ color: 'rgb(var(--x-mutedForeground))', fontSize: '14px', fontWeight: 500, transition: 'color 0.2s', textDecoration: 'none' }} className="hover:text-white">Icons</Link>
+                    <a href="/storybook/" style={{ color: 'rgb(var(--x-mutedForeground))', fontSize: '14px', fontWeight: 500, transition: 'color 0.2s', textDecoration: 'none' }} className="hover:text-white">Storybook</a>
                     <Link href="/#components" style={{ color: 'rgb(var(--x-mutedForeground))', fontSize: '14px', fontWeight: 500, transition: 'color 0.2s', textDecoration: 'none' }} className="hover:text-white">Components</Link>
                     <ThemeToggle />
-                    <a href="https://github.com/xdev-asia/x-ui" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/xdev-asia-labs/x-ui" target="_blank" rel="noopener noreferrer">
                         <Button variant="outline" size="sm" className="rounded-full">
                             GitHub
                         </Button>

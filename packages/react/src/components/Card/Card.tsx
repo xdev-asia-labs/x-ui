@@ -14,22 +14,37 @@ export interface CardProps extends HTMLAttributes<HTMLDivElement> {
     isSelected?: boolean;
 }
 
+// Liquid Glass inspired styles
 const variantStyles = {
-    elevated: 'bg-[var(--x-card)] shadow-lg border-transparent',
-    outlined: 'bg-[var(--x-card)] border border-[var(--x-border)]',
-    filled: 'bg-[var(--x-muted)] border-transparent',
-    glass: 'bg-[var(--x-glass-bg)] backdrop-blur-lg border border-[var(--x-glass-border)]',
+    elevated: `
+        bg-[var(--x-card)]
+        shadow-[0_4px_24px_rgba(0,0,0,0.08),0_1px_2px_rgba(0,0,0,0.04)]
+        border border-white/[0.05]
+    `,
+    outlined: `
+        bg-[var(--x-card)]/80 backdrop-blur-sm
+        border border-[var(--x-border)]
+    `,
+    filled: `
+        bg-[var(--x-muted)]
+        border border-transparent
+    `,
+    glass: `
+        bg-white/[0.06] backdrop-blur-xl
+        border border-white/[0.1]
+        shadow-[0_8px_32px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.08)]
+    `,
 };
 
 const paddingStyles = {
     none: 'p-0',
-    sm: 'p-3',
-    md: 'p-5',
-    lg: 'p-7',
+    sm: 'p-4',
+    md: 'p-6',
+    lg: 'p-8',
 };
 
 /**
- * Card component
+ * Card component with Liquid Glass design
  * A container for grouping related content
  */
 export const Card = forwardRef<HTMLDivElement, CardProps>(
@@ -49,15 +64,34 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
             <div
                 ref={ref}
                 className={cn(
-                    'rounded-xl text-[var(--x-cardForeground)] transition-all duration-200',
+                    // Base Liquid Glass styles
+                    'rounded-2xl text-[var(--x-cardForeground)]',
+                    'transition-all duration-300 ease-out',
+                    'relative overflow-hidden',
+                    // Variant styles
                     variantStyles[variant],
+                    // Padding
                     paddingStyles[padding],
-                    isInteractive && 'cursor-pointer hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0',
-                    isSelected && 'ring-2 ring-[var(--x-primary)] ring-offset-2',
+                    // Interactive states
+                    isInteractive && `
+                        cursor-pointer
+                        hover:shadow-[0_12px_40px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.1)]
+                        hover:-translate-y-1 hover:border-white/[0.15]
+                        active:translate-y-0 active:scale-[0.99]
+                    `,
+                    // Selected state
+                    isSelected && 'ring-2 ring-[var(--x-primary)] ring-offset-2 ring-offset-[var(--x-background)]',
                     className
                 )}
                 {...props}
             >
+                {/* Top specular highlight - only for glass variant */}
+                {variant === 'glass' && (
+                    <div
+                        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none"
+                        aria-hidden="true"
+                    />
+                )}
                 {children}
             </div>
         );
@@ -72,7 +106,7 @@ export interface CardHeaderProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
     ({ className, children, ...props }, ref) => (
-        <div ref={ref} className={cn('flex flex-col gap-1.5 pb-4', className)} {...props}>
+        <div ref={ref} className={cn('flex flex-col gap-2 pb-4', className)} {...props}>
             {children}
         </div>
     )
@@ -85,7 +119,14 @@ export interface CardTitleProps extends HTMLAttributes<HTMLHeadingElement> {
 
 export const CardTitle = forwardRef<HTMLHeadingElement, CardTitleProps>(
     ({ className, children, ...props }, ref) => (
-        <h3 ref={ref} className={cn('text-xl font-semibold leading-none tracking-tight', className)} {...props}>
+        <h3
+            ref={ref}
+            className={cn(
+                'text-lg font-semibold leading-tight tracking-tight',
+                className
+            )}
+            {...props}
+        >
             {children}
         </h3>
     )
@@ -98,7 +139,11 @@ export interface CardDescriptionProps extends HTMLAttributes<HTMLParagraphElemen
 
 export const CardDescription = forwardRef<HTMLParagraphElement, CardDescriptionProps>(
     ({ className, children, ...props }, ref) => (
-        <p ref={ref} className={cn('text-sm text-[var(--x-mutedForeground)]', className)} {...props}>
+        <p
+            ref={ref}
+            className={cn('text-sm text-[var(--x-mutedForeground)] leading-relaxed', className)}
+            {...props}
+        >
             {children}
         </p>
     )

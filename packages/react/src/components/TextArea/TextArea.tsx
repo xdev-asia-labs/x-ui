@@ -1,7 +1,7 @@
 'use client';
 
-import React, { forwardRef, TextareaHTMLAttributes } from 'react';
-import { cn, generateId } from '@xdev-asia/x-ui-core';
+import React, { forwardRef, TextareaHTMLAttributes, useId } from 'react';
+import { cn } from '@xdev-asia/x-ui-core';
 
 export interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
     /** Variant style */
@@ -46,7 +46,8 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         },
         ref
     ) => {
-        const inputId = id || generateId('textarea');
+        const reactId = useId();
+        const inputId = id || `textarea${reactId}`;
 
         const handleInput = (e: React.FormEvent<HTMLTextAreaElement>) => {
             if (autoResize) {

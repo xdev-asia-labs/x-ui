@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, ReactNode, forwardRef, HTMLAttributes } from 'react';
-import { cn, generateId } from '@xdev-asia/x-ui-core';
+import { cn } from '@xdev-asia/x-ui-core';
 
 // Accordion Context
 interface AccordionContextValue {

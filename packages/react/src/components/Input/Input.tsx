@@ -1,7 +1,7 @@
 'use client';
 
-import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
-import { cn, generateId } from '@xdev-asia/x-ui-core';
+import React, { forwardRef, InputHTMLAttributes, ReactNode, useId } from 'react';
+import { cn } from '@xdev-asia/x-ui-core';
 
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     /** Input variant */
@@ -30,21 +30,39 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 
     label?: string;
 }
 
+// Liquid Glass inspired styles
 const variantStyles = {
-    outline: 'border border-[var(--x-input)] bg-transparent focus:border-[var(--x-ring)]',
-    filled: 'border border-transparent bg-[var(--x-muted)] focus:bg-transparent focus:border-[var(--x-ring)]',
-    flushed: 'border-b border-[var(--x-input)] rounded-none bg-transparent focus:border-[var(--x-ring)] px-0',
-    glass: 'border border-[var(--x-glass-border)] bg-[var(--x-glass-bg)] backdrop-blur-lg focus:border-[var(--x-ring)]',
+    outline: `
+        border border-white/[0.1] bg-white/[0.02]
+        focus:border-[var(--x-ring)] focus:bg-white/[0.04]
+        hover:border-white/[0.15] hover:bg-white/[0.03]
+    `,
+    filled: `
+        border border-transparent bg-white/[0.06]
+        focus:bg-white/[0.08] focus:border-[var(--x-ring)]
+        hover:bg-white/[0.08]
+    `,
+    flushed: `
+        border-b border-white/[0.15] rounded-none bg-transparent px-0
+        focus:border-[var(--x-ring)]
+        hover:border-white/[0.2]
+    `,
+    glass: `
+        border border-white/[0.1] bg-white/[0.06] backdrop-blur-xl
+        focus:border-[var(--x-ring)] focus:bg-white/[0.08]
+        hover:border-white/[0.15] hover:bg-white/[0.08]
+        shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]
+    `,
 };
 
 const sizeStyles = {
-    sm: 'h-8 text-sm px-3',
-    md: 'h-10 text-sm px-4',
-    lg: 'h-12 text-base px-4',
+    sm: 'h-9 text-sm px-3 rounded-xl',
+    md: 'h-11 text-sm px-4 rounded-xl',
+    lg: 'h-13 text-base px-5 rounded-2xl',
 };
 
 /**
- * Input component
+ * Input component with Liquid Glass design
  * A text input with multiple variants and features
  */
 export const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -68,14 +86,15 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         },
         ref
     ) => {
-        const inputId = id || generateId('input');
+        const reactId = useId();
+        const inputId = id || `input${reactId}`;
 
         return (
             <div className="w-full">
                 {label && (
                     <label
                         htmlFor={inputId}
-                        className="block text-sm font-medium text-[var(--x-foreground)] mb-1.5"
+                        className="block text-sm font-medium text-[var(--x-foreground)] mb-2"
                     >
                         {label}
                     </label>
@@ -83,14 +102,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
                 <div className="relative flex">
                     {leftAddon && (
-                        <span className="inline-flex items-center px-3 bg-[var(--x-muted)] border border-r-0 border-[var(--x-input)] rounded-l-lg text-[var(--x-mutedForeground)] text-sm">
+                        <span className="inline-flex items-center px-4 bg-white/[0.06] border border-r-0 border-white/[0.1] rounded-l-xl text-[var(--x-mutedForeground)] text-sm backdrop-blur-sm">
                             {leftAddon}
                         </span>
                     )}
 
                     <div className="relative flex-1">
                         {leftIcon && (
-                            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--x-mutedForeground)]">
+                            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--x-mutedForeground)]">
                                 {leftIcon}
                             </span>
                         )}
@@ -99,17 +118,23 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                             ref={ref}
                             id={inputId}
                             className={cn(
-                                'w-full rounded-lg transition-colors duration-200',
-                                'text-[var(--x-foreground)] placeholder:text-[var(--x-mutedForeground)]',
-                                'focus:outline-none focus:ring-2 focus:ring-[var(--x-ring)]/30',
+                                // Base Liquid Glass styles
+                                'w-full transition-all duration-200 ease-out',
+                                'text-[var(--x-foreground)] placeholder:text-[var(--x-mutedForeground)]/60',
+                                'focus:outline-none focus:ring-2 focus:ring-[var(--x-ring)]/20',
                                 'disabled:opacity-50 disabled:cursor-not-allowed',
+                                // Variant styles
                                 variantStyles[variant],
+                                // Size styles
                                 sizeStyles[size],
-                                !!leftIcon && 'pl-10',
-                                !!rightIcon && 'pr-10',
+                                // Icon padding
+                                !!leftIcon && 'pl-11',
+                                !!rightIcon && 'pr-11',
+                                // Addon rounding
                                 !!leftAddon && 'rounded-l-none',
                                 !!rightAddon && 'rounded-r-none',
-                                isInvalid && 'border-[var(--x-destructive)] focus:border-[var(--x-destructive)] focus:ring-[var(--x-destructive)]/30',
+                                // Error state
+                                isInvalid && 'border-[var(--x-destructive)] focus:border-[var(--x-destructive)] focus:ring-[var(--x-destructive)]/20',
                                 className
                             )}
                             disabled={isDisabled}
@@ -120,27 +145,27 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                         />
 
                         {rightIcon && (
-                            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--x-mutedForeground)]">
+                            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--x-mutedForeground)]">
                                 {rightIcon}
                             </span>
                         )}
                     </div>
 
                     {rightAddon && (
-                        <span className="inline-flex items-center px-3 bg-[var(--x-muted)] border border-l-0 border-[var(--x-input)] rounded-r-lg text-[var(--x-mutedForeground)] text-sm">
+                        <span className="inline-flex items-center px-4 bg-white/[0.06] border border-l-0 border-white/[0.1] rounded-r-xl text-[var(--x-mutedForeground)] text-sm backdrop-blur-sm">
                             {rightAddon}
                         </span>
                     )}
                 </div>
 
                 {errorMessage && isInvalid && (
-                    <p id={`${inputId}-error`} className="mt-1.5 text-sm text-[var(--x-destructive)]">
+                    <p id={`${inputId}-error`} className="mt-2 text-sm text-[var(--x-destructive)]">
                         {errorMessage}
                     </p>
                 )}
 
                 {helperText && !isInvalid && (
-                    <p id={`${inputId}-helper`} className="mt-1.5 text-sm text-[var(--x-mutedForeground)]">
+                    <p id={`${inputId}-helper`} className="mt-2 text-sm text-[var(--x-mutedForeground)]">
                         {helperText}
                     </p>
                 )}

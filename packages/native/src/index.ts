@@ -47,6 +47,30 @@ export type { CheckboxProps } from './components/Checkbox';
 export { Spinner } from './components/Spinner';
 export type { SpinnerProps } from './components/Spinner';
 
+export { Progress } from './components/Progress';
+export type { ProgressProps } from './components/Progress';
+
+export { Skeleton, SkeletonText, SkeletonCard } from './components/Skeleton';
+export type { SkeletonProps } from './components/Skeleton';
+
+// Disclosure
+export { Accordion, AccordionItem } from './components/Accordion';
+export type { AccordionProps, AccordionItemProps } from './components/Accordion';
+
+// Overlay
+export { BottomSheet } from './components/BottomSheet';
+export type { BottomSheetProps } from './components/BottomSheet';
+
+export { AlertDialog } from './components/AlertDialog';
+export type { AlertDialogProps } from './components/AlertDialog';
+
+export { Tooltip } from './components/Tooltip';
+export type { TooltipProps } from './components/Tooltip';
+
+// Actions
+export { IconButton } from './components/IconButton';
+export type { IconButtonProps } from './components/IconButton';
+
 // Hooks (native-specific, overrides core's useResponsive with RN version)
 export * from './hooks';
 

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, ReactNode, useCallback } from 'react';
-import { cn, generateId } from '@xdev-asia/x-ui-core';
+import { cn } from '@xdev-asia/x-ui-core';
 
 // Toast types
 export interface Toast {
@@ -33,7 +33,7 @@ export function ToastProvider({ children, position = 'top-right', maxToasts = 5 
     const [toasts, setToasts] = useState<Toast[]>([]);
 
     const addToast = useCallback((toast: Omit<Toast, 'id'>) => {
-        const id = generateId('toast');
+        const id = `toast-${Date.now()}-${Math.random().toString(36).slice(2)}`;
         const duration = toast.duration ?? 5000;
 
         setToasts((prev) => {

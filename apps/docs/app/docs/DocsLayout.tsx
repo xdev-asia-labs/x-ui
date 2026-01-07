@@ -11,23 +11,88 @@ import { LanguageProvider, useLanguage } from '../i18n/LanguageProvider';
 interface NavItem {
     titleKey: string;
     href: string;
+    icon?: React.ReactNode;
     children?: NavItem[];
 }
 
+// SVG Icons for navigation
+const icons = {
+    book: (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+        </svg>
+    ),
+    palette: (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <circle cx="13.5" cy="6.5" r="1.5" fill="currentColor" />
+            <circle cx="17.5" cy="10.5" r="1.5" fill="currentColor" />
+            <circle cx="8.5" cy="7.5" r="1.5" fill="currentColor" />
+            <circle cx="6.5" cy="12.5" r="1.5" fill="currentColor" />
+            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.555C21.965 6.012 17.461 2 12 2z" />
+        </svg>
+    ),
+    colors: (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+            <path d="M2 12h20" />
+        </svg>
+    ),
+    cube: (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+            <path d="m3.27 6.96 8.73 5.04 8.73-5.04M12 22.08V12" />
+        </svg>
+    ),
+    button: (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <rect x="3" y="8" width="18" height="8" rx="4" />
+        </svg>
+    ),
+    input: (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <rect x="3" y="6" width="18" height="12" rx="2" />
+            <line x1="7" y1="12" x2="7" y2="12" strokeLinecap="round" />
+        </svg>
+    ),
+    card: (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="3" />
+            <path d="M3 9h18" />
+        </svg>
+    ),
+    avatar: (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <circle cx="12" cy="8" r="4" />
+            <path d="M20 21a8 8 0 1 0-16 0" />
+        </svg>
+    ),
+    badge: (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <rect x="6" y="9" width="12" height="6" rx="3" />
+        </svg>
+    ),
+    modal: (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <rect x="2" y="4" width="20" height="16" rx="3" />
+            <path d="M6 8h12M6 12h8" />
+        </svg>
+    ),
+};
+
 const navigation: NavItem[] = [
-    { titleKey: 'nav.gettingStarted', href: '/docs' },
-    { titleKey: 'nav.theming', href: '/docs/theming' },
-    { titleKey: 'nav.colors', href: '/docs/colors' },
+    { titleKey: 'nav.gettingStarted', href: '/docs', icon: icons.book },
+    { titleKey: 'nav.theming', href: '/docs/theming', icon: icons.palette },
+    { titleKey: 'nav.colors', href: '/docs/colors', icon: icons.colors },
     {
         titleKey: 'nav.components',
         href: '/docs/components',
+        icon: icons.cube,
         children: [
-            { titleKey: 'Button', href: '/docs/components/button' },
-            { titleKey: 'Input', href: '/docs/components/input' },
-            { titleKey: 'Card', href: '/docs/components/card' },
-            { titleKey: 'Avatar', href: '/docs/components/avatar' },
-            { titleKey: 'Badge', href: '/docs/components/badge' },
-            { titleKey: 'Modal', href: '/docs/components/modal' },
+            { titleKey: 'Button', href: '/docs/components/button', icon: icons.button },
+            { titleKey: 'Input', href: '/docs/components/input', icon: icons.input },
+            { titleKey: 'Card', href: '/docs/components/card', icon: icons.card },
         ],
     },
 ];
@@ -42,41 +107,44 @@ function DocsLayoutContent({ children }: { children: React.ReactNode }) {
         return translated === titleKey ? titleKey : translated;
     };
 
+    const isActive = (href: string) => pathname === href;
+    const isChildActive = (item: NavItem) =>
+        item.children?.some(child => child.href === pathname) || false;
+
     return (
-        <div style={{
-            minHeight: '100vh',
-            display: 'flex',
-            flexDirection: 'column',
-            background: 'rgb(var(--x-background))',
-        }}>
-            {/* Header */}
-            <header style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                right: 0,
-                zIndex: 100,
-                padding: '1rem 1.5rem',
-                background: 'var(--header-bg, rgba(10, 10, 15, 0.8))',
-                backdropFilter: 'blur(16px)',
-                borderBottom: '1px solid var(--header-border, rgba(255,255,255,0.05))',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-            }}>
+        <div className="min-h-screen flex flex-col relative">
+            {/* Mesh Gradient Background */}
+            <div className="mesh-background" />
+            <div className="aurora-bg" />
+
+            {/* Header - Liquid Glass */}
+            <header
+                className="liquid-glass-elevated"
+                style={{
+                    position: 'fixed',
+                    top: 12,
+                    left: 12,
+                    right: 12,
+                    zIndex: 100,
+                    padding: '12px 24px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                }}
+            >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                     {/* Mobile menu button */}
                     <button
                         onClick={() => setSidebarOpen(!sidebarOpen)}
+                        className="mobile-menu-btn"
                         style={{
                             display: 'none',
                             padding: '8px',
                             background: 'transparent',
                             border: 'none',
                             cursor: 'pointer',
-                            color: 'rgb(var(--x-foreground))',
+                            color: 'var(--x-foreground)',
                         }}
-                        className="mobile-menu-btn"
                         aria-label="Toggle menu"
                     >
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -86,29 +154,32 @@ function DocsLayoutContent({ children }: { children: React.ReactNode }) {
 
                     <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
                         <Logo size={28} />
-                        <span style={{ fontWeight: 700, fontSize: '18px', color: 'rgb(var(--x-foreground))' }}>
+                        <span style={{ fontWeight: 700, fontSize: '18px', color: 'var(--x-foreground)' }}>
                             X-UI
                         </span>
                     </Link>
-                    <span style={{
-                        fontSize: '12px',
-                        padding: '2px 8px',
-                        borderRadius: '999px',
-                        background: 'rgba(59, 130, 246, 0.1)',
-                        color: 'rgb(59, 130, 246)',
-                        fontWeight: 500,
-                    }}>
+                    <span
+                        className="liquid-pill"
+                        style={{
+                            fontSize: '12px',
+                            padding: '4px 12px',
+                            background: 'var(--gradient-primary)',
+                            color: 'white',
+                            border: 'none',
+                        }}
+                    >
                         Docs
                     </span>
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <LanguageToggle />
                     <ThemeToggle />
                     <a
-                        href="https://github.com/xdev-asia/x-ui"
+                        href="https://github.com/xdev-asia-labs/x-ui"
                         target="_blank"
                         rel="noopener noreferrer"
+                        className="liquid-glass"
                         style={{
                             display: 'flex',
                             alignItems: 'center',
@@ -116,10 +187,8 @@ function DocsLayoutContent({ children }: { children: React.ReactNode }) {
                             width: 40,
                             height: 40,
                             borderRadius: '50%',
-                            border: '1px solid rgba(255,255,255,0.1)',
-                            background: 'rgba(255,255,255,0.05)',
-                            color: 'rgb(var(--x-foreground))',
-                            transition: 'all 0.2s',
+                            color: 'var(--x-foreground)',
+                            textDecoration: 'none',
                         }}
                     >
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -129,67 +198,107 @@ function DocsLayoutContent({ children }: { children: React.ReactNode }) {
                 </div>
             </header>
 
-            <div style={{ display: 'flex', flex: 1, paddingTop: '73px' }}>
-                {/* Sidebar */}
+            <div style={{ display: 'flex', flex: 1, paddingTop: '88px' }}>
+                {/* Sidebar - Liquid Glass */}
                 <aside
+                    className="liquid-glass-elevated docs-sidebar"
                     style={{
                         width: '280px',
                         minWidth: '280px',
-                        height: 'calc(100vh - 73px)',
-                        position: 'sticky',
-                        top: '73px',
-                        borderRight: '1px solid var(--x-glass-border, rgba(255,255,255,0.05))',
-                        padding: '24px',
+                        height: 'calc(100vh - 100px)',
+                        position: 'fixed',
+                        top: '88px',
+                        left: '12px',
+                        padding: '20px 16px',
                         overflowY: 'auto',
-                        background: 'var(--x-glass-bg, rgba(30, 41, 59, 0.2))',
+                        overflowX: 'hidden',
                     }}
-                    className="docs-sidebar"
                 >
-                    <nav>
-                        {navigation.map((item) => (
-                            <div key={item.href} style={{ marginBottom: '8px' }}>
+                    <nav style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                        {navigation.map((item, index) => (
+                            <div
+                                key={item.href}
+                                className={`animate-slide-in-left stagger-${index + 1}`}
+                                style={{ opacity: 0 }}
+                            >
                                 <Link
                                     href={item.href}
                                     style={{
-                                        display: 'block',
-                                        padding: '10px 16px',
-                                        borderRadius: '8px',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '12px',
+                                        padding: '12px 16px',
+                                        borderRadius: '14px',
                                         fontSize: '14px',
-                                        fontWeight: pathname === item.href ? 600 : 500,
-                                        color: pathname === item.href
-                                            ? 'rgb(var(--x-primary))'
-                                            : 'rgb(var(--x-mutedForeground))',
-                                        background: pathname === item.href
-                                            ? 'rgba(59, 130, 246, 0.1)'
+                                        fontWeight: isActive(item.href) || isChildActive(item) ? 600 : 500,
+                                        color: isActive(item.href)
+                                            ? 'white'
+                                            : 'var(--x-mutedForeground)',
+                                        background: isActive(item.href)
+                                            ? 'var(--gradient-primary)'
                                             : 'transparent',
+                                        boxShadow: isActive(item.href)
+                                            ? '0 4px 20px rgba(99, 102, 241, 0.35)'
+                                            : 'none',
                                         textDecoration: 'none',
-                                        transition: 'all 0.2s',
+                                        transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        if (!isActive(item.href)) {
+                                            e.currentTarget.style.background = 'var(--glass-bg-hover)';
+                                            e.currentTarget.style.color = 'var(--x-foreground)';
+                                        }
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        if (!isActive(item.href)) {
+                                            e.currentTarget.style.background = 'transparent';
+                                            e.currentTarget.style.color = 'var(--x-mutedForeground)';
+                                        }
                                     }}
                                 >
+                                    <span style={{ opacity: 0.9 }}>{item.icon}</span>
                                     {getNavTitle(item.titleKey)}
                                 </Link>
                                 {item.children && (
-                                    <div style={{ marginLeft: '12px', marginTop: '4px' }}>
+                                    <div style={{ marginLeft: '12px', marginTop: '4px', display: 'flex', flexDirection: 'column', gap: '2px' }}>
                                         {item.children.map((child) => (
                                             <Link
                                                 key={child.href}
                                                 href={child.href}
                                                 style={{
-                                                    display: 'block',
-                                                    padding: '8px 16px',
-                                                    borderRadius: '6px',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    gap: '10px',
+                                                    padding: '10px 16px',
+                                                    borderRadius: '12px',
                                                     fontSize: '13px',
-                                                    fontWeight: pathname === child.href ? 600 : 400,
-                                                    color: pathname === child.href
-                                                        ? 'rgb(var(--x-primary))'
-                                                        : 'rgb(var(--x-mutedForeground))',
-                                                    background: pathname === child.href
-                                                        ? 'rgba(59, 130, 246, 0.08)'
+                                                    fontWeight: isActive(child.href) ? 600 : 400,
+                                                    color: isActive(child.href)
+                                                        ? 'white'
+                                                        : 'var(--x-mutedForeground)',
+                                                    background: isActive(child.href)
+                                                        ? 'var(--gradient-primary)'
                                                         : 'transparent',
+                                                    boxShadow: isActive(child.href)
+                                                        ? '0 4px 16px rgba(99, 102, 241, 0.3)'
+                                                        : 'none',
                                                     textDecoration: 'none',
-                                                    transition: 'all 0.2s',
+                                                    transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                                                }}
+                                                onMouseEnter={(e) => {
+                                                    if (!isActive(child.href)) {
+                                                        e.currentTarget.style.background = 'var(--glass-bg-hover)';
+                                                        e.currentTarget.style.color = 'var(--x-foreground)';
+                                                    }
+                                                }}
+                                                onMouseLeave={(e) => {
+                                                    if (!isActive(child.href)) {
+                                                        e.currentTarget.style.background = 'transparent';
+                                                        e.currentTarget.style.color = 'var(--x-mutedForeground)';
+                                                    }
                                                 }}
                                             >
+                                                <span style={{ opacity: 0.7 }}>{child.icon}</span>
                                                 {getNavTitle(child.titleKey)}
                                             </Link>
                                         ))}
@@ -203,10 +312,13 @@ function DocsLayoutContent({ children }: { children: React.ReactNode }) {
                 {/* Main Content */}
                 <main style={{
                     flex: 1,
-                    padding: '40px 48px',
+                    marginLeft: '304px',
+                    padding: '32px 48px',
                     maxWidth: '900px',
                 }}>
-                    {children}
+                    <div className="animate-fade-in">
+                        {children}
+                    </div>
                 </main>
             </div>
 
@@ -217,6 +329,10 @@ function DocsLayoutContent({ children }: { children: React.ReactNode }) {
                     }
                     .mobile-menu-btn {
                         display: block !important;
+                    }
+                    main {
+                        margin-left: 0 !important;
+                        padding: 20px !important;
                     }
                 }
             `}</style>

@@ -1,6 +1,7 @@
 {
     "name": "@xdev-asia/x-ui-react",
     "version": "0.0.1",
+    "description": "Modern React components with glassmorphism design",
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",
     "types": "./dist/index.d.ts",
@@ -35,5 +36,23 @@
     "peerDependencies": {
         "react": ">=18.0.0",
         "react-dom": ">=18.0.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "files": [
+        "dist"
+    ],
+    "keywords": [
+        "ui",
+        "react",
+        "components",
+        "glassmorphism",
+        "design-system"
+    ],
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/xdev-asia-labs/x-ui"
     }
 }

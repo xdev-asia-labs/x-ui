@@ -1,7 +1,7 @@
 'use client';
 
-import React, { forwardRef, SelectHTMLAttributes, ReactNode } from 'react';
-import { cn, generateId } from '@xdev-asia/x-ui-core';
+import React, { forwardRef, SelectHTMLAttributes, ReactNode, useId } from 'react';
+import { cn } from '@xdev-asia/x-ui-core';
 
 export interface SelectOption {
     value: string;
@@ -63,7 +63,8 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
         },
         ref
     ) => {
-        const inputId = id || generateId('select');
+        const reactId = useId();
+        const inputId = id || `select${reactId}`;
 
         return (
             <div className="w-full">

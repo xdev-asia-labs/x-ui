@@ -96,5 +96,21 @@ export type { DrawerProps } from './components/Drawer';
 // Custom Icons
 export * from './components/Icons';
 
+// New P0 Components
+export { DatePicker } from './components/DatePicker';
+export type { DatePickerProps } from './components/DatePicker';
+
+export { Dropdown, DropdownItem, DropdownSeparator, DropdownLabel } from './components/Dropdown';
+export type { DropdownProps, DropdownItemProps } from './components/Dropdown';
+
+export { Pagination } from './components/Pagination';
+export type { PaginationProps } from './components/Pagination';
+
+export { Popover, PopoverHeader, PopoverBody, PopoverFooter } from './components/Popover';
+export type { PopoverProps, PopoverHeaderProps } from './components/Popover';
+
+export { Table, TableHead, TableBody, TableRow, TableHeaderCell, TableCell, TableEmpty } from './components/Table';
+export type { TableProps, TableColumnProps } from './components/Table';
+
 // Re-export core utilities
 export * from '@xdev-asia/x-ui-core';

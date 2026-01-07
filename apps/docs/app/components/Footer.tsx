@@ -11,7 +11,7 @@ const footerLinks = {
         { label: 'Documentation', href: '#' },
     ],
     resources: [
-        { label: 'GitHub', href: 'https://github.com/xdev-asia/x-ui', external: true },
+        { label: 'GitHub', href: 'https://github.com/xdev-asia-labs/x-ui', external: true },
         { label: 'npm', href: 'https://www.npmjs.com/org/xdev-asia', external: true },
     ],
 };

@@ -41,6 +41,15 @@ jobs:
       - name: Build docs
         run: pnpm --filter @xdev-asia/x-ui-docs build
 
+      - name: Build Storybook
+        run: pnpm --filter @xdev-asia/x-ui-storybook build
+
+      - name: Combine docs and Storybook
+        run: |
+          # Copy Storybook into docs output at /storybook/
+          mkdir -p ./apps/docs/out/storybook
+          cp -r ./apps/storybook/dist/* ./apps/docs/out/storybook/
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
@@ -59,3 +68,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+

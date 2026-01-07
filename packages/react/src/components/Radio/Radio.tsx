@@ -1,7 +1,7 @@
 'use client';
 
-import React, { forwardRef, InputHTMLAttributes, ReactNode, createContext, useContext } from 'react';
-import { cn, generateId } from '@xdev-asia/x-ui-core';
+import React, { forwardRef, InputHTMLAttributes, ReactNode, createContext, useContext, useId } from 'react';
+import { cn } from '@xdev-asia/x-ui-core';
 
 // Radio Group Context
 interface RadioGroupContextValue {
@@ -99,7 +99,8 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
         ref
     ) => {
         const group = useContext(RadioGroupContext);
-        const inputId = id || generateId('radio');
+        const reactId = useId();
+        const inputId = id || `radio${reactId}`;
 
         const size = sizeProp || group?.size || 'md';
         const colorScheme = colorProp || group?.colorScheme || 'primary';

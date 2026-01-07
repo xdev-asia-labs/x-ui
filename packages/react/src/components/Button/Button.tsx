@@ -24,33 +24,57 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children?: ReactNode;
 }
 
+// Liquid Glass inspired styles
 const variantStyles = {
-    solid: 'bg-[var(--btn-bg)] text-[var(--btn-fg)] hover:opacity-90 active:opacity-80',
-    outline: 'border-2 border-[var(--btn-bg)] text-[var(--btn-bg)] bg-transparent hover:bg-[var(--btn-bg)] hover:text-[var(--btn-fg)]',
-    ghost: 'text-[var(--btn-bg)] bg-transparent hover:bg-[var(--btn-bg)]/10',
-    glass: 'bg-[var(--x-glass-bg)] backdrop-blur-lg border border-[var(--x-glass-border)] text-[var(--btn-bg)] hover:bg-[var(--x-glass-bg-subtle)]',
+    solid: `
+        bg-[var(--btn-bg)] text-[var(--btn-fg)]
+        shadow-[0_2px_8px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.1)]
+        hover:shadow-[0_4px_16px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.15)]
+        hover:brightness-110
+        active:scale-[0.98] active:shadow-[0_1px_4px_rgba(0,0,0,0.15)]
+    `,
+    outline: `
+        border-2 border-[var(--btn-bg)] text-[var(--btn-bg)] bg-transparent
+        hover:bg-[var(--btn-bg)]/10
+        active:bg-[var(--btn-bg)]/20 active:scale-[0.98]
+    `,
+    ghost: `
+        text-[var(--btn-bg)] bg-transparent
+        hover:bg-[var(--btn-bg)]/10
+        active:bg-[var(--btn-bg)]/15 active:scale-[0.98]
+    `,
+    glass: `
+        bg-white/[0.08] backdrop-blur-xl
+        border border-white/[0.12]
+        text-[var(--x-foreground)]
+        shadow-[0_4px_24px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.1)]
+        hover:bg-white/[0.12] hover:border-white/[0.18]
+        hover:shadow-[0_8px_32px_rgba(0,0,0,0.16),inset_0_1px_0_rgba(255,255,255,0.15)]
+        active:scale-[0.98] active:bg-white/[0.15]
+    `,
     link: 'text-[var(--btn-bg)] bg-transparent underline-offset-4 hover:underline p-0',
 };
 
+// Liquid Glass rounded corners
 const sizeStyles = {
-    xs: 'h-7 px-2.5 text-xs gap-1 rounded',
-    sm: 'h-8 px-3 text-sm gap-1.5 rounded-md',
-    md: 'h-10 px-4 text-sm gap-2 rounded-lg',
-    lg: 'h-12 px-6 text-base gap-2.5 rounded-lg',
-    xl: 'h-14 px-8 text-lg gap-3 rounded-xl',
+    xs: 'h-7 px-3 text-xs gap-1.5 rounded-lg',
+    sm: 'h-8 px-3.5 text-sm gap-1.5 rounded-xl',
+    md: 'h-10 px-5 text-sm gap-2 rounded-xl',
+    lg: 'h-12 px-6 text-base gap-2.5 rounded-2xl',
+    xl: 'h-14 px-8 text-lg gap-3 rounded-2xl',
 };
 
 const colorSchemeVars = {
     primary: { '--btn-bg': 'var(--x-primary)', '--btn-fg': 'var(--x-primaryForeground)' },
     secondary: { '--btn-bg': 'var(--x-secondary)', '--btn-fg': 'var(--x-secondaryForeground)' },
-    success: { '--btn-bg': '#10B981', '--btn-fg': '#FFFFFF' },
-    warning: { '--btn-bg': '#F59E0B', '--btn-fg': '#FFFFFF' },
+    success: { '--btn-bg': 'rgb(16, 185, 129)', '--btn-fg': '#FFFFFF' },
+    warning: { '--btn-bg': 'rgb(245, 158, 11)', '--btn-fg': '#FFFFFF' },
     error: { '--btn-bg': 'var(--x-destructive)', '--btn-fg': 'var(--x-destructiveForeground)' },
     neutral: { '--btn-bg': 'var(--x-muted)', '--btn-fg': 'var(--x-mutedForeground)' },
 };
 
 /**
- * Button component
+ * Button component with Liquid Glass design
  * A customizable button with multiple variants, sizes, and color schemes
  */
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -77,10 +101,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             <button
                 ref={ref}
                 className={cn(
-                    // Base styles
-                    'inline-flex items-center justify-center font-medium transition-all duration-200',
+                    // Base styles with Liquid Glass aesthetics
+                    'inline-flex items-center justify-center font-semibold',
+                    'transition-all duration-200 ease-out',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--x-ring)] focus-visible:ring-offset-2',
-                    'disabled:opacity-50 disabled:cursor-not-allowed',
+                    'disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none',
                     // Variant styles
                     variantStyles[variant],
                     // Size styles

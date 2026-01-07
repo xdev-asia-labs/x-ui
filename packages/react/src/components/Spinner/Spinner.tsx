@@ -14,30 +14,40 @@ export interface SpinnerProps extends HTMLAttributes<HTMLDivElement> {
     label?: string;
 }
 
+// Liquid Glass sizing
 const sizeStyles = {
-    xs: 'h-3 w-3 border-[1.5px]',
-    sm: 'h-4 w-4 border-2',
-    md: 'h-6 w-6 border-2',
-    lg: 'h-8 w-8 border-[3px]',
-    xl: 'h-12 w-12 border-4',
+    xs: 'h-4 w-4 border-[1.5px]',
+    sm: 'h-5 w-5 border-2',
+    md: 'h-7 w-7 border-2',
+    lg: 'h-10 w-10 border-[3px]',
+    xl: 'h-14 w-14 border-4',
 };
 
+// Colors with glow effects
 const colorStyles = {
-    primary: 'border-[var(--x-primary)] border-t-transparent',
-    secondary: 'border-[var(--x-secondary)] border-t-transparent',
-    white: 'border-white border-t-transparent',
-    current: 'border-current border-t-transparent',
+    primary: 'border-[var(--x-primary)]/30 border-t-[var(--x-primary)]',
+    secondary: 'border-[var(--x-secondary)]/30 border-t-[var(--x-secondary)]',
+    white: 'border-white/30 border-t-white',
+    current: 'border-current/30 border-t-current',
+};
+
+// Glow shadows per color
+const glowStyles = {
+    primary: 'drop-shadow-[0_0_8px_rgba(99,102,241,0.5)]',
+    secondary: 'drop-shadow-[0_0_8px_rgba(100,116,139,0.4)]',
+    white: 'drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]',
+    current: '',
 };
 
 const speedStyles = {
     slow: 'animate-[spin_1.2s_linear_infinite]',
-    normal: 'animate-[spin_0.75s_linear_infinite]',
+    normal: 'animate-[spin_0.8s_linear_infinite]',
     fast: 'animate-[spin_0.5s_linear_infinite]',
 };
 
 /**
- * Spinner component
- * A loading spinner indicator
+ * Spinner component with Liquid Glass design
+ * A loading spinner indicator with glow effect
  */
 export const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(
     (
@@ -58,7 +68,8 @@ export const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(
                         'rounded-full',
                         sizeStyles[size],
                         colorStyles[color],
-                        speedStyles[speed]
+                        speedStyles[speed],
+                        glowStyles[color]
                     )}
                 />
                 <span className="sr-only">{label}</span>
