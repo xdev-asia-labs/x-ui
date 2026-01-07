@@ -1,13 +1,9 @@
 import type { NextConfig } from 'next';
 
-const isProd = process.env.NODE_ENV === 'production';
-
 const nextConfig: NextConfig = {
     output: 'export',
     trailingSlash: true,
-    // GitHub Pages deploys to https://xdev-asia-labs.github.io/x-ui/
-    basePath: isProd ? '/x-ui' : '',
-    assetPrefix: isProd ? '/x-ui/' : '',
+    // Custom domain x-ui.xdev.asia - no basePath needed
     images: {
         unoptimized: true,
     },
@@ -18,3 +14,4 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
