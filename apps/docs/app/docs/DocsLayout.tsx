@@ -90,9 +90,43 @@ const navigation: NavItem[] = [
         href: '/docs/components',
         icon: icons.cube,
         children: [
+            // Forms
             { titleKey: 'Button', href: '/docs/components/button', icon: icons.button },
             { titleKey: 'Input', href: '/docs/components/input', icon: icons.input },
+            { titleKey: 'Checkbox', href: '/docs/components/checkbox' },
+            { titleKey: 'Radio', href: '/docs/components/radio' },
+            { titleKey: 'Switch', href: '/docs/components/switch' },
+            { titleKey: 'Select', href: '/docs/components/select' },
+            { titleKey: 'TextArea', href: '/docs/components/textarea' },
+            { titleKey: 'DatePicker', href: '/docs/components/datepicker' },
+            { titleKey: 'IconButton', href: '/docs/components/iconbutton' },
+            // Data Display
+            { titleKey: 'Avatar', href: '/docs/components/avatar' },
+            { titleKey: 'Badge', href: '/docs/components/badge' },
             { titleKey: 'Card', href: '/docs/components/card', icon: icons.card },
+            { titleKey: 'Tag', href: '/docs/components/tag' },
+            { titleKey: 'Table', href: '/docs/components/table' },
+            // Layout
+            { titleKey: 'Box', href: '/docs/components/box' },
+            { titleKey: 'Stack', href: '/docs/components/stack' },
+            { titleKey: 'Divider', href: '/docs/components/divider' },
+            // Feedback
+            { titleKey: 'Progress', href: '/docs/components/progress' },
+            { titleKey: 'Spinner', href: '/docs/components/spinner' },
+            { titleKey: 'Skeleton', href: '/docs/components/skeleton' },
+            { titleKey: 'Toast', href: '/docs/components/toast' },
+            { titleKey: 'Tooltip', href: '/docs/components/tooltip' },
+            // Navigation
+            { titleKey: 'Tabs', href: '/docs/components/tabs' },
+            { titleKey: 'Pagination', href: '/docs/components/pagination' },
+            // Overlay
+            { titleKey: 'Modal', href: '/docs/components/modal', icon: icons.modal },
+            { titleKey: 'Drawer', href: '/docs/components/drawer' },
+            { titleKey: 'Dropdown', href: '/docs/components/dropdown' },
+            { titleKey: 'Popover', href: '/docs/components/popover' },
+            { titleKey: 'Accordion', href: '/docs/components/accordion' },
+            { titleKey: 'AlertDialog', href: '/docs/components/alertdialog' },
+            { titleKey: 'BottomSheet', href: '/docs/components/bottomsheet' },
         ],
     },
 ];
@@ -171,6 +205,58 @@ function DocsLayoutContent({ children }: { children: React.ReactNode }) {
                         Docs
                     </span>
                 </div>
+
+                {/* Navigation Links */}
+                <nav style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                    <Link
+                        href="/#features"
+                        style={{
+                            color: 'var(--x-mutedForeground)',
+                            fontSize: '14px',
+                            fontWeight: 500,
+                            textDecoration: 'none',
+                            transition: 'color 0.2s',
+                        }}
+                    >
+                        Features
+                    </Link>
+                    <Link
+                        href="/icons"
+                        style={{
+                            color: 'var(--x-mutedForeground)',
+                            fontSize: '14px',
+                            fontWeight: 500,
+                            textDecoration: 'none',
+                            transition: 'color 0.2s',
+                        }}
+                    >
+                        Icons
+                    </Link>
+                    <a
+                        href="/storybook/"
+                        style={{
+                            color: 'var(--x-mutedForeground)',
+                            fontSize: '14px',
+                            fontWeight: 500,
+                            textDecoration: 'none',
+                            transition: 'color 0.2s',
+                        }}
+                    >
+                        Storybook
+                    </a>
+                    <Link
+                        href="/#components"
+                        style={{
+                            color: 'var(--x-mutedForeground)',
+                            fontSize: '14px',
+                            fontWeight: 500,
+                            textDecoration: 'none',
+                            transition: 'color 0.2s',
+                        }}
+                    >
+                        Components
+                    </Link>
+                </nav>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <LanguageToggle />

@@ -361,8 +361,109 @@ export default function ComponentShowcase() {
                             </div>
                         </div>
                     </div>
+
+                    {/* MCP Server / AI-Powered Development */}
+                    <div
+                        className="liquid-glass-elevated animate-slide-up"
+                        style={{
+                            padding: '28px',
+                            gridColumn: '1 / -1',
+                            opacity: 0,
+                            animationDelay: '0.8s',
+                        }}
+                    >
+                        <div style={{ marginBottom: '20px' }}>
+                            <h3 style={{
+                                fontSize: '16px',
+                                fontWeight: 600,
+                                color: 'var(--x-foreground)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '10px',
+                            }}>
+                                <span style={{
+                                    width: '32px',
+                                    height: '32px',
+                                    borderRadius: '10px',
+                                    background: 'linear-gradient(135deg, #f472b6 0%, #c026d3 100%)',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                }}>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+                                        <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a2 2 0 0 1 0 4h-1.27a7 7 0 0 1-1.73 2.73V22a2 2 0 0 1-4 0v-1H9v1a2 2 0 0 1-4 0v-1.27A7 7 0 0 1 3.27 18H2a2 2 0 0 1 0-4h1a7 7 0 0 1 7-7h1V5.73A2 2 0 0 1 10 4a2 2 0 0 1 2-2z" />
+                                        <circle cx="12" cy="14" r="3" fill="white" />
+                                    </svg>
+                                </span>
+                                🤖 AI-Powered Development (MCP Server)
+                            </h3>
+                            <p style={{
+                                color: 'var(--x-mutedForeground)',
+                                fontSize: '14px',
+                                marginTop: '12px',
+                                lineHeight: 1.6,
+                            }}>
+                                X-UI includes an MCP (Model Context Protocol) server for seamless AI integration.
+                                Generate components, access design tokens, and get usage examples through your favorite AI assistant.
+                            </p>
+                        </div>
+                        <div className="grid gap-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
+                            {/* Tool: generate_component */}
+                            <Card variant="glass" padding="md">
+                                <div className="flex items-center gap-3 mb-3">
+                                    <Badge colorScheme="primary">Tool</Badge>
+                                    <span className="font-semibold text-sm" style={{ color: 'var(--x-foreground)' }}>generate_component</span>
+                                </div>
+                                <p style={{ color: 'var(--x-mutedForeground)', fontSize: '13px', lineHeight: 1.5 }}>
+                                    Generate new X-UI components with variants, sizes, and platform support (React/Native).
+                                </p>
+                            </Card>
+                            {/* Tool: get_design_tokens */}
+                            <Card variant="glass" padding="md">
+                                <div className="flex items-center gap-3 mb-3">
+                                    <Badge colorScheme="success">Tool</Badge>
+                                    <span className="font-semibold text-sm" style={{ color: 'var(--x-foreground)' }}>get_design_tokens</span>
+                                </div>
+                                <p style={{ color: 'var(--x-mutedForeground)', fontSize: '13px', lineHeight: 1.5 }}>
+                                    Retrieve design tokens (colors, spacing, typography) for consistent styling.
+                                </p>
+                            </Card>
+                            {/* Tool: get_component_usage */}
+                            <Card variant="glass" padding="md">
+                                <div className="flex items-center gap-3 mb-3">
+                                    <Badge colorScheme="warning">Tool</Badge>
+                                    <span className="font-semibold text-sm" style={{ color: 'var(--x-foreground)' }}>get_component_usage</span>
+                                </div>
+                                <p style={{ color: 'var(--x-mutedForeground)', fontSize: '13px', lineHeight: 1.5 }}>
+                                    Get code examples and usage patterns for any X-UI component.
+                                </p>
+                            </Card>
+                        </div>
+                        {/* Installation Guide */}
+                        <div style={{ marginTop: '20px', padding: '16px', borderRadius: '12px', background: 'rgba(0,0,0,0.3)' }}>
+                            <p style={{ color: 'var(--x-foreground)', fontSize: '13px', fontWeight: 600, marginBottom: '8px' }}>
+                                📦 Quick Start
+                            </p>
+                            <code style={{
+                                display: 'block',
+                                padding: '12px',
+                                borderRadius: '8px',
+                                background: 'rgba(0,0,0,0.4)',
+                                color: '#a5b4fc',
+                                fontSize: '12px',
+                                fontFamily: 'monospace',
+                            }}>
+                                npx @xdev-asia/x-ui-mcp-server
+                            </code>
+                            <p style={{ color: 'var(--x-mutedForeground)', fontSize: '12px', marginTop: '8px' }}>
+                                Add to your AI assistant's MCP configuration to enable X-UI component generation.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     );
 }
+
+
