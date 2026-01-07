@@ -1,0 +1,22 @@
+{
+    "name": "@xdev-asia/x-ui-mcp-server",
+    "version": "0.0.1",
+    "description": "MCP Server for X-UI component generation and assistance",
+    "main": "./dist/index.js",
+    "bin": {
+        "x-ui-mcp": "./dist/index.js"
+    },
+    "scripts": {
+        "build": "tsup",
+        "dev": "tsup --watch",
+        "start": "node dist/index.js"
+    },
+    "dependencies": {
+        "@modelcontextprotocol/sdk": "^1.0.0"
+    },
+    "devDependencies": {
+        "@types/node": "^22.0.0",
+        "tsup": "^8.3.0",
+        "typescript": "^5.7.0"
+    }
+}

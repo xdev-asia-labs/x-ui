@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    /* Premium Dark Theme Palette */
+    --x-background: 10 10 15;
+    /* Deep bluish black */
+    --x-foreground: 248 250 252;
+    /* Slate 50 */
+
+    --x-primary: 59 130 246;
+    /* Blue 500 */
+    --x-primary-foreground: 255 255 255;
+
+    --x-secondary: 30 41 59;
+    /* Slate 800 */
+    --x-secondary-foreground: 248 250 252;
+
+    --x-muted: 15 23 42;
+    /* Slate 900 */
+    --x-mutedForeground: 148 163 184;
+    /* Slate 400 */
+
+    --x-accent: 99 102 241;
+    /* Indigo 500 */
+    --x-accent-foreground: 255 255 255;
+
+    --x-destructive: 239 68 68;
+    /* Red 500 */
+    --x-destructive-foreground: 255 255 255;
+
+    --x-border: 30 41 59;
+    /* Slate 800 */
+    --x-input: 30 41 59;
+    --x-ring: 59 130 246;
+    /* Blue 500 */
+
+    --x-radius: 0.75rem;
+
+    /* Glassmorphism Tokens */
+    --x-glass-bg: rgba(30, 41, 59, 0.4);
+    --x-glass-border: rgba(255, 255, 255, 0.08);
+    --x-glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+    --gradient-surface: linear-gradient(180deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.4) 100%);
+}
+
+[data-theme='light'] {
+    --x-background: 255 255 255;
+    --x-foreground: 15 23 42;
+
+    --x-primary: 37 99 235;
+    --x-primary-foreground: 255 255 255;
+
+    --x-secondary: 241 245 249;
+    --x-secondary-foreground: 15 23 42;
+
+    --x-muted: 248 250 252;
+    --x-mutedForeground: 100 116 139;
+
+    --x-border: 226 232 240;
+    --x-input: 226 232 240;
+
+    --x-glass-bg: rgba(255, 255, 255, 0.7);
+    --x-glass-border: rgba(0, 0, 0, 0.05);
+    --x-glass-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    background-color: rgb(var(--x-background));
+    color: rgb(var(--x-foreground));
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Base Utilities */
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Glass Card Utility */
+.glass-card {
+    background: var(--x-glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--x-glass-border);
+    box-shadow: var(--x-glass-shadow);
+    border-radius: var(--x-radius);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+}
+
+/* Aurora Background */
+.aurora-bg {
+    position: absolute;
+    top: -20%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 0% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 100% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 40%);
+    filter: blur(60px);
+    z-index: -1;
+    pointer-events: none;
+}
