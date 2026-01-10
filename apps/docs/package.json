@@ -3,8 +3,10 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev": "next dev -p 3001",
+        "dev": "node scripts/generate-llms-txt.js && next dev -p 3001",
+        "prebuild": "node scripts/generate-llms-txt.js",
         "build": "next build",
+        "postbuild": "node scripts/generate-llms-txt.js",
         "start": "next start",
         "lint": "echo 'Lint skipped for docs showcase'"
     },

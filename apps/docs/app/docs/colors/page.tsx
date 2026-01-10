@@ -1,11 +1,11 @@
 'use client';
 
 import React from 'react';
-import DocsLayout, { useLanguage } from '../DocsLayout';
+import DocsLayout from '../DocsLayout';
 
 const colorGroups = [
     {
-        nameKey: 'colors.semantic',
+        name: 'Semantic Colors',
         colors: [
             { name: '--x-background', light: 'rgb(250, 250, 252)', dark: 'rgb(10, 10, 15)', desc: 'Page background' },
             { name: '--x-foreground', light: 'rgb(15, 23, 42)', dark: 'rgb(248, 250, 252)', desc: 'Primary text' },
@@ -19,7 +19,7 @@ const colorGroups = [
         ]
     },
     {
-        nameKey: 'colors.glass',
+        name: 'Glass Tokens',
         colors: [
             { name: '--x-glass-bg', light: 'rgba(255,255,255,0.8)', dark: 'rgba(30,41,59,0.4)', desc: 'Glass background' },
             { name: '--x-glass-border', light: 'rgba(0,0,0,0.08)', dark: 'rgba(255,255,255,0.08)', desc: 'Glass border' },
@@ -28,8 +28,6 @@ const colorGroups = [
 ];
 
 export default function ColorsPage() {
-    const { t } = useLanguage();
-
     return (
         <DocsLayout>
             <div style={{ maxWidth: '800px' }}>
@@ -37,18 +35,18 @@ export default function ColorsPage() {
                     fontSize: '36px',
                     fontWeight: 800,
                     marginBottom: '16px',
-                    color: 'rgb(var(--x-foreground))',
+                    color: 'var(--x-foreground)',
                     letterSpacing: '-0.5px',
                 }}>
-                    {t('colors.title')}
+                    Colors & Tokens
                 </h1>
                 <p style={{
                     fontSize: '18px',
-                    color: 'rgb(var(--x-mutedForeground))',
+                    color: 'var(--x-mutedForeground)',
                     marginBottom: '40px',
                     lineHeight: 1.7,
                 }}>
-                    {t('colors.description')}
+                    X-UI uses semantic color tokens that adapt automatically to light and dark modes.
                 </p>
 
                 {colorGroups.map((group, gi) => (
@@ -57,15 +55,15 @@ export default function ColorsPage() {
                             fontSize: '24px',
                             fontWeight: 700,
                             marginBottom: '20px',
-                            color: 'rgb(var(--x-foreground))',
+                            color: 'var(--x-foreground)',
                         }}>
-                            {t(group.nameKey)}
+                            {group.name}
                         </h2>
 
                         <div style={{
                             borderRadius: '16px',
                             overflow: 'hidden',
-                            border: '1px solid var(--x-glass-border, rgba(255,255,255,0.08))',
+                            border: '1px solid rgba(255,255,255,0.08)',
                         }}>
                             {/* Header */}
                             <div style={{
@@ -73,13 +71,13 @@ export default function ColorsPage() {
                                 gridTemplateColumns: '1fr 100px 100px 1fr',
                                 gap: '16px',
                                 padding: '12px 20px',
-                                background: 'var(--x-glass-bg, rgba(30, 41, 59, 0.3))',
-                                borderBottom: '1px solid var(--x-glass-border)',
+                                background: 'rgba(30, 41, 59, 0.3)',
+                                borderBottom: '1px solid rgba(255,255,255,0.08)',
                                 fontSize: '12px',
                                 fontWeight: 600,
                                 textTransform: 'uppercase',
                                 letterSpacing: '0.5px',
-                                color: 'rgb(var(--x-mutedForeground))',
+                                color: 'var(--x-mutedForeground)',
                             }}>
                                 <span>Token</span>
                                 <span>Light</span>
@@ -98,7 +96,7 @@ export default function ColorsPage() {
                                         padding: '16px 20px',
                                         alignItems: 'center',
                                         borderBottom: i < group.colors.length - 1
-                                            ? '1px solid var(--x-glass-border, rgba(255,255,255,0.05))'
+                                            ? '1px solid rgba(255,255,255,0.05)'
                                             : 'none',
                                     }}
                                 >
@@ -127,7 +125,7 @@ export default function ColorsPage() {
                                     }} title={color.dark} />
                                     <span style={{
                                         fontSize: '14px',
-                                        color: 'rgb(var(--x-mutedForeground))',
+                                        color: 'var(--x-mutedForeground)',
                                     }}>
                                         {color.desc}
                                     </span>
@@ -143,9 +141,9 @@ export default function ColorsPage() {
                         fontSize: '24px',
                         fontWeight: 700,
                         marginBottom: '16px',
-                        color: 'rgb(var(--x-foreground))',
+                        color: 'var(--x-foreground)',
                     }}>
-                        {t('colors.usage')}
+                        Usage in CSS
                     </h2>
                     <div style={{
                         padding: '20px',

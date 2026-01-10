@@ -1,14 +1,12 @@
 'use client';
 
 import React from 'react';
-import DocsLayout, { useLanguage } from '../../DocsLayout';
-import ComponentPreview from '../../../components/ComponentPreview';
-import CodeBlock from '../../../components/CodeBlock';
+import DocsLayout from '@docs/DocsLayout';
+import ComponentPreview from '@components/ComponentPreview';
+import CodeBlock from '@components/CodeBlock';
 import { Input } from '@xdev-asia/x-ui-react';
 
 export default function InputPage() {
-    const { t } = useLanguage();
-
     return (
         <DocsLayout>
             <div style={{ maxWidth: '750px' }}>
@@ -16,18 +14,18 @@ export default function InputPage() {
                     fontSize: '36px',
                     fontWeight: 800,
                     marginBottom: '12px',
-                    color: 'rgb(var(--x-foreground))',
+                    color: 'var(--x-foreground)',
                     letterSpacing: '-0.5px',
                 }}>
-                    {t('input.title')}
+                    Input
                 </h1>
                 <p style={{
                     fontSize: '18px',
-                    color: 'rgb(var(--x-mutedForeground))',
+                    color: 'var(--x-mutedForeground)',
                     marginBottom: '40px',
                     lineHeight: 1.7,
                 }}>
-                    {t('input.description')}
+                    A flexible text input component with support for labels, validation, and addons.
                 </p>
 
                 {/* Import */}
@@ -44,9 +42,9 @@ export default function InputPage() {
                         fontSize: '24px',
                         fontWeight: 700,
                         marginBottom: '16px',
-                        color: 'rgb(var(--x-foreground))',
+                        color: 'var(--x-foreground)',
                     }}>
-                        {t('input.basic')}
+                        Basic Usage
                     </h2>
 
                     <ComponentPreview
@@ -88,9 +86,9 @@ export default function InputPage() {
                         fontSize: '24px',
                         fontWeight: 700,
                         marginBottom: '16px',
-                        color: 'rgb(var(--x-foreground))',
+                        color: 'var(--x-foreground)',
                     }}>
-                        {t('input.variants')}
+                        Variants
                     </h2>
 
                     <ComponentPreview
@@ -128,9 +126,9 @@ export default function InputPage() {
                         fontSize: '24px',
                         fontWeight: 700,
                         marginBottom: '16px',
-                        color: 'rgb(var(--x-foreground))',
+                        color: 'var(--x-foreground)',
                     }}>
-                        {t('input.sizes')}
+                        Sizes
                     </h2>
 
                     <ComponentPreview
@@ -151,13 +149,13 @@ export default function InputPage() {
                         fontSize: '24px',
                         fontWeight: 700,
                         marginBottom: '16px',
-                        color: 'rgb(var(--x-foreground))',
+                        color: 'var(--x-foreground)',
                     }}>
-                        {t('input.states')}
+                        States
                     </h2>
 
                     <ComponentPreview
-                        title={t('common.disabled')}
+                        title="Disabled"
                         code={`<Input isDisabled placeholder="Disabled input" />`}
                     >
                         <Input isDisabled placeholder="Disabled input" />
@@ -194,15 +192,15 @@ export default function InputPage() {
                         fontSize: '24px',
                         fontWeight: 700,
                         marginBottom: '16px',
-                        color: 'rgb(var(--x-foreground))',
+                        color: 'var(--x-foreground)',
                     }}>
-                        {t('input.api')}
+                        API Reference
                     </h2>
 
                     <div style={{
                         borderRadius: '12px',
                         overflow: 'hidden',
-                        border: '1px solid var(--x-glass-border)',
+                        border: '1px solid rgba(255,255,255,0.08)',
                     }}>
                         <table style={{
                             width: '100%',
@@ -211,12 +209,12 @@ export default function InputPage() {
                         }}>
                             <thead>
                                 <tr style={{
-                                    background: 'var(--x-glass-bg)',
-                                    borderBottom: '1px solid var(--x-glass-border)'
+                                    background: 'rgba(30,41,59,0.4)',
+                                    borderBottom: '1px solid rgba(255,255,255,0.08)'
                                 }}>
-                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'rgb(var(--x-foreground))' }}>{t('common.prop')}</th>
-                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'rgb(var(--x-foreground))' }}>{t('common.type')}</th>
-                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'rgb(var(--x-foreground))' }}>{t('common.default')}</th>
+                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--x-foreground)' }}>Prop</th>
+                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--x-foreground)' }}>Type</th>
+                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--x-foreground)' }}>Default</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -232,17 +230,15 @@ export default function InputPage() {
                                     { prop: 'helperText', type: 'string', def: '-' },
                                     { prop: 'leftIcon', type: 'ReactNode', def: '-' },
                                     { prop: 'rightIcon', type: 'ReactNode', def: '-' },
-                                    { prop: 'leftAddon', type: 'ReactNode', def: '-' },
-                                    { prop: 'rightAddon', type: 'ReactNode', def: '-' },
                                 ].map((row, i) => (
                                     <tr key={i} style={{
-                                        borderBottom: '1px solid var(--x-glass-border)'
+                                        borderBottom: '1px solid rgba(255,255,255,0.05)'
                                     }}>
                                         <td style={{ padding: '12px 16px' }}>
                                             <code style={{ color: 'rgb(59, 130, 246)' }}>{row.prop}</code>
                                         </td>
-                                        <td style={{ padding: '12px 16px', color: 'rgb(var(--x-mutedForeground))', fontSize: '13px' }}>{row.type}</td>
-                                        <td style={{ padding: '12px 16px', color: 'rgb(var(--x-mutedForeground))' }}>{row.def}</td>
+                                        <td style={{ padding: '12px 16px', color: 'var(--x-mutedForeground)', fontSize: '13px' }}>{row.type}</td>
+                                        <td style={{ padding: '12px 16px', color: 'var(--x-mutedForeground)' }}>{row.def}</td>
                                     </tr>
                                 ))}
                             </tbody>

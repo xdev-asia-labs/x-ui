@@ -1,12 +1,10 @@
 'use client';
 
 import React from 'react';
-import DocsLayout, { useLanguage } from '../DocsLayout';
-import CodeBlock from '../../components/CodeBlock';
+import DocsLayout from '@docs/DocsLayout';
+import CodeBlock from '@components/CodeBlock';
 
 export default function ThemingPage() {
-    const { t } = useLanguage();
-
     return (
         <DocsLayout>
             <div style={{ maxWidth: '700px' }}>
@@ -14,18 +12,18 @@ export default function ThemingPage() {
                     fontSize: '36px',
                     fontWeight: 800,
                     marginBottom: '16px',
-                    color: 'rgb(var(--x-foreground))',
+                    color: 'var(--x-foreground)',
                     letterSpacing: '-0.5px',
                 }}>
-                    {t('theming.title')}
+                    Theming
                 </h1>
                 <p style={{
                     fontSize: '18px',
-                    color: 'rgb(var(--x-mutedForeground))',
+                    color: 'var(--x-mutedForeground)',
                     marginBottom: '40px',
                     lineHeight: 1.7,
                 }}>
-                    {t('theming.description')}
+                    X-UI provides a powerful theming system with dark/light mode support and CSS variables.
                 </p>
 
                 {/* ThemeProvider */}
@@ -34,17 +32,17 @@ export default function ThemingPage() {
                         fontSize: '24px',
                         fontWeight: 700,
                         marginBottom: '16px',
-                        color: 'rgb(var(--x-foreground))',
+                        color: 'var(--x-foreground)',
                     }}>
-                        {t('theming.provider')}
+                        ThemeProvider
                     </h2>
                     <p style={{
                         fontSize: '15px',
-                        color: 'rgb(var(--x-mutedForeground))',
+                        color: 'var(--x-mutedForeground)',
                         marginBottom: '16px',
                         lineHeight: 1.7,
                     }}>
-                        {t('theming.provider.desc')}
+                        Wrap your app with ThemeProvider to enable theming. It handles theme persistence automatically.
                     </p>
                     <CodeBlock
                         code={`import { ThemeProvider } from '@xdev-asia/x-ui-react';
@@ -67,9 +65,9 @@ function App() {
                             fontSize: '16px',
                             fontWeight: 600,
                             marginBottom: '12px',
-                            color: 'rgb(var(--x-foreground))',
+                            color: 'var(--x-foreground)',
                         }}>
-                            {t('theming.props')}
+                            Props
                         </h4>
                         <table style={{
                             width: '100%',
@@ -78,11 +76,11 @@ function App() {
                         }}>
                             <thead>
                                 <tr style={{
-                                    borderBottom: '1px solid var(--x-glass-border, rgba(255,255,255,0.1))'
+                                    borderBottom: '1px solid rgba(255,255,255,0.1)'
                                 }}>
-                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'rgb(var(--x-foreground))' }}>Prop</th>
-                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'rgb(var(--x-foreground))' }}>Type</th>
-                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'rgb(var(--x-foreground))' }}>Default</th>
+                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--x-foreground)' }}>Prop</th>
+                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--x-foreground)' }}>Type</th>
+                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--x-foreground)' }}>Default</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -92,13 +90,13 @@ function App() {
                                     { prop: 'children', type: 'ReactNode', def: '-' },
                                 ].map((row, i) => (
                                     <tr key={i} style={{
-                                        borderBottom: '1px solid var(--x-glass-border, rgba(255,255,255,0.05))'
+                                        borderBottom: '1px solid rgba(255,255,255,0.05)'
                                     }}>
                                         <td style={{ padding: '12px 16px' }}>
                                             <code style={{ color: 'rgb(59, 130, 246)' }}>{row.prop}</code>
                                         </td>
-                                        <td style={{ padding: '12px 16px', color: 'rgb(var(--x-mutedForeground))' }}>{row.type}</td>
-                                        <td style={{ padding: '12px 16px', color: 'rgb(var(--x-mutedForeground))' }}>{row.def}</td>
+                                        <td style={{ padding: '12px 16px', color: 'var(--x-mutedForeground)' }}>{row.type}</td>
+                                        <td style={{ padding: '12px 16px', color: 'var(--x-mutedForeground)' }}>{row.def}</td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -112,17 +110,17 @@ function App() {
                         fontSize: '24px',
                         fontWeight: 700,
                         marginBottom: '16px',
-                        color: 'rgb(var(--x-foreground))',
+                        color: 'var(--x-foreground)',
                     }}>
-                        {t('theming.hook')}
+                        useXTheme Hook
                     </h2>
                     <p style={{
                         fontSize: '15px',
-                        color: 'rgb(var(--x-mutedForeground))',
+                        color: 'var(--x-mutedForeground)',
                         marginBottom: '16px',
                         lineHeight: 1.7,
                     }}>
-                        {t('theming.hook.desc')}
+                        Access and control the current theme using the useXTheme hook.
                     </p>
                     <CodeBlock
                         code={`import { useXTheme } from '@xdev-asia/x-ui-react';
@@ -154,9 +152,9 @@ function ThemeToggle() {
                             fontSize: '16px',
                             fontWeight: 600,
                             marginBottom: '12px',
-                            color: 'rgb(var(--x-foreground))',
+                            color: 'var(--x-foreground)',
                         }}>
-                            {t('theming.returns')}
+                            Returns
                         </h4>
                         <ul style={{
                             listStyle: 'none',
@@ -171,7 +169,7 @@ function ThemeToggle() {
                             ].map((item, i) => (
                                 <li key={i} style={{
                                     padding: '12px 16px',
-                                    borderBottom: '1px solid var(--x-glass-border, rgba(255,255,255,0.05))',
+                                    borderBottom: '1px solid rgba(255,255,255,0.05)',
                                     display: 'flex',
                                     gap: '12px',
                                 }}>
@@ -182,7 +180,7 @@ function ThemeToggle() {
                                     }}>
                                         {item.name}
                                     </code>
-                                    <span style={{ color: 'rgb(var(--x-mutedForeground))', fontSize: '14px' }}>
+                                    <span style={{ color: 'var(--x-mutedForeground)', fontSize: '14px' }}>
                                         {item.desc}
                                     </span>
                                 </li>
@@ -197,17 +195,17 @@ function ThemeToggle() {
                         fontSize: '24px',
                         fontWeight: 700,
                         marginBottom: '16px',
-                        color: 'rgb(var(--x-foreground))',
+                        color: 'var(--x-foreground)',
                     }}>
-                        {t('theming.cssVariables')}
+                        CSS Variables
                     </h2>
                     <p style={{
                         fontSize: '15px',
-                        color: 'rgb(var(--x-mutedForeground))',
+                        color: 'var(--x-mutedForeground)',
                         marginBottom: '16px',
                         lineHeight: 1.7,
                     }}>
-                        {t('theming.cssVariables.desc')}
+                        X-UI uses CSS custom properties for theming. You can use these in your own styles.
                     </p>
                     <CodeBlock
                         language="css"
@@ -234,17 +232,17 @@ function ThemeToggle() {
                         fontSize: '24px',
                         fontWeight: 700,
                         marginBottom: '16px',
-                        color: 'rgb(var(--x-foreground))',
+                        color: 'var(--x-foreground)',
                     }}>
-                        {t('theming.modeSpecific')}
+                        Mode-Specific Styles
                     </h2>
                     <p style={{
                         fontSize: '15px',
-                        color: 'rgb(var(--x-mutedForeground))',
+                        color: 'var(--x-mutedForeground)',
                         marginBottom: '16px',
                         lineHeight: 1.7,
                     }}>
-                        {t('theming.modeSpecific.desc')}
+                        Target specific theme modes using CSS class selectors.
                     </p>
                     <CodeBlock
                         language="css"

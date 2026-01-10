@@ -1,14 +1,12 @@
 'use client';
 
 import React from 'react';
-import DocsLayout, { useLanguage } from '../../DocsLayout';
-import ComponentPreview from '../../../components/ComponentPreview';
-import CodeBlock from '../../../components/CodeBlock';
+import DocsLayout from '@docs/DocsLayout';
+import ComponentPreview from '@components/ComponentPreview';
+import CodeBlock from '@components/CodeBlock';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, Button } from '@xdev-asia/x-ui-react';
 
 export default function CardPage() {
-    const { t } = useLanguage();
-
     return (
         <DocsLayout>
             <div style={{ maxWidth: '750px' }}>
@@ -16,18 +14,18 @@ export default function CardPage() {
                     fontSize: '36px',
                     fontWeight: 800,
                     marginBottom: '12px',
-                    color: 'rgb(var(--x-foreground))',
+                    color: 'var(--x-foreground)',
                     letterSpacing: '-0.5px',
                 }}>
-                    {t('card.title')}
+                    Card
                 </h1>
                 <p style={{
                     fontSize: '18px',
-                    color: 'rgb(var(--x-mutedForeground))',
+                    color: 'var(--x-mutedForeground)',
                     marginBottom: '40px',
                     lineHeight: 1.7,
                 }}>
-                    {t('card.description')}
+                    A flexible container component for grouping related content.
                 </p>
 
                 {/* Import */}
@@ -51,9 +49,9 @@ export default function CardPage() {
                         fontSize: '24px',
                         fontWeight: 700,
                         marginBottom: '16px',
-                        color: 'rgb(var(--x-foreground))',
+                        color: 'var(--x-foreground)',
                     }}>
-                        {t('card.basic')}
+                        Basic Usage
                     </h2>
 
                     <ComponentPreview
@@ -74,7 +72,7 @@ export default function CardPage() {
                                 <CardDescription>Card description goes here</CardDescription>
                             </CardHeader>
                             <CardContent>
-                                <p style={{ margin: 0, color: 'rgb(var(--x-mutedForeground))' }}>
+                                <p style={{ margin: 0, color: 'var(--x-mutedForeground)' }}>
                                     Your content here
                                 </p>
                             </CardContent>
@@ -88,9 +86,9 @@ export default function CardPage() {
                         fontSize: '24px',
                         fontWeight: 700,
                         marginBottom: '16px',
-                        color: 'rgb(var(--x-foreground))',
+                        color: 'var(--x-foreground)',
                     }}>
-                        {t('card.withFooter')}
+                        With Footer
                     </h2>
 
                     <ComponentPreview
@@ -115,7 +113,7 @@ export default function CardPage() {
                                 <CardDescription>Manage your subscription</CardDescription>
                             </CardHeader>
                             <CardContent>
-                                <p style={{ margin: 0, color: 'rgb(var(--x-mutedForeground))' }}>
+                                <p style={{ margin: 0, color: 'var(--x-mutedForeground)' }}>
                                     You are on the Pro plan.
                                 </p>
                             </CardContent>
@@ -133,9 +131,9 @@ export default function CardPage() {
                         fontSize: '24px',
                         fontWeight: 700,
                         marginBottom: '16px',
-                        color: 'rgb(var(--x-foreground))',
+                        color: 'var(--x-foreground)',
                     }}>
-                        {t('card.variants')}
+                        Variants
                     </h2>
 
                     <ComponentPreview
@@ -185,9 +183,9 @@ export default function CardPage() {
                         fontSize: '24px',
                         fontWeight: 700,
                         marginBottom: '16px',
-                        color: 'rgb(var(--x-foreground))',
+                        color: 'var(--x-foreground)',
                     }}>
-                        {t('card.interactive')}
+                        Interactive Cards
                     </h2>
 
                     <ComponentPreview
@@ -217,15 +215,15 @@ export default function CardPage() {
                         fontSize: '24px',
                         fontWeight: 700,
                         marginBottom: '16px',
-                        color: 'rgb(var(--x-foreground))',
+                        color: 'var(--x-foreground)',
                     }}>
-                        {t('card.api')}
+                        API Reference
                     </h2>
 
                     <div style={{
                         borderRadius: '12px',
                         overflow: 'hidden',
-                        border: '1px solid var(--x-glass-border)',
+                        border: '1px solid rgba(255,255,255,0.08)',
                     }}>
                         <table style={{
                             width: '100%',
@@ -234,12 +232,12 @@ export default function CardPage() {
                         }}>
                             <thead>
                                 <tr style={{
-                                    background: 'var(--x-glass-bg)',
-                                    borderBottom: '1px solid var(--x-glass-border)'
+                                    background: 'rgba(30,41,59,0.4)',
+                                    borderBottom: '1px solid rgba(255,255,255,0.08)'
                                 }}>
-                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'rgb(var(--x-foreground))' }}>{t('common.prop')}</th>
-                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'rgb(var(--x-foreground))' }}>{t('common.type')}</th>
-                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'rgb(var(--x-foreground))' }}>{t('common.default')}</th>
+                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--x-foreground)' }}>Prop</th>
+                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--x-foreground)' }}>Type</th>
+                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--x-foreground)' }}>Default</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -251,13 +249,13 @@ export default function CardPage() {
                                     { prop: 'children', type: 'ReactNode', def: '-' },
                                 ].map((row, i) => (
                                     <tr key={i} style={{
-                                        borderBottom: '1px solid var(--x-glass-border)'
+                                        borderBottom: '1px solid rgba(255,255,255,0.05)'
                                     }}>
                                         <td style={{ padding: '12px 16px' }}>
                                             <code style={{ color: 'rgb(59, 130, 246)' }}>{row.prop}</code>
                                         </td>
-                                        <td style={{ padding: '12px 16px', color: 'rgb(var(--x-mutedForeground))', fontSize: '13px' }}>{row.type}</td>
-                                        <td style={{ padding: '12px 16px', color: 'rgb(var(--x-mutedForeground))' }}>{row.def}</td>
+                                        <td style={{ padding: '12px 16px', color: 'var(--x-mutedForeground)', fontSize: '13px' }}>{row.type}</td>
+                                        <td style={{ padding: '12px 16px', color: 'var(--x-mutedForeground)' }}>{row.def}</td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -269,9 +267,9 @@ export default function CardPage() {
                         fontWeight: 600,
                         marginTop: '32px',
                         marginBottom: '12px',
-                        color: 'rgb(var(--x-foreground))',
+                        color: 'var(--x-foreground)',
                     }}>
-                        {t('card.compound')}
+                        Compound Components
                     </h3>
                     <ul style={{
                         listStyle: 'none',
@@ -287,7 +285,7 @@ export default function CardPage() {
                         ].map((item, i) => (
                             <li key={i} style={{
                                 padding: '12px 16px',
-                                borderBottom: '1px solid var(--x-glass-border)',
+                                borderBottom: '1px solid rgba(255,255,255,0.05)',
                                 display: 'flex',
                                 gap: '16px',
                             }}>
@@ -297,7 +295,7 @@ export default function CardPage() {
                                 }}>
                                     {item.name}
                                 </code>
-                                <span style={{ color: 'rgb(var(--x-mutedForeground))' }}>
+                                <span style={{ color: 'var(--x-mutedForeground)' }}>
                                     {item.desc}
                                 </span>
                             </li>

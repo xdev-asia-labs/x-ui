@@ -1,0 +1,125 @@
+# X-UI Component Library
+# Auto-generated on 2026-01-10T05:27:44.202Z
+# https://x-ui.xdev.asia
+
+## Overview
+X-UI is a modern, cross-platform UI component library by XDEV Asia.
+Supports React.js and React Native with a unified API.
+
+## Installation
+```bash
+npm install @xdev-asia/x-ui-react
+# or
+pnpm add @xdev-asia/x-ui-react
+```
+
+## Quick Start
+```tsx
+import { Button, Input, Card } from '@xdev-asia/x-ui-react';
+import '@xdev-asia/x-ui-react/styles.css';
+
+function App() {
+  return (
+    <Card>
+      <Input placeholder="Enter text" />
+      <Button>Submit</Button>
+    </Card>
+  );
+}
+```
+
+## Documentation URLs
+- Getting Started: https://x-ui.xdev.asia/docs/
+- Theming: https://x-ui.xdev.asia/docs/theming/
+- Colors & Tokens: https://x-ui.xdev.asia/docs/colors/
+- MCP Setup: https://x-ui.xdev.asia/docs/getting-started/mcp/
+
+## Components
+
+### Forms
+- Button: Trigger actions with customizable buttons
+  URL: https://x-ui.xdev.asia/docs/components/button/
+- IconButton: Icon-only buttons for common actions
+  URL: https://x-ui.xdev.asia/docs/components/iconbutton/
+- Input: Text input field with validation support
+  URL: https://x-ui.xdev.asia/docs/components/input/
+- TextArea: Multi-line text input
+  URL: https://x-ui.xdev.asia/docs/components/textarea/
+- Select: Dropdown selection component
+  URL: https://x-ui.xdev.asia/docs/components/select/
+- Checkbox: Binary choice input
+  URL: https://x-ui.xdev.asia/docs/components/checkbox/
+- Radio: Single selection from multiple options
+  URL: https://x-ui.xdev.asia/docs/components/radio/
+- Switch: Toggle between two states
+  URL: https://x-ui.xdev.asia/docs/components/switch/
+- DatePicker: Date selection with calendar UI
+  URL: https://x-ui.xdev.asia/docs/components/datepicker/
+
+### Data Display
+- Avatar: User profile pictures and initials
+  URL: https://x-ui.xdev.asia/docs/components/avatar/
+- Badge: Status indicators and counts
+  URL: https://x-ui.xdev.asia/docs/components/badge/
+- Card: Container for related content
+  URL: https://x-ui.xdev.asia/docs/components/card/
+- Tag: Labels for categorization
+  URL: https://x-ui.xdev.asia/docs/components/tag/
+- Table: Tabular data display
+  URL: https://x-ui.xdev.asia/docs/components/table/
+
+### Layout
+- Box: Flexible container component
+  URL: https://x-ui.xdev.asia/docs/components/box/
+- Stack: Vertical/horizontal layout
+  URL: https://x-ui.xdev.asia/docs/components/stack/
+- Grid: CSS Grid layout system
+  URL: https://x-ui.xdev.asia/docs/components/grid/
+- Divider: Visual separator
+  URL: https://x-ui.xdev.asia/docs/components/divider/
+
+### Feedback
+- Progress: Progress indicators
+  URL: https://x-ui.xdev.asia/docs/components/progress/
+- Spinner: Loading spinner
+  URL: https://x-ui.xdev.asia/docs/components/spinner/
+- Skeleton: Content placeholder
+  URL: https://x-ui.xdev.asia/docs/components/skeleton/
+- Toast: Temporary notifications
+  URL: https://x-ui.xdev.asia/docs/components/toast/
+- Tooltip: Contextual information popup
+  URL: https://x-ui.xdev.asia/docs/components/tooltip/
+
+### Navigation
+- Tabs: Tabbed navigation
+  URL: https://x-ui.xdev.asia/docs/components/tabs/
+- Pagination: Page navigation
+  URL: https://x-ui.xdev.asia/docs/components/pagination/
+
+### Overlay
+- Modal: Dialog windows
+  URL: https://x-ui.xdev.asia/docs/components/modal/
+- Drawer: Slide-in panels
+  URL: https://x-ui.xdev.asia/docs/components/drawer/
+- Dropdown: Dropdown menus
+  URL: https://x-ui.xdev.asia/docs/components/dropdown/
+- Popover: Contextual overlays
+  URL: https://x-ui.xdev.asia/docs/components/popover/
+- Accordion: Collapsible content sections
+  URL: https://x-ui.xdev.asia/docs/components/accordion/
+- AlertDialog: Confirmation dialogs
+  URL: https://x-ui.xdev.asia/docs/components/alertdialog/
+- BottomSheet: Mobile bottom sheets
+  URL: https://x-ui.xdev.asia/docs/components/bottomsheet/
+
+## Package Information
+- Package: @xdev-asia/x-ui-react
+- Core: @xdev-asia/x-ui-core
+- React Native: @xdev-asia/x-ui-native
+- GitHub: https://github.com/xdev-asia/x-ui
+
+## MCP Server
+Install in your AI client:
+```
+npx -y @xdev-asia/x-ui-mcp@latest
+```

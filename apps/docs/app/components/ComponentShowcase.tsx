@@ -3,7 +3,8 @@
 import React, { useState } from 'react';
 import {
     Activity, Airplay, AlarmClock, AlertCircle, AlignJustify, Anchor, Aperture, Archive, ArrowRight, AtSign, Search,
-    Button, Input, Card, CardHeader, CardTitle, CardContent, Badge, Avatar, Switch, Checkbox, Progress, Tag, Spinner
+    Button, Input, Card, CardHeader, CardTitle, CardContent, Badge, Avatar, Switch, Checkbox, Progress, Tag, Spinner,
+    Grid, Col
 } from '@xdev-asia/x-ui-react';
 
 export default function ComponentShowcase() {
@@ -64,7 +65,7 @@ export default function ComponentShowcase() {
                     </p>
                 </div>
 
-                {/* Grid */}
+                {/* Grid Layout */}
                 <div style={{
                     display: 'grid',
                     gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
@@ -290,6 +291,55 @@ export default function ComponentShowcase() {
                         </div>
                     </div>
 
+                    {/* Grid & Layout */}
+                    <div className="liquid-glass-elevated animate-slide-up stagger-7" style={{ padding: '28px', opacity: 0 }}>
+                        <div style={{ marginBottom: '20px' }}>
+                            <h3 style={{
+                                fontSize: '16px',
+                                fontWeight: 600,
+                                color: 'var(--x-foreground)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '10px',
+                            }}>
+                                <span style={{
+                                    width: '32px',
+                                    height: '32px',
+                                    borderRadius: '10px',
+                                    background: 'linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                }}>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+                                        <rect x="3" y="3" width="7" height="7" />
+                                        <rect x="14" y="3" width="7" height="7" />
+                                        <rect x="3" y="14" width="7" height="7" />
+                                        <rect x="14" y="14" width="7" height="7" />
+                                    </svg>
+                                </span>
+                                Grid & Layout
+                            </h3>
+                        </div>
+                        <Grid columns={12} gap={2}>
+                            <Col span={4} style={{ padding: '12px', background: 'rgba(99, 102, 241, 0.3)', borderRadius: '8px', textAlign: 'center', fontSize: '12px', color: 'white' }}>
+                                Col 4
+                            </Col>
+                            <Col span={4} style={{ padding: '12px', background: 'rgba(139, 92, 246, 0.3)', borderRadius: '8px', textAlign: 'center', fontSize: '12px', color: 'white' }}>
+                                Col 4
+                            </Col>
+                            <Col span={4} style={{ padding: '12px', background: 'rgba(168, 85, 247, 0.3)', borderRadius: '8px', textAlign: 'center', fontSize: '12px', color: 'white' }}>
+                                Col 4
+                            </Col>
+                            <Col span={6} style={{ padding: '12px', background: 'rgba(59, 130, 246, 0.3)', borderRadius: '8px', textAlign: 'center', fontSize: '12px', color: 'white', marginTop: '8px' }}>
+                                Col 6
+                            </Col>
+                            <Col span={6} style={{ padding: '12px', background: 'rgba(14, 165, 233, 0.3)', borderRadius: '8px', textAlign: 'center', fontSize: '12px', color: 'white', marginTop: '8px' }}>
+                                Col 6
+                            </Col>
+                        </Grid>
+                    </div>
+
                     {/* Icons */}
                     <div
                         className="liquid-glass-elevated animate-slide-up"
@@ -462,7 +512,7 @@ export default function ComponentShowcase() {
                     </div>
                 </div>
             </div>
-        </section>
+        </section >
     );
 }
 

@@ -1,14 +1,12 @@
 'use client';
 
 import React from 'react';
-import DocsLayout, { useLanguage } from '../../DocsLayout';
-import ComponentPreview from '../../../components/ComponentPreview';
-import CodeBlock from '../../../components/CodeBlock';
+import DocsLayout from '@docs/DocsLayout';
+import ComponentPreview from '@components/ComponentPreview';
+import CodeBlock from '@components/CodeBlock';
 import { Button } from '@xdev-asia/x-ui-react';
 
 export default function ButtonPage() {
-    const { t } = useLanguage();
-
     return (
         <DocsLayout>
             <div style={{ maxWidth: '750px' }}>
@@ -16,18 +14,18 @@ export default function ButtonPage() {
                     fontSize: '36px',
                     fontWeight: 800,
                     marginBottom: '12px',
-                    color: 'rgb(var(--x-foreground))',
+                    color: 'var(--x-foreground)',
                     letterSpacing: '-0.5px',
                 }}>
-                    {t('button.title')}
+                    Button
                 </h1>
                 <p style={{
                     fontSize: '18px',
-                    color: 'rgb(var(--x-mutedForeground))',
+                    color: 'var(--x-mutedForeground)',
                     marginBottom: '40px',
                     lineHeight: 1.7,
                 }}>
-                    {t('button.description')}
+                    A versatile button component with multiple variants, sizes, and states.
                 </p>
 
                 {/* Import */}
@@ -44,14 +42,14 @@ export default function ButtonPage() {
                         fontSize: '24px',
                         fontWeight: 700,
                         marginBottom: '16px',
-                        color: 'rgb(var(--x-foreground))',
+                        color: 'var(--x-foreground)',
                     }}>
-                        {t('button.variants')}
+                        Variants
                     </h2>
 
                     <ComponentPreview
                         title="Solid (Default)"
-                        description={t('button.solid.desc')}
+                        description="Primary action button with filled background."
                         code={`<Button variant="solid">Solid</Button>`}
                     >
                         <Button variant="solid">Solid</Button>
@@ -59,7 +57,7 @@ export default function ButtonPage() {
 
                     <ComponentPreview
                         title="Outline"
-                        description={t('button.outline.desc')}
+                        description="Secondary action with border only."
                         code={`<Button variant="outline">Outline</Button>`}
                     >
                         <Button variant="outline">Outline</Button>
@@ -67,7 +65,7 @@ export default function ButtonPage() {
 
                     <ComponentPreview
                         title="Ghost"
-                        description={t('button.ghost.desc')}
+                        description="Subtle button with transparent background."
                         code={`<Button variant="ghost">Ghost</Button>`}
                     >
                         <Button variant="ghost">Ghost</Button>
@@ -75,7 +73,7 @@ export default function ButtonPage() {
 
                     <ComponentPreview
                         title="Glass"
-                        description={t('button.glass.desc')}
+                        description="Glassmorphism style with blur effect."
                         code={`<Button variant="glass">Glass</Button>`}
                     >
                         <Button variant="glass">Glass</Button>
@@ -83,7 +81,7 @@ export default function ButtonPage() {
 
                     <ComponentPreview
                         title="Link"
-                        description={t('button.link.desc')}
+                        description="Text-only button that looks like a link."
                         code={`<Button variant="link">Link</Button>`}
                     >
                         <Button variant="link">Link</Button>
@@ -96,14 +94,14 @@ export default function ButtonPage() {
                         fontSize: '24px',
                         fontWeight: 700,
                         marginBottom: '16px',
-                        color: 'rgb(var(--x-foreground))',
+                        color: 'var(--x-foreground)',
                     }}>
-                        {t('button.colorSchemes')}
+                        Color Schemes
                     </h2>
 
                     <ComponentPreview
                         title="Color Variants"
-                        description={t('button.colorSchemes.desc')}
+                        description="Available color schemes for different contexts."
                         code={`<Button colorScheme="primary">Primary</Button>
 <Button colorScheme="secondary">Secondary</Button>
 <Button colorScheme="success">Success</Button>
@@ -126,14 +124,14 @@ export default function ButtonPage() {
                         fontSize: '24px',
                         fontWeight: 700,
                         marginBottom: '16px',
-                        color: 'rgb(var(--x-foreground))',
+                        color: 'var(--x-foreground)',
                     }}>
-                        {t('button.sizes')}
+                        Sizes
                     </h2>
 
                     <ComponentPreview
                         title="Size Variants"
-                        description={t('button.sizes.desc')}
+                        description="Different sizes for various use cases."
                         code={`<Button size="xs">Extra Small</Button>
 <Button size="sm">Small</Button>
 <Button size="md">Medium</Button>
@@ -154,27 +152,27 @@ export default function ButtonPage() {
                         fontSize: '24px',
                         fontWeight: 700,
                         marginBottom: '16px',
-                        color: 'rgb(var(--x-foreground))',
+                        color: 'var(--x-foreground)',
                     }}>
-                        {t('button.states')}
+                        States
                     </h2>
 
                     <ComponentPreview
-                        title={t('common.disabled')}
+                        title="Disabled"
                         code={`<Button isDisabled>Disabled</Button>`}
                     >
                         <Button isDisabled>Disabled</Button>
                     </ComponentPreview>
 
                     <ComponentPreview
-                        title={t('common.loading')}
+                        title="Loading"
                         code={`<Button isLoading>Loading</Button>`}
                     >
                         <Button isLoading>Loading</Button>
                     </ComponentPreview>
 
                     <ComponentPreview
-                        title={t('common.fullWidth')}
+                        title="Full Width"
                         code={`<Button fullWidth>Full Width Button</Button>`}
                     >
                         <div style={{ width: '100%' }}>
@@ -189,15 +187,15 @@ export default function ButtonPage() {
                         fontSize: '24px',
                         fontWeight: 700,
                         marginBottom: '16px',
-                        color: 'rgb(var(--x-foreground))',
+                        color: 'var(--x-foreground)',
                     }}>
-                        {t('button.api')}
+                        API Reference
                     </h2>
 
                     <div style={{
                         borderRadius: '12px',
                         overflow: 'hidden',
-                        border: '1px solid var(--x-glass-border)',
+                        border: '1px solid rgba(255,255,255,0.08)',
                     }}>
                         <table style={{
                             width: '100%',
@@ -206,12 +204,12 @@ export default function ButtonPage() {
                         }}>
                             <thead>
                                 <tr style={{
-                                    background: 'var(--x-glass-bg)',
-                                    borderBottom: '1px solid var(--x-glass-border)'
+                                    background: 'rgba(30,41,59,0.4)',
+                                    borderBottom: '1px solid rgba(255,255,255,0.08)'
                                 }}>
-                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'rgb(var(--x-foreground))' }}>{t('common.prop')}</th>
-                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'rgb(var(--x-foreground))' }}>{t('common.type')}</th>
-                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'rgb(var(--x-foreground))' }}>{t('common.default')}</th>
+                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--x-foreground)' }}>Prop</th>
+                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--x-foreground)' }}>Type</th>
+                                    <th style={{ textAlign: 'left', padding: '12px 16px', color: 'var(--x-foreground)' }}>Default</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -227,13 +225,13 @@ export default function ButtonPage() {
                                     { prop: 'children', type: 'ReactNode', def: '-' },
                                 ].map((row, i) => (
                                     <tr key={i} style={{
-                                        borderBottom: '1px solid var(--x-glass-border)'
+                                        borderBottom: '1px solid rgba(255,255,255,0.05)'
                                     }}>
                                         <td style={{ padding: '12px 16px' }}>
                                             <code style={{ color: 'rgb(59, 130, 246)' }}>{row.prop}</code>
                                         </td>
-                                        <td style={{ padding: '12px 16px', color: 'rgb(var(--x-mutedForeground))', fontSize: '13px' }}>{row.type}</td>
-                                        <td style={{ padding: '12px 16px', color: 'rgb(var(--x-mutedForeground))' }}>{row.def}</td>
+                                        <td style={{ padding: '12px 16px', color: 'var(--x-mutedForeground)', fontSize: '13px' }}>{row.type}</td>
+                                        <td style={{ padding: '12px 16px', color: 'var(--x-mutedForeground)' }}>{row.def}</td>
                                     </tr>
                                 ))}
                             </tbody>

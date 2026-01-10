@@ -17,6 +17,9 @@ export type { StackProps } from './components/Stack';
 export { Divider } from './components/Divider';
 export type { DividerProps } from './components/Divider';
 
+export { Grid, Col, Row } from './components/Grid';
+export type { GridProps, ColProps } from './components/Grid';
+
 // Data Display
 export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from './components/Card';
 export type { CardProps, CardHeaderProps, CardTitleProps, CardDescriptionProps, CardContentProps, CardFooterProps } from './components/Card';

@@ -1,12 +1,10 @@
 'use client';
 
 import React from 'react';
-import DocsLayout, { useLanguage } from './DocsLayout';
+import DocsLayout from './DocsLayout';
 import CodeBlock from '../components/CodeBlock';
 
 export default function GettingStartedPage() {
-    const { t } = useLanguage();
-
     return (
         <DocsLayout>
             <div style={{ maxWidth: '700px' }}>
@@ -14,18 +12,18 @@ export default function GettingStartedPage() {
                     fontSize: '36px',
                     fontWeight: 800,
                     marginBottom: '16px',
-                    color: 'rgb(var(--x-foreground))',
+                    color: 'var(--x-foreground)',
                     letterSpacing: '-0.5px',
                 }}>
-                    {t('getting.title')}
+                    Getting Started
                 </h1>
                 <p style={{
                     fontSize: '18px',
-                    color: 'rgb(var(--x-mutedForeground))',
+                    color: 'var(--x-mutedForeground)',
                     marginBottom: '40px',
                     lineHeight: 1.7,
                 }}>
-                    {t('getting.description')}
+                    Get up and running with X-UI in minutes. A modern, beautiful component library for React.
                 </p>
 
                 {/* Installation */}
@@ -34,17 +32,17 @@ export default function GettingStartedPage() {
                         fontSize: '24px',
                         fontWeight: 700,
                         marginBottom: '16px',
-                        color: 'rgb(var(--x-foreground))',
+                        color: 'var(--x-foreground)',
                     }}>
-                        {t('getting.install')}
+                        Installation
                     </h2>
                     <p style={{
                         fontSize: '15px',
-                        color: 'rgb(var(--x-mutedForeground))',
+                        color: 'var(--x-mutedForeground)',
                         marginBottom: '16px',
                         lineHeight: 1.7,
                     }}>
-                        {t('getting.install.desc')}
+                        Install X-UI and its peer dependencies using your preferred package manager.
                     </p>
                     <CodeBlock
                         language="bash"
@@ -65,17 +63,17 @@ yarn add @xdev-asia/x-ui-react`}
                         fontSize: '24px',
                         fontWeight: 700,
                         marginBottom: '16px',
-                        color: 'rgb(var(--x-foreground))',
+                        color: 'var(--x-foreground)',
                     }}>
-                        {t('getting.setup')}
+                        Setup ThemeProvider
                     </h2>
                     <p style={{
                         fontSize: '15px',
-                        color: 'rgb(var(--x-mutedForeground))',
+                        color: 'var(--x-mutedForeground)',
                         marginBottom: '16px',
                         lineHeight: 1.7,
                     }}>
-                        {t('getting.setup.desc')}
+                        Wrap your application with ThemeProvider to enable theming and dark mode support.
                     </p>
                     <CodeBlock
                         code={`import { ThemeProvider } from '@xdev-asia/x-ui-react';
@@ -96,17 +94,17 @@ export default function App({ children }) {
                         fontSize: '24px',
                         fontWeight: 700,
                         marginBottom: '16px',
-                        color: 'rgb(var(--x-foreground))',
+                        color: 'var(--x-foreground)',
                     }}>
-                        {t('getting.usage')}
+                        Usage
                     </h2>
                     <p style={{
                         fontSize: '15px',
-                        color: 'rgb(var(--x-mutedForeground))',
+                        color: 'var(--x-mutedForeground)',
                         marginBottom: '16px',
                         lineHeight: 1.7,
                     }}>
-                        {t('getting.usage.desc')}
+                        Import and use components directly in your application.
                     </p>
                     <CodeBlock
                         code={`import { Button, Card, Input } from '@xdev-asia/x-ui-react';
@@ -130,9 +128,9 @@ function MyComponent() {
                         fontSize: '24px',
                         fontWeight: 700,
                         marginBottom: '16px',
-                        color: 'rgb(var(--x-foreground))',
+                        color: 'var(--x-foreground)',
                     }}>
-                        {t('getting.features')}
+                        Key Features
                     </h2>
                     <ul style={{
                         listStyle: 'none',
@@ -140,11 +138,11 @@ function MyComponent() {
                         margin: 0,
                     }}>
                         {[
-                            { icon: '🌓', title: 'Dark/Light Mode', desc: t('getting.feature.darkmode') },
-                            { icon: '✨', title: 'Glassmorphism', desc: t('getting.feature.glass') },
-                            { icon: '📱', title: 'Cross-platform', desc: t('getting.feature.crossplatform') },
-                            { icon: '🎯', title: 'TypeScript', desc: t('getting.feature.typescript') },
-                            { icon: '♿', title: 'Accessible', desc: t('getting.feature.accessible') },
+                            { icon: '🌓', title: 'Dark/Light Mode', desc: 'Built-in theme support with automatic persistence' },
+                            { icon: '✨', title: 'Glassmorphism', desc: 'Modern liquid glass design system' },
+                            { icon: '📱', title: 'Cross-platform', desc: 'Works on React and React Native' },
+                            { icon: '🎯', title: 'TypeScript', desc: 'Full TypeScript support with complete types' },
+                            { icon: '♿', title: 'Accessible', desc: 'WAI-ARIA compliant components' },
                         ].map((feature, i) => (
                             <li key={i} style={{
                                 display: 'flex',
@@ -153,8 +151,8 @@ function MyComponent() {
                                 padding: '16px',
                                 marginBottom: '8px',
                                 borderRadius: '12px',
-                                background: 'var(--x-glass-bg, rgba(30, 41, 59, 0.3))',
-                                border: '1px solid var(--x-glass-border, rgba(255,255,255,0.05))',
+                                background: 'rgba(30, 41, 59, 0.3)',
+                                border: '1px solid rgba(255,255,255,0.05)',
                             }}>
                                 <span style={{ fontSize: '24px' }}>{feature.icon}</span>
                                 <div>
@@ -162,14 +160,14 @@ function MyComponent() {
                                         margin: '0 0 4px',
                                         fontSize: '15px',
                                         fontWeight: 600,
-                                        color: 'rgb(var(--x-foreground))',
+                                        color: 'var(--x-foreground)',
                                     }}>
                                         {feature.title}
                                     </h4>
                                     <p style={{
                                         margin: 0,
                                         fontSize: '14px',
-                                        color: 'rgb(var(--x-mutedForeground))',
+                                        color: 'var(--x-mutedForeground)',
                                     }}>
                                         {feature.desc}
                                     </p>

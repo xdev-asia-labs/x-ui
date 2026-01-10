@@ -26,8 +26,11 @@
             "@/*": [
                 "./app/*"
             ],
-            "@/components/*": [
+            "@components/*": [
                 "./app/components/*"
+            ],
+            "@docs/*": [
+                "./app/docs/*"
             ]
         }
     },
