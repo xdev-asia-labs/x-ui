@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Button, Badge } from '@xdev-asia/x-ui-react';
+import Hero3D from './Hero3D';
 
 export default function Hero() {
     return (
@@ -29,6 +30,9 @@ export default function Hero() {
                 borderRadius: '50%',
                 zIndex: -1
             }} className="animate-float" />
+
+            {/* 3D Component Showcase */}
+            <Hero3D />
 
             <div className="container animate-fade-in" style={{ textAlign: 'center', maxWidth: '900px', position: 'relative', zIndex: 1 }}>
 
@@ -66,7 +70,7 @@ export default function Hero() {
                     lineHeight: 1.7,
                     animationDelay: '200ms'
                 }}>
-                    X-UI is a modern, cross-platform component library with 50+ components,
+                    X-UI is a modern component library with 50+ components,
                     dark mode support, glassmorphism design, and AI-powered development tools.
                 </p>
 
@@ -111,7 +115,7 @@ export default function Hero() {
                 }}>
                     {[
                         { value: '50+', label: 'Components' },
-                        { value: '2', label: 'Platforms' },
+                        { value: '43', label: 'Storybook Stories' },
                         { value: '100%', label: 'TypeScript' },
                         { value: '< 50kb', label: 'Bundle Size' },
                     ].map((stat) => (
@@ -125,3 +129,4 @@ export default function Hero() {
         </section>
     );
 }
+
