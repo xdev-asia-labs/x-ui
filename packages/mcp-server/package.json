@@ -2,6 +2,23 @@
     "name": "@xdev-asia/x-ui-mcp-server",
     "version": "0.0.1",
     "description": "MCP Server for X-UI component generation and assistance",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/xdev-asia-labs/x-ui.git",
+        "directory": "packages/mcp-server"
+    },
+    "homepage": "https://x-ui.xdev.asia/docs/getting-started/mcp",
+    "keywords": [
+        "mcp",
+        "model-context-protocol",
+        "x-ui",
+        "react",
+        "react-native",
+        "ui-components",
+        "ai-assistant",
+        "copilot"
+    ],
     "main": "./dist/index.js",
     "bin": {
         "x-ui-mcp": "./dist/index.js"
@@ -10,6 +27,12 @@
         "build": "tsup",
         "dev": "tsup --watch",
         "start": "node dist/index.js"
+    },
+    "mcp": {
+        "name": "X-UI",
+        "description": "Generate X-UI components, get design tokens, and usage examples for React and React Native",
+        "icon": "https://x-ui.xdev.asia/icon.png",
+        "publisher": "xdev-asia"
     },
     "dependencies": {
         "@modelcontextprotocol/sdk": "^1.0.0"

@@ -62,7 +62,7 @@ export const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(
         ref
     ) => {
         return (
-            <div ref={ref} role="status" className={cn('inline-flex', className)} {...props}>
+            <div ref={ref} role="status" className={cn('x-spinner', `x-spinner-${size}`, 'inline-flex', className)} {...props}>
                 <div
                     className={cn(
                         'rounded-full',

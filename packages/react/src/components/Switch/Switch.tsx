@@ -57,6 +57,8 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             <label
                 htmlFor={inputId}
                 className={cn(
+                    'x-switch',
+                    `x-switch-${size}`,
                     'inline-flex items-center gap-3 cursor-pointer',
                     isDisabled && 'opacity-50 cursor-not-allowed',
                     className

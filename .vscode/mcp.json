@@ -1,0 +1,12 @@
+{
+    "servers": {
+        "x-ui": {
+            "type": "stdio",
+            "command": "npx",
+            "args": [
+                "-y",
+                "@xdev-asia/x-ui-mcp-server"
+            ]
+        }
+    }
+}

@@ -58,7 +58,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         };
 
         return (
-            <div className="w-full">
+            <div className="x-textarea-wrapper w-full">
                 {label && (
                     <label
                         htmlFor={inputId}
@@ -73,6 +73,8 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
                     id={inputId}
                     rows={rows}
                     className={cn(
+                        'x-textarea',
+                        `x-textarea-${variant}`,
                         'w-full px-4 py-3 rounded-lg resize-y transition-colors duration-200',
                         'text-[var(--x-foreground)] placeholder:text-[var(--x-mutedForeground)]',
                         'focus:outline-none focus:ring-2 focus:ring-[var(--x-ring)]/30',

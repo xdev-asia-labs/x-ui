@@ -78,7 +78,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
 
         return (
             <div
-                className="fixed inset-0 z-50 overflow-y-auto"
+                className="x-modal-overlay fixed inset-0 z-50 overflow-y-auto"
                 aria-modal="true"
                 role="dialog"
             >
@@ -98,6 +98,8 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
                     <div
                         ref={ref || modalRef}
                         className={cn(
+                            'x-modal',
+                            `x-modal-${size}`,
                             'relative w-full bg-[var(--x-card)] rounded-xl shadow-2xl',
                             'animate-in zoom-in-95 fade-in duration-200',
                             sizeStyles[size],
@@ -133,7 +135,7 @@ export interface ModalHeaderProps extends HTMLAttributes<HTMLDivElement> {
 
 export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
     ({ className, children, ...props }, ref) => (
-        <div ref={ref} className={cn('px-6 pt-6 pb-2', className)} {...props}>
+        <div ref={ref} className={cn('x-modal-header', 'px-6 pt-6 pb-2', className)} {...props}>
             <h2 className="text-xl font-semibold text-[var(--x-foreground)]">{children}</h2>
         </div>
     )
@@ -146,7 +148,7 @@ export interface ModalBodyProps extends HTMLAttributes<HTMLDivElement> {
 
 export const ModalBody = forwardRef<HTMLDivElement, ModalBodyProps>(
     ({ className, children, ...props }, ref) => (
-        <div ref={ref} className={cn('px-6 py-4 text-[var(--x-foreground)]', className)} {...props}>
+        <div ref={ref} className={cn('x-modal-body', 'px-6 py-4 text-[var(--x-foreground)]', className)} {...props}>
             {children}
         </div>
     )
@@ -159,7 +161,7 @@ export interface ModalFooterProps extends HTMLAttributes<HTMLDivElement> {
 
 export const ModalFooter = forwardRef<HTMLDivElement, ModalFooterProps>(
     ({ className, children, ...props }, ref) => (
-        <div ref={ref} className={cn('px-6 pb-6 pt-2 flex items-center justify-end gap-3', className)} {...props}>
+        <div ref={ref} className={cn('x-modal-footer', 'px-6 pb-6 pt-2 flex items-center justify-end gap-3', className)} {...props}>
             {children}
         </div>
     )

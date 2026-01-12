@@ -91,6 +91,62 @@ export default function GridPage() {
 </Grid>`} />
                 </section>
 
+                {/* Responsive Grid */}
+                <section style={{ marginBottom: '48px' }}>
+                    <h2 style={{ fontSize: '24px', fontWeight: 700, marginBottom: '16px', color: 'var(--x-foreground)' }}>
+                        Responsive Grid
+                    </h2>
+                    <p style={{ color: 'var(--x-mutedForeground)', marginBottom: '16px' }}>
+                        Use responsive objects to change column spans at different breakpoints.
+                        Try resizing your browser to see the columns reflow!
+                    </p>
+                    <div style={{ background: 'rgba(255,255,255,0.03)', padding: '24px', borderRadius: '12px', marginBottom: '16px' }}>
+                        <Grid columns={12} gap={4}>
+                            <Col span={{ base: 12, sm: 6, md: 4 }}>
+                                <Box style={{ background: 'linear-gradient(135deg, rgb(16, 185, 129), rgb(5, 150, 105))', padding: '20px', borderRadius: '8px', textAlign: 'center' }}>
+                                    12 → 6 → 4
+                                </Box>
+                            </Col>
+                            <Col span={{ base: 12, sm: 6, md: 4 }}>
+                                <Box style={{ background: 'linear-gradient(135deg, rgb(59, 130, 246), rgb(37, 99, 235))', padding: '20px', borderRadius: '8px', textAlign: 'center' }}>
+                                    12 → 6 → 4
+                                </Box>
+                            </Col>
+                            <Col span={{ base: 12, sm: 6, md: 4 }}>
+                                <Box style={{ background: 'linear-gradient(135deg, rgb(139, 92, 246), rgb(109, 40, 217))', padding: '20px', borderRadius: '8px', textAlign: 'center' }}>
+                                    12 → 6 → 4
+                                </Box>
+                            </Col>
+                            <Col span={{ base: 12, sm: 6, md: 4 }}>
+                                <Box style={{ background: 'linear-gradient(135deg, rgb(244, 63, 94), rgb(225, 29, 72))', padding: '20px', borderRadius: '8px', textAlign: 'center' }}>
+                                    12 → 6 → 4
+                                </Box>
+                            </Col>
+                            <Col span={{ base: 12, sm: 6, md: 4 }}>
+                                <Box style={{ background: 'linear-gradient(135deg, rgb(251, 191, 36), rgb(217, 119, 6))', padding: '20px', borderRadius: '8px', textAlign: 'center' }}>
+                                    12 → 6 → 4
+                                </Box>
+                            </Col>
+                            <Col span={{ base: 12, sm: 6, md: 4 }}>
+                                <Box style={{ background: 'linear-gradient(135deg, rgb(20, 184, 166), rgb(13, 148, 136))', padding: '20px', borderRadius: '8px', textAlign: 'center' }}>
+                                    12 → 6 → 4
+                                </Box>
+                            </Col>
+                        </Grid>
+                    </div>
+                    <CodeBlock language="tsx" code={`{/* Responsive: full width on mobile, 2 cols on tablet, 3 cols on desktop */}
+<Grid columns={12} gap={4}>
+  <Col span={{ base: 12, sm: 6, md: 4 }}>Card 1</Col>
+  <Col span={{ base: 12, sm: 6, md: 4 }}>Card 2</Col>
+  <Col span={{ base: 12, sm: 6, md: 4 }}>Card 3</Col>
+  <Col span={{ base: 12, sm: 6, md: 4 }}>Card 4</Col>
+  <Col span={{ base: 12, sm: 6, md: 4 }}>Card 5</Col>
+  <Col span={{ base: 12, sm: 6, md: 4 }}>Card 6</Col>
+</Grid>
+
+{/* Available breakpoints: base, sm (640px), md (768px), lg (1024px), xl (1280px), 2xl (1536px) */}`} />
+                </section>
+
                 {/* Gap Variations */}
                 <section style={{ marginBottom: '48px' }}>
                     <h2 style={{ fontSize: '24px', fontWeight: 700, marginBottom: '16px', color: 'var(--x-foreground)' }}>

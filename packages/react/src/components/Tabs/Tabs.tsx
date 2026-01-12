@@ -44,7 +44,7 @@ export function Tabs({
 
     return (
         <TabsContext.Provider value={{ value, onChange, variant }}>
-            <div className={cn('w-full', className)} {...props}>
+            <div className={cn('x-tabs', 'w-full', className)} {...props}>
                 {children}
             </div>
         </TabsContext.Provider>
@@ -66,6 +66,7 @@ export const TabList = forwardRef<HTMLDivElement, TabListProps>(
                 ref={ref}
                 role="tablist"
                 className={cn(
+                    'x-tabs-list',
                     'flex gap-1',
                     variant === 'line' && 'border-b border-[var(--x-border)]',
                     variant === 'enclosed' && 'bg-[var(--x-muted)] p-1 rounded-lg',
@@ -125,6 +126,7 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>(
                 disabled={disabled}
                 onClick={() => context.onChange(value)}
                 className={cn(
+                    'x-tab',
                     'focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--x-ring)]',
                     'disabled:opacity-50 disabled:cursor-not-allowed',
                     variantStyles[variant],
@@ -156,7 +158,7 @@ export const TabPanel = forwardRef<HTMLDivElement, TabPanelProps>(
             <div
                 ref={ref}
                 role="tabpanel"
-                className={cn('py-4', className)}
+                className={cn('x-tab-panel', 'py-4', className)}
                 {...props}
             >
                 {children}

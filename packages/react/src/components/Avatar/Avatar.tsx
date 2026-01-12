@@ -57,6 +57,9 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
             <div
                 ref={ref}
                 className={cn(
+                    // X-UI identifier classes
+                    'x-avatar',
+                    `x-avatar-${size}`,
                     'relative inline-flex items-center justify-center overflow-hidden bg-[var(--x-muted)]',
                     sizeStyles[size],
                     rounded ? 'rounded-full' : 'rounded-lg',

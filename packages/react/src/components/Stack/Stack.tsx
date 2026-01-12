@@ -61,6 +61,7 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>(
             <div
                 ref={ref}
                 className={cn(
+                    'x-stack',
                     'flex',
                     direction === 'row' && 'flex-row',
                     direction === 'column' && 'flex-col',

@@ -64,6 +64,9 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
             <div
                 ref={ref}
                 className={cn(
+                    // X-UI identifier classes
+                    'x-card',
+                    `x-card-${variant}`,
                     // Base Liquid Glass styles
                     'rounded-2xl text-[var(--x-cardForeground)]',
                     'transition-all duration-300 ease-out',
@@ -106,7 +109,7 @@ export interface CardHeaderProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
     ({ className, children, ...props }, ref) => (
-        <div ref={ref} className={cn('flex flex-col gap-2 pb-4', className)} {...props}>
+        <div ref={ref} className={cn('x-card-header', 'flex flex-col gap-2 pb-4', className)} {...props}>
             {children}
         </div>
     )
@@ -122,6 +125,7 @@ export const CardTitle = forwardRef<HTMLHeadingElement, CardTitleProps>(
         <h3
             ref={ref}
             className={cn(
+                'x-card-title',
                 'text-lg font-semibold leading-tight tracking-tight',
                 className
             )}
@@ -141,7 +145,7 @@ export const CardDescription = forwardRef<HTMLParagraphElement, CardDescriptionP
     ({ className, children, ...props }, ref) => (
         <p
             ref={ref}
-            className={cn('text-sm text-[var(--x-mutedForeground)] leading-relaxed', className)}
+            className={cn('x-card-description', 'text-sm text-[var(--x-mutedForeground)] leading-relaxed', className)}
             {...props}
         >
             {children}
@@ -156,7 +160,7 @@ export interface CardContentProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CardContent = forwardRef<HTMLDivElement, CardContentProps>(
     ({ className, children, ...props }, ref) => (
-        <div ref={ref} className={cn('', className)} {...props}>
+        <div ref={ref} className={cn('x-card-content', '', className)} {...props}>
             {children}
         </div>
     )
@@ -169,7 +173,7 @@ export interface CardFooterProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(
     ({ className, children, ...props }, ref) => (
-        <div ref={ref} className={cn('flex items-center pt-4 gap-3', className)} {...props}>
+        <div ref={ref} className={cn('x-card-footer', 'flex items-center pt-4 gap-3', className)} {...props}>
             {children}
         </div>
     )

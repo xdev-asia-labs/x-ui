@@ -91,6 +91,10 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(
             <span
                 ref={ref}
                 className={cn(
+                    // X-UI identifier classes
+                    'x-tag',
+                    `x-tag-${variant}`,
+                    `x-tag-${size}`,
                     // Base Liquid Glass styles
                     'inline-flex items-center font-medium',
                     'transition-all duration-200',

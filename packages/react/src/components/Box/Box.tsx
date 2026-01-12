@@ -88,6 +88,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
             <Component
                 ref={ref}
                 className={cn(
+                    'x-box',
                     rounded && roundedStyles[rounded],
                     shadow && shadowStyles[shadow],
                     glass && 'bg-[var(--x-glass-bg)] backdrop-blur-lg border border-[var(--x-glass-border)]',

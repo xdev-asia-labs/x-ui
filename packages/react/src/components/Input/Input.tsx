@@ -90,11 +90,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         const inputId = id || `input${reactId}`;
 
         return (
-            <div className="w-full">
+            <div className="x-input-wrapper w-full">
                 {label && (
                     <label
                         htmlFor={inputId}
-                        className="block text-sm font-medium text-[var(--x-foreground)] mb-2"
+                        className="x-input-label block text-sm font-medium text-[var(--x-foreground)] mb-2"
                     >
                         {label}
                     </label>
@@ -118,6 +118,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                             ref={ref}
                             id={inputId}
                             className={cn(
+                                // X-UI identifier classes
+                                'x-input',
+                                `x-input-${variant}`,
+                                `x-input-${size}`,
                                 // Base Liquid Glass styles
                                 'w-full transition-all duration-200 ease-out',
                                 'text-[var(--x-foreground)] placeholder:text-[var(--x-mutedForeground)]/60',
@@ -159,13 +163,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                 </div>
 
                 {errorMessage && isInvalid && (
-                    <p id={`${inputId}-error`} className="mt-2 text-sm text-[var(--x-destructive)]">
+                    <p id={`${inputId}-error`} className="x-input-error mt-2 text-sm text-[var(--x-destructive)]">
                         {errorMessage}
                     </p>
                 )}
 
                 {helperText && !isInvalid && (
-                    <p id={`${inputId}-helper`} className="mt-2 text-sm text-[var(--x-mutedForeground)]">
+                    <p id={`${inputId}-helper`} className="x-input-helper mt-2 text-sm text-[var(--x-mutedForeground)]">
                         {helperText}
                     </p>
                 )}

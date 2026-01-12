@@ -11,7 +11,8 @@ out/
 
 # IDE & Editors
 .idea/
-.vscode/
+.vscode/*
+!.vscode/mcp.json
 *.swp
 *.swo
 .DS_Store

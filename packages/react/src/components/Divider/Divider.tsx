@@ -45,7 +45,7 @@ export const Divider = forwardRef<HTMLDivElement, DividerProps>(
             return (
                 <div
                     ref={ref}
-                    className={cn('flex items-center gap-4', className)}
+                    className={cn('x-divider x-divider-horizontal', 'flex items-center gap-4', className)}
                     {...props}
                 >
                     <div className={cn('flex-1 border-t', variantStyles[variant], colorStyles[color])} />
@@ -59,6 +59,8 @@ export const Divider = forwardRef<HTMLDivElement, DividerProps>(
             <div
                 ref={ref}
                 className={cn(
+                    'x-divider',
+                    `x-divider-${orientation}`,
                     orientation === 'horizontal' ? 'w-full border-t' : 'h-full border-l self-stretch',
                     variantStyles[variant],
                     colorStyles[color],

@@ -86,6 +86,10 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
             <span
                 ref={ref}
                 className={cn(
+                    // X-UI identifier classes
+                    'x-badge',
+                    `x-badge-${variant}`,
+                    `x-badge-${size}`,
                     // Base Liquid Glass styles
                     'inline-flex items-center gap-1.5 font-semibold',
                     'transition-all duration-200',

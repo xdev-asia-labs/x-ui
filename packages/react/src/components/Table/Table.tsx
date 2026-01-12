@@ -45,12 +45,15 @@ export function Table({
 }: TableProps) {
     return (
         <div className={cn(
+            'x-table-wrapper',
+            `x-table-${variant}`,
             'w-full overflow-auto rounded-xl',
             'border border-white/[0.1]',
             'bg-white/[0.02]',
             className
         )}>
             <table className={cn(
+                'x-table',
                 'w-full border-collapse',
                 sizeStyles[size]
             )}>
@@ -63,6 +66,7 @@ export function Table({
 export function TableHead({ children, className }: { children: ReactNode; className?: string }) {
     return (
         <thead className={cn(
+            'x-table-head',
             'bg-white/[0.04]',
             'border-b border-white/[0.08]',
             className
@@ -74,7 +78,7 @@ export function TableHead({ children, className }: { children: ReactNode; classN
 
 export function TableBody({ children, className }: { children: ReactNode; className?: string }) {
     return (
-        <tbody className={cn('divide-y divide-white/[0.05]', className)}>
+        <tbody className={cn('x-table-body', 'divide-y divide-white/[0.05]', className)}>
             {children}
         </tbody>
     );
@@ -94,6 +98,7 @@ export function TableRow({
     return (
         <tr
             className={cn(
+                'x-table-row',
                 'transition-colors duration-150',
                 'hover:bg-white/[0.04]',
                 isSelected && 'bg-[var(--x-primary)]/10',
@@ -133,6 +138,7 @@ export function TableHeaderCell({
     return (
         <th
             className={cn(
+                'x-table-th',
                 cellPadding[size],
                 alignStyles[align],
                 'font-semibold text-[var(--x-foreground)]',
@@ -174,6 +180,7 @@ export function TableCell({
     return (
         <td
             className={cn(
+                'x-table-td',
                 cellPadding[size],
                 alignStyles[align],
                 'text-[var(--x-foreground)]',

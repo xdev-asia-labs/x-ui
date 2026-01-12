@@ -44,6 +44,7 @@ export function RadioGroup({
             <div
                 role="radiogroup"
                 className={cn(
+                    'x-radio-group',
                     'flex gap-3',
                     orientation === 'vertical' ? 'flex-col' : 'flex-row flex-wrap',
                     className
@@ -117,6 +118,8 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
             <label
                 htmlFor={inputId}
                 className={cn(
+                    'x-radio',
+                    `x-radio-${size}`,
                     'inline-flex items-start gap-3 cursor-pointer',
                     isDisabled && 'opacity-50 cursor-not-allowed',
                     className

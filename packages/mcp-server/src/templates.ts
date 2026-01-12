@@ -3,29 +3,29 @@
  */
 
 export const componentTemplates = {
-    list: [
-        { name: 'ThemeProvider', platforms: ['react', 'native'], category: 'core' },
-        { name: 'Button', platforms: ['react', 'native'], category: 'button' },
-        { name: 'Box', platforms: ['react', 'native'], category: 'layout' },
-        { name: 'Card', platforms: ['react', 'native'], category: 'data-display' },
-        { name: 'Avatar', platforms: ['react', 'native'], category: 'data-display' },
-        { name: 'Badge', platforms: ['react', 'native'], category: 'data-display' },
-        { name: 'Input', platforms: ['react', 'native'], category: 'input' },
-        { name: 'Spinner', platforms: ['react', 'native'], category: 'feedback' },
-    ],
+  list: [
+    { name: 'ThemeProvider', platforms: ['react', 'native'], category: 'core' },
+    { name: 'Button', platforms: ['react', 'native'], category: 'button' },
+    { name: 'Box', platforms: ['react', 'native'], category: 'layout' },
+    { name: 'Card', platforms: ['react', 'native'], category: 'data-display' },
+    { name: 'Avatar', platforms: ['react', 'native'], category: 'data-display' },
+    { name: 'Badge', platforms: ['react', 'native'], category: 'data-display' },
+    { name: 'Input', platforms: ['react', 'native'], category: 'input' },
+    { name: 'Spinner', platforms: ['react', 'native'], category: 'feedback' },
+  ],
 
-    generate(
-        name: string,
-        platform: 'react' | 'native' | 'both',
-        category: string,
-        variants: string[],
-        sizes: string[]
-    ): string {
-        const variantsStr = variants.map(v => `'${v}'`).join(' | ');
-        const sizesStr = sizes.map(s => `'${s}'`).join(' | ');
+  generate(
+    name: string,
+    platform: 'react' | 'native' | 'both',
+    category: string,
+    variants: string[],
+    sizes: string[]
+  ): string {
+    const variantsStr = variants.map(v => `'${v}'`).join(' | ');
+    const sizesStr = sizes.map(s => `'${s}'`).join(' | ');
 
-        if (platform === 'react' || platform === 'both') {
-            return `'use client';
+    if (platform === 'react' || platform === 'both') {
+      return `'use client';
 
 import React, { forwardRef } from 'react';
 import { cn } from '@xdev-asia/x-ui-core';
@@ -50,7 +50,16 @@ export const ${name} = forwardRef<HTMLDivElement, ${name}Props>(
     return (
       <div
         ref={ref}
-        className={cn(variantStyles[variant], sizeStyles[size], className)}
+        className={cn(
+          // X-UI identifier classes
+          'x-${name.toLowerCase()}',
+          \`x-${name.toLowerCase()}-\${variant}\`,
+          \`x-${name.toLowerCase()}-\${size}\`,
+          // Component styles
+          variantStyles[variant],
+          sizeStyles[size],
+          className
+        )}
         {...props}
       >
         {children}
@@ -61,9 +70,9 @@ export const ${name} = forwardRef<HTMLDivElement, ${name}Props>(
 
 ${name}.displayName = '${name}';
 `;
-        }
+    }
 
-        return `// React Native component template
+    return `// React Native component template
 import React, { forwardRef } from 'react';
 import { View, ViewProps } from 'react-native';
 
@@ -84,12 +93,12 @@ export const ${name} = forwardRef<View, ${name}Props>(
 
 ${name}.displayName = '${name}';
 `;
-    },
+  },
 
-    getUsage(name: string, platform: string): string {
-        const usageExamples: Record<string, Record<string, string>> = {
-            Button: {
-                react: `import { Button } from '@x-ui/react';
+  getUsage(name: string, platform: string): string {
+    const usageExamples: Record<string, Record<string, string>> = {
+      Button: {
+        react: `import { Button } from '@x-ui/react';
 
 // Basic usage
 <Button>Click me</Button>
@@ -110,7 +119,7 @@ ${name}.displayName = '${name}';
 
 // With icons
 <Button leftIcon={<Icon />}>With Icon</Button>`,
-                native: `import { Button } from '@x-ui/native';
+        native: `import { Button } from '@x-ui/native';
 
 // Basic usage
 <Button>Click me</Button>
@@ -122,9 +131,9 @@ ${name}.displayName = '${name}';
 
 // Loading state
 <Button isLoading>Loading...</Button>`,
-            },
-            Card: {
-                react: `import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@x-ui/react';
+      },
+      Card: {
+        react: `import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@x-ui/react';
 
 <Card variant="glass">
   <CardHeader>
@@ -137,7 +146,7 @@ ${name}.displayName = '${name}';
     <Button>Action</Button>
   </CardFooter>
 </Card>`,
-                native: `import { Card, CardHeader, CardTitle, CardContent } from '@x-ui/native';
+        native: `import { Card, CardHeader, CardTitle, CardContent } from '@x-ui/native';
 
 <Card variant="elevated">
   <CardHeader>
@@ -147,9 +156,9 @@ ${name}.displayName = '${name}';
     <Text>Card content</Text>
   </CardContent>
 </Card>`,
-            },
-            Input: {
-                react: `import { Input } from '@x-ui/react';
+      },
+      Input: {
+        react: `import { Input } from '@x-ui/react';
 
 // Basic
 <Input placeholder="Enter text" />
@@ -162,16 +171,16 @@ ${name}.displayName = '${name}';
 
 // Glass variant
 <Input variant="glass" />`,
-                native: `import { Input } from '@x-ui/native';
+        native: `import { Input } from '@x-ui/native';
 
 <Input 
   label="Email" 
   placeholder="Enter email"
   variant="outline"
 />`,
-            },
-        };
+      },
+    };
 
-        return usageExamples[name]?.[platform] || `// No usage example available for ${name}`;
-    },
+    return usageExamples[name]?.[platform] || `// No usage example available for ${name}`;
+  },
 };

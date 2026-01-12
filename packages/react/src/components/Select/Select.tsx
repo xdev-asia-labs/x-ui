@@ -67,7 +67,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
         const inputId = id || `select${reactId}`;
 
         return (
-            <div className="w-full">
+            <div className="x-select-wrapper w-full">
                 {label && (
                     <label
                         htmlFor={inputId}
@@ -88,6 +88,9 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
                         ref={ref}
                         id={inputId}
                         className={cn(
+                            'x-select',
+                            `x-select-${variant}`,
+                            `x-select-${size}`,
                             'w-full rounded-lg appearance-none cursor-pointer transition-colors duration-200',
                             'text-[var(--x-foreground)]',
                             'focus:outline-none focus:ring-2 focus:ring-[var(--x-ring)]/30',

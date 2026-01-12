@@ -101,6 +101,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             <button
                 ref={ref}
                 className={cn(
+                    // X-UI identifier classes
+                    'x-button',
+                    `x-button-${variant}`,
+                    `x-button-${size}`,
                     // Base styles with Liquid Glass aesthetics
                     'inline-flex items-center justify-center font-semibold',
                     'transition-all duration-200 ease-out',
