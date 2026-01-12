@@ -9,7 +9,9 @@
     "updateInternalDependencies": "patch",
     "ignore": [
         "@xdev-asia/x-ui-docs",
+        "@xdev-asia/x-ui-native",
         "@xdev-asia/x-ui-native-demo",
-        "@xdev-asia/x-ui-storybook"
+        "@xdev-asia/x-ui-storybook",
+        "@xdev-asia/x-ui-storybook-native"
     ]
 }
