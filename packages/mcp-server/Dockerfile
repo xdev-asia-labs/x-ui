@@ -10,8 +10,8 @@ COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
 COPY packages/core/package.json ./packages/core/
 COPY packages/mcp-server/package.json ./packages/mcp-server/
 
-# Install dependencies
-RUN pnpm install --frozen-lockfile --filter @xdev-asia/x-ui-mcp-server...
+# Install dependencies (need full install for build tools like tsup)
+RUN pnpm install --frozen-lockfile
 
 # Copy source code
 COPY packages/core ./packages/core
