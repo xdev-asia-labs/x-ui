@@ -1,6 +1,6 @@
 {
     "name": "@xdev-asia/x-ui-mcp-server",
-    "version": "0.1.0",
+    "version": "0.0.2",
     "description": "MCP Server for X-UI component generation and assistance",
     "license": "MIT",
     "repository": {
@@ -23,6 +23,10 @@
     "bin": {
         "x-ui-mcp": "./dist/index.js"
     },
+    "files": [
+        "dist",
+        "README.md"
+    ],
     "scripts": {
         "build": "tsup",
         "dev": "tsup --watch",
