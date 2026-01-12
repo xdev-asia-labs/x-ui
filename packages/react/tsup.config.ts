@@ -8,5 +8,10 @@ export default defineConfig({
     sourcemap: true,
     clean: true,
     treeshake: true,
+    minify: true,
     external: ['react', 'react-dom'],
+    esbuildOptions(options) {
+        options.drop = ['console', 'debugger'];
+        options.pure = ['console.log', 'console.info', 'console.debug'];
+    },
 });
