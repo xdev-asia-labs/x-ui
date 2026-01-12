@@ -5,7 +5,7 @@ import DocsLayout from '@docs/DocsLayout';
 import CodeBlock from '@components/CodeBlock';
 import { DataGrid, DataGridColumn } from '@xdev-asia/x-ui-react';
 
-interface User {
+interface User extends Record<string, unknown> {
     id: number;
     name: string;
     email: string;
