@@ -13,6 +13,15 @@ export interface Toast {
     action?: ReactNode;
 }
 
+export interface ToastProps {
+    title?: string;
+    description?: string;
+    variant?: 'default' | 'success' | 'warning' | 'error' | 'info';
+    duration?: number;
+    position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center';
+    onClose?: () => void;
+}
+
 interface ToastContextValue {
     toasts: Toast[];
     addToast: (toast: Omit<Toast, 'id'>) => string;
@@ -72,7 +81,7 @@ export function ToastProvider({ children, position = 'top-right', maxToasts = 5 
             {children}
             <div className={cn('fixed z-50 flex flex-col gap-2 max-w-sm w-full', positionStyles[position])}>
                 {toasts.map((toast) => (
-                    <ToastItem key={toast.id} toast={toast} onClose={() => removeToast(toast.id)} />
+                    <ToastComponent key={toast.id} toast={toast} onClose={() => removeToast(toast.id)} />
                 ))}
             </div>
         </ToastContext.Provider>
@@ -96,7 +105,7 @@ const iconColors = {
     info: 'text-blue-600',
 };
 
-function ToastItem({ toast, onClose }: { toast: Toast; onClose: () => void }) {
+export function ToastComponent({ toast, onClose }: { toast: Toast; onClose: () => void }) {
     const variant = toast.variant || 'default';
 
     return (

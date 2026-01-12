@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useCallback, ReactNode } from 'react';
-import { Toast, ToastProps } from './Toast';
+import { ToastComponent, ToastProps } from './Toast';
 
 export interface ToastMessage {
     id: string;
@@ -100,12 +100,15 @@ export function ToastProvider({
                         }}
                     >
                         {positionToasts.map((t) => (
-                            <Toast
+                            <ToastComponent
                                 key={t.id}
-                                variant={t.variant}
-                                title={t.title}
-                                description={t.description}
-                                duration={t.duration}
+                                toast={{
+                                    id: t.id,
+                                    title: t.title,
+                                    description: t.description,
+                                    variant: t.variant,
+                                    duration: t.duration,
+                                }}
                                 onClose={() => removeToast(t.id)}
                             />
                         ))}
