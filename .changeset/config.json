@@ -2,7 +2,13 @@
     "$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
     "changelog": "@changesets/cli/changelog",
     "commit": false,
-    "fixed": [],
+    "fixed": [
+        [
+            "@xdev-asia/x-ui-core",
+            "@xdev-asia/x-ui-react",
+            "@xdev-asia/x-ui-mcp-server"
+        ]
+    ],
     "linked": [],
     "access": "public",
     "baseBranch": "main",

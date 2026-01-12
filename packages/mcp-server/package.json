@@ -1,6 +1,6 @@
 {
     "name": "@xdev-asia/x-ui-mcp-server",
-    "version": "0.0.2",
+    "version": "0.2.0",
     "description": "MCP Server for X-UI component generation and assistance",
     "license": "MIT",
     "repository": {

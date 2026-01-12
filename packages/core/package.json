@@ -1,6 +1,6 @@
 {
     "name": "@xdev-asia/x-ui-core",
-    "version": "0.0.2",
+    "version": "0.2.0",
     "description": "Core utilities, tokens and hooks for X-UI",
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",
