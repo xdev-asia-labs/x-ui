@@ -12,7 +12,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 📦 **V0.1.x Components**: Toast, Modal, Drawer, Stepper, Slider, FileUpload, ColorPicker
 - 📦 **V0.2.x Components**: Calendar, TimePicker, DataGrid, Autocomplete, Carousel
 - 🎯 **X-Prefix Classes**: All components now use `x-*` CSS class prefix for better specificity
-- 📱 **React Native Ports**: Progress, Skeleton, Accordion, BottomSheet, IconButton, Tooltip, AlertDialog
 - 🌐 **Documentation Site**: Complete docs with internationalization support
 - 🔧 **MCP Server**: AI-assisted component development via Model Context Protocol
 - 📐 **Grid System**: Responsive grid with breakpoint utilities
