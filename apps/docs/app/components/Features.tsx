@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Card, CardTitle, CardDescription } from '@xdev-asia/x-ui-react';
 
 const features = [
@@ -16,8 +17,8 @@ const features = [
     },
     {
         icon: '📱',
-        title: 'Cross-Platform',
-        description: 'One codebase for modern React web applications. Responsive and accessible.',
+        title: 'Responsive',
+        description: 'Works beautifully on all screen sizes from mobile to desktop.',
     },
     {
         icon: '♿',
@@ -42,19 +43,73 @@ export default function Features() {
             background: 'linear-gradient(180deg, transparent 0%, rgba(0,102,255,0.02) 100%)',
         }}>
             <div className="container">
-                {/* Section header */}
-                <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-                    <h2 className="text-gradient" style={{
-                        fontSize: '2.5rem',
-                        fontWeight: 700,
-                        marginBottom: '16px',
-                        letterSpacing: '-0.02em',
+                {/* Section header with image */}
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: '1fr 1fr',
+                    gap: '60px',
+                    alignItems: 'center',
+                    marginBottom: '80px',
+                }}>
+                    <div>
+                        <h2 className="text-gradient" style={{
+                            fontSize: 'clamp(2rem, 4vw, 3rem)',
+                            fontWeight: 700,
+                            marginBottom: '24px',
+                            letterSpacing: '-0.02em',
+                        }}>
+                            Everything You Need to Build Modern Apps
+                        </h2>
+                        <p style={{
+                            color: 'var(--x-mutedForeground)',
+                            fontSize: '1.125rem',
+                            lineHeight: 1.7,
+                            marginBottom: '32px',
+                        }}>
+                            Built with modern best practices and designed for developer experience.
+                            From buttons to complex data grids, X-UI has you covered.
+                        </p>
+                        <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+                            {['50+ Components', 'TypeScript', 'Storybook'].map((tag) => (
+                                <div key={tag} style={{
+                                    padding: '8px 16px',
+                                    background: 'rgba(99, 102, 241, 0.1)',
+                                    border: '1px solid rgba(99, 102, 241, 0.2)',
+                                    borderRadius: '20px',
+                                    fontSize: '14px',
+                                    color: 'var(--x-primary)',
+                                    fontWeight: 500,
+                                }}>
+                                    {tag}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div style={{
+                        position: 'relative',
+                        borderRadius: '24px',
+                        overflow: 'hidden',
+                        boxShadow: '0 40px 80px rgba(0, 0, 0, 0.4)',
                     }}>
-                        Everything You Need
-                    </h2>
-                    <p style={{ color: 'var(--x-mutedForeground)', fontSize: '1.125rem', maxWidth: '500px', margin: '0 auto' }}>
-                        Built with modern best practices and designed for developer experience.
-                    </p>
+                        <Image
+                            src="/images/feature-showcase.png"
+                            alt="X-UI Component Showcase"
+                            width={600}
+                            height={400}
+                            style={{
+                                width: '100%',
+                                height: 'auto',
+                                display: 'block',
+                            }}
+                        />
+                        {/* Glow overlay */}
+                        <div style={{
+                            position: 'absolute',
+                            inset: 0,
+                            background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, transparent 50%)',
+                            pointerEvents: 'none',
+                        }} />
+                    </div>
                 </div>
 
                 {/* Features grid */}
@@ -98,6 +153,17 @@ export default function Features() {
                     ))}
                 </div>
             </div>
+
+            {/* Responsive styles */}
+            <style jsx>{`
+                @media (max-width: 900px) {
+                    div[style*="grid-template-columns: 1fr 1fr"] {
+                        grid-template-columns: 1fr !important;
+                        text-align: center;
+                    }
+                }
+            `}</style>
         </section>
     );
 }
+
