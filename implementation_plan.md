@@ -74,16 +74,16 @@ Modern cross-platform UI component library for **React.js** and **React Native**
 
 ---
 
-## 🚧 In Progress (v0.1.x)
+## 🚧 In Progress (v0.1.x) - ✅ COMPLETED
 
 ### Components
-- [ ] Toast / Snackbar
-- [ ] Modal / Dialog
-- [ ] Drawer / BottomSheet
-- [ ] Stepper
-- [ ] Slider / RangeSlider
-- [ ] FileUpload
-- [ ] ColorPicker
+- [x] Toast / Snackbar ✅
+- [x] Modal / Dialog ✅
+- [x] Drawer / BottomSheet ✅
+- [x] Stepper ✅
+- [x] Slider / RangeSlider ✅
+- [x] FileUpload ✅
+- [x] ColorPicker ✅
 
 ### Features
 - [ ] RTL (Right-to-Left) support
@@ -93,17 +93,17 @@ Modern cross-platform UI component library for **React.js** and **React Native**
 
 ---
 
-## 📋 Planned (v0.2.x+)
+## 📋 Planned (v0.2.x+) - PARTIALLY COMPLETED
 
 ### Components
 - [ ] DataGrid (advanced table)
-- [ ] Calendar
-- [ ] TimePicker
-- [ ] Autocomplete / Combobox
+- [x] Calendar ✅
+- [x] TimePicker ✅
+- [x] Autocomplete / Combobox ✅
 - [ ] TreeView
 - [ ] Charts (via chart library integration)
 - [ ] RichTextEditor
-- [ ] ImageGallery / Carousel
+- [x] ImageGallery / Carousel ✅
 
 ### React Native Specific
 - [ ] SwipeableRow
