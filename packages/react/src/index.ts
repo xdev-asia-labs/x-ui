@@ -115,5 +115,18 @@ export type { PopoverProps, PopoverHeaderProps } from './components/Popover';
 export { Table, TableHead, TableBody, TableRow, TableHeaderCell, TableCell, TableEmpty } from './components/Table';
 export type { TableProps, TableColumnProps } from './components/Table';
 
+// V0.1.x Components
+export { Slider } from './components/Slider';
+export type { SliderProps } from './components/Slider';
+
+export { Stepper } from './components/Stepper';
+export type { StepperProps, StepItem } from './components/Stepper';
+
+export { FileUpload } from './components/FileUpload';
+export type { FileUploadProps } from './components/FileUpload';
+
+export { ColorPicker } from './components/ColorPicker';
+export type { ColorPickerProps } from './components/ColorPicker';
+
 // Re-export core utilities
 export * from '@xdev-asia/x-ui-core';
