@@ -63,7 +63,6 @@ const value = getBreakpointValue({
 ## Related Packages
 
 - [@xdev-asia/x-ui-react](https://npmjs.com/package/@xdev-asia/x-ui-react) - React components
-- [@xdev-asia/x-ui-native](https://npmjs.com/package/@xdev-asia/x-ui-native) - React Native components
 
 ## License
 

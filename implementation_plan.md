@@ -65,7 +65,6 @@ Modern cross-platform UI component library for **React.js** and **React Native**
 ### Infrastructure
 - [x] Documentation site (Next.js)
 - [x] Storybook for React components
-- [x] Storybook for React Native (via react-native-web)
 - [x] MCP Server for AI-assisted development
 - [x] GitHub Actions CI/CD
 - [x] npm publishing (@xdev-asia scope)
@@ -105,16 +104,8 @@ Modern cross-platform UI component library for **React.js** and **React Native**
 - [ ] RichTextEditor
 - [x] ImageGallery / Carousel ✅
 
-### React Native Specific
-- [ ] SwipeableRow
-- [ ] ActionSheet
-- [ ] FloatingActionButton
-- [ ] RefreshControl wrapper
-- [ ] KeyboardAvoidingView wrapper
-
 ### Features
 - [ ] Animation library integration
-- [ ] Gesture support (React Native)
 - [ ] Accessibility audit (WCAG 2.1 AA)
 - [ ] Performance benchmarks
 - [ ] SSR optimization
@@ -131,15 +122,13 @@ Modern cross-platform UI component library for **React.js** and **React Native**
 ```
 @xdev-asia/x-ui-core        # Design tokens, hooks, utilities
 @xdev-asia/x-ui-react       # React components
-@xdev-asia/x-ui-native      # React Native components
 @xdev-asia/x-ui-mcp-server  # MCP server for AI assistants
 ```
 
 ## 🔗 Links
 
 - **Documentation**: https://x-ui.xdev.asia
-- **Storybook (React)**: https://x-ui.xdev.asia/storybook
-- **Storybook (Native)**: https://x-ui.xdev.asia/storybook-native
+- **Storybook**: https://x-ui.xdev.asia/storybook
 - **npm**: https://npmjs.com/org/xdev-asia
 - **GitHub**: https://github.com/xdev-asia-labs/x-ui
 

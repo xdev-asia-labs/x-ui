@@ -14,7 +14,6 @@
         "model-context-protocol",
         "x-ui",
         "react",
-        "react-native",
         "ui-components",
         "ai-assistant",
         "copilot"
@@ -34,7 +33,7 @@
     },
     "mcp": {
         "name": "X-UI",
-        "description": "Generate X-UI components, get design tokens, and usage examples for React and React Native",
+        "description": "Generate X-UI components, get design tokens, and usage examples for React",
         "icon": "https://x-ui.xdev.asia/icon.png",
         "publisher": "xdev-asia"
     },

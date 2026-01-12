@@ -4,14 +4,17 @@
 
 export const componentTemplates = {
   list: [
-    { name: 'ThemeProvider', platforms: ['react', 'native'], category: 'core' },
-    { name: 'Button', platforms: ['react', 'native'], category: 'button' },
-    { name: 'Box', platforms: ['react', 'native'], category: 'layout' },
-    { name: 'Card', platforms: ['react', 'native'], category: 'data-display' },
-    { name: 'Avatar', platforms: ['react', 'native'], category: 'data-display' },
-    { name: 'Badge', platforms: ['react', 'native'], category: 'data-display' },
-    { name: 'Input', platforms: ['react', 'native'], category: 'input' },
-    { name: 'Spinner', platforms: ['react', 'native'], category: 'feedback' },
+    { name: 'ThemeProvider', platforms: ['react'], category: 'core' },
+    { name: 'Button', platforms: ['react'], category: 'button' },
+    { name: 'Box', platforms: ['react'], category: 'layout' },
+    { name: 'Card', platforms: ['react'], category: 'data-display' },
+    { name: 'Avatar', platforms: ['react'], category: 'data-display' },
+    { name: 'Badge', platforms: ['react'], category: 'data-display' },
+    { name: 'Input', platforms: ['react'], category: 'input' },
+    { name: 'Spinner', platforms: ['react'], category: 'feedback' },
+    { name: 'DataGrid', platforms: ['react'], category: 'data-display' },
+    { name: 'TreeView', platforms: ['react'], category: 'data-display' },
+    { name: 'RichTextEditor', platforms: ['react'], category: 'input' },
   ],
 
   generate(
@@ -72,26 +75,8 @@ ${name}.displayName = '${name}';
 `;
     }
 
-    return `// React Native component template
-import React, { forwardRef } from 'react';
-import { View, ViewProps } from 'react-native';
-
-export interface ${name}Props extends ViewProps {
-  variant?: ${variantsStr};
-  size?: ${sizesStr};
-}
-
-export const ${name} = forwardRef<View, ${name}Props>(
-  ({ variant = '${variants[0]}', size = '${sizes[1] || sizes[0]}', style, children, ...props }, ref) => {
-    return (
-      <View ref={ref} style={style} {...props}>
-        {children}
-      </View>
-    );
-  }
-);
-
-${name}.displayName = '${name}';
+    return `// React component - no native platform support
+// Use @xdev-asia/x-ui-react for web components
 `;
   },
 

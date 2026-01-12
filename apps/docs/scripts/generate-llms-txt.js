@@ -63,8 +63,7 @@ function generateLlmsTxt() {
 # https://x-ui.xdev.asia
 
 ## Overview
-X-UI is a modern, cross-platform UI component library by XDEV Asia.
-Supports React.js and React Native with a unified API.
+X-UI is a modern UI component library by XDEV Asia for React.js.
 
 ## Installation
 \`\`\`bash
@@ -111,7 +110,6 @@ function App() {
     content += `## Package Information
 - Package: @xdev-asia/x-ui-react
 - Core: @xdev-asia/x-ui-core
-- React Native: @xdev-asia/x-ui-native
 - GitHub: https://github.com/xdev-asia/x-ui
 
 ## MCP Server

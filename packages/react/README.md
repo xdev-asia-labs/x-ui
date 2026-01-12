@@ -97,7 +97,6 @@ Visit [x-ui.xdev.asia](https://x-ui.xdev.asia) for full documentation.
 ## Related Packages
 
 - [@xdev-asia/x-ui-core](https://npmjs.com/package/@xdev-asia/x-ui-core) - Core utilities
-- [@xdev-asia/x-ui-native](https://npmjs.com/package/@xdev-asia/x-ui-native) - React Native components
 
 ## License
 
