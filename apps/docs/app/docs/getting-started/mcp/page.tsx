@@ -72,7 +72,7 @@ export default function MCPPage() {
   "x-ui-mcp": {
     "type": "stdio",
     "command": "npx",
-    "args": ["-y", "@xdev-asia/x-ui-mcp@latest"]
+    "args": ["-y", "@xdev-asia/x-ui-mcp-server@latest"]
   }
 }`} />
                     <p style={{ color: 'var(--x-mutedForeground)', marginTop: '16px', marginBottom: '12px', lineHeight: 1.7 }}>
@@ -91,7 +91,7 @@ export default function MCPPage() {
                     <ul style={{ color: 'var(--x-mutedForeground)', lineHeight: 2, paddingLeft: '24px', marginBottom: '12px' }}>
                         <li><strong>Name:</strong> X-UI MCP</li>
                         <li><strong>Command:</strong> <code style={{ color: 'rgb(59, 130, 246)' }}>npx</code></li>
-                        <li><strong>Arguments:</strong> <code style={{ color: 'rgb(59, 130, 246)' }}>-y @xdev-asia/x-ui-mcp@latest</code></li>
+                        <li><strong>Arguments:</strong> <code style={{ color: 'rgb(59, 130, 246)' }}>-y @xdev-asia/x-ui-mcp-server@latest</code></li>
                     </ul>
                     <p style={{ color: 'var(--x-mutedForeground)', lineHeight: 1.7 }}>
                         Click OK and Apply.
@@ -108,7 +108,7 @@ export default function MCPPage() {
   "x-ui-mcp-server": {
     "command": {
       "path": "npx",
-      "args": ["-y", "@xdev-asia/x-ui-mcp@latest"],
+      "args": ["-y", "@xdev-asia/x-ui-mcp-server@latest"],
       "env": {}
     }
   }
@@ -122,12 +122,34 @@ export default function MCPPage() {
                         Claude Code is Anthropic's agentic coding tool that runs in your terminal.
                         You can add the X-UI MCP server via the command line:
                     </p>
-                    <CodeBlock language="bash" code={`claude mcp add x-ui-mcp -- npx -y @xdev-asia/x-ui-mcp@latest`} />
+                    <CodeBlock language="bash" code={`claude mcp add x-ui-mcp -- npx -y @xdev-asia/x-ui-mcp-server@latest`} />
                     <p style={{ color: 'var(--x-mutedForeground)', marginTop: '16px', marginBottom: '12px', lineHeight: 1.7 }}>
                         By default, this installs the MCP server to local-scope of the project you are working on.
                         If you want the MCP server to always be available to all projects on your machine, install it to user-scope:
                     </p>
-                    <CodeBlock language="bash" code={`claude mcp add x-ui-mcp -s user -- npx -y @xdev-asia/x-ui-mcp@latest`} />
+                    <CodeBlock language="bash" code={`claude mcp add x-ui-mcp -s user -- npx -y @xdev-asia/x-ui-mcp-server@latest`} />
+                </section>
+
+                {/* Docker */}
+                <section style={{ marginBottom: '48px' }}>
+                    <h2 style={{ fontSize: '24px', fontWeight: 700, marginBottom: '16px', color: 'var(--x-foreground)' }}>
+                        Docker
+                    </h2>
+                    <p style={{ color: 'var(--x-mutedForeground)', marginBottom: '16px', lineHeight: 1.7 }}>
+                        You can also run the X-UI MCP server using Docker:
+                    </p>
+                    <CodeBlock language="bash" code={`# Build MCP server image
+docker build -t x-ui-mcp -f packages/mcp-server/Dockerfile .
+
+# Run MCP server
+docker run -it x-ui-mcp`} />
+                    <p style={{ color: 'var(--x-mutedForeground)', marginTop: '16px', marginBottom: '12px', lineHeight: 1.7 }}>
+                        Or use docker-compose to run both the documentation site and MCP server:
+                    </p>
+                    <CodeBlock language="bash" code={`# Start all services
+docker-compose up -d
+
+# View docs at http://localhost:3000`} />
                 </section>
 
                 {/* LLMs.txt */}

@@ -1,0 +1,16 @@
+node_modules
+dist
+out
+.next
+.turbo
+.git
+.github
+.husky
+*.log
+*.md
+!README.md
+.env*
+coverage
+.nyc_output
+.DS_Store
+Thumbs.db
