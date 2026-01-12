@@ -78,6 +78,16 @@ export type { SliderProps } from './components/Slider';
 export { Stepper } from './components/Stepper';
 export type { StepperProps, StepItem } from './components/Stepper';
 
+// V0.2.x Components
+export { SwipeableRow } from './components/SwipeableRow';
+export type { SwipeableRowProps, SwipeAction } from './components/SwipeableRow';
+
+export { ActionSheet } from './components/ActionSheet';
+export type { ActionSheetProps, ActionSheetAction } from './components/ActionSheet';
+
+export { FAB } from './components/FAB';
+export type { FABProps, FABAction } from './components/FAB';
+
 // Hooks (native-specific, overrides core's useResponsive with RN version)
 export * from './hooks';
 

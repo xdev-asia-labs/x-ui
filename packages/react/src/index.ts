@@ -141,5 +141,14 @@ export type { AutocompleteProps, AutocompleteOption } from './components/Autocom
 export { Carousel } from './components/Carousel';
 export type { CarouselProps } from './components/Carousel';
 
+export { DataGrid } from './components/DataGrid';
+export type { DataGridProps, DataGridColumn, SortState, FilterState } from './components/DataGrid';
+
+export { TreeView } from './components/TreeView';
+export type { TreeViewProps, TreeNode } from './components/TreeView';
+
+export { RichTextEditor } from './components/RichTextEditor';
+export type { RichTextEditorProps, ToolbarItem } from './components/RichTextEditor';
+
 // Re-export core utilities
 export * from '@xdev-asia/x-ui-core';
