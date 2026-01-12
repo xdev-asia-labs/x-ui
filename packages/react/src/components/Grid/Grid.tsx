@@ -257,4 +257,4 @@ export const Row = forwardRef<HTMLDivElement, Omit<GridProps, 'columns'>>(
 );
 Row.displayName = 'Row';
 
-export type { BreakpointKey, ResponsiveValue };
+export type { BreakpointKey };
