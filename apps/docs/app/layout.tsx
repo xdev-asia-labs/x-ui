@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     openGraph: {
         type: 'website',
         locale: 'en_US',
-        url: 'https://x-ui.dev',
+        url: 'https://x-ui.xdev.asia',
         siteName: 'X-UI',
         title: 'X-UI | Modern React Component Library',
         description: 'A beautiful, accessible, and performant component library for React and React Native.',
