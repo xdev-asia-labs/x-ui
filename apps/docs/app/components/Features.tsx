@@ -106,8 +106,8 @@ const features = [
     },
     {
         icon: icons.ai,
-        title: 'AI-Ready',
-        description: 'MCP server integration for AI-powered component generation and suggestions.',
+        title: 'AI-Powered',
+        description: 'Native MCP server integration for intelligent, context-aware component generation.',
     },
     {
         icon: icons.fast,

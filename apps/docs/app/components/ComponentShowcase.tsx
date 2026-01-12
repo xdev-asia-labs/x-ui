@@ -235,32 +235,7 @@ export default function ComponentShowcase() {
                         </div>
                     </TiltCard>
 
-                    {/* AI Tools */}
-                    <div style={{ gridColumn: '1 / -1' }}>
-                        <TiltCard delay={0.7}>
-                            <div style={{ marginBottom: '24px' }}>
-                                <h3 style={{ fontSize: '18px', fontWeight: 600, color: 'var(--x-foreground)', display: 'flex', alignItems: 'center', gap: '12px' }}>
-                                    <span style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'linear-gradient(135deg, #f472b6 0%, #c026d3 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a2 2 0 0 1 0 4h-1.27a7 7 0 0 1-1.73 2.73V22a2 2 0 0 1-4 0v-1H9v1a2 2 0 0 1-4 0v-1.27A7 7 0 0 1 3.27 18H2a2 2 0 0 1 0-4h1a7 7 0 0 1 7-7h1V5.73A2 2 0 0 1 10 4a2 2 0 0 1 2-2z" /><circle cx="12" cy="14" r="3" fill="white" /></svg>
-                                    </span>
-                                    AI-Powered Development
-                                </h3>
-                                <p style={{ color: 'var(--x-mutedForeground)', marginTop: '8px' }}>
-                                    Integrated MCP server tools for seamless AI-assisted coding.
-                                </p>
-                            </div>
-                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '16px' }}>
-                                {['generate_component', 'get_design_tokens', 'get_component_usage'].map((tool, i) => (
-                                    <Card variant="glass" padding="md" key={tool} className="hover:!bg-[rgba(255,255,255,0.1)] transition-colors cursor-default">
-                                        <div className="flex items-center gap-3 mb-2">
-                                            <Badge colorScheme={i === 0 ? 'primary' : i === 1 ? 'success' : 'warning'}>Tool</Badge>
-                                            <span className="font-mono text-sm">{tool}</span>
-                                        </div>
-                                    </Card>
-                                ))}
-                            </div>
-                        </TiltCard>
-                    </div>
+
                 </div>
             </div>
         </section >
