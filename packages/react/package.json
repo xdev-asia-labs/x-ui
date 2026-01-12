@@ -1,6 +1,6 @@
 {
     "name": "@xdev-asia/x-ui-react",
-    "version": "0.0.2",
+    "version": "0.1.0",
     "description": "Modern React components with glassmorphism design",
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",
