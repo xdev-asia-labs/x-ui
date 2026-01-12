@@ -152,23 +152,22 @@ export default function AiIntegration() {
                                             <div className="rounded-xl bg-black/40 border border-white/10 p-6 overflow-hidden relative shadow-inner">
                                                 <div className="absolute top-3 right-4 text-[10px] font-bold text-gray-600 uppercase tracking-tighter">tsx</div>
                                                 <pre className="text-xs text-gray-400 overflow-x-auto whitespace-pre leading-loose">
-                                                    <code>
-                                                        {`<span className="text-purple-400">import</span> { Card, Button, Avatar } <span className="text-purple-400">from</span> <span className="text-green-400">'@xdev-asia/x-ui-react'</span>;
+                                                    <code dangerouslySetInnerHTML={{
+                                                        __html: `<span class="text-purple-400">import</span> { Card, Button, Avatar } <span class="text-purple-400">from</span> <span class="text-green-400">'@xdev-asia/x-ui-react'</span>;
 
-<span className="text-purple-400">export default function</span> <span className="text-blue-400">UserDetails</span>() {
-  <span className="text-purple-400">return</span> (
-    <span className="text-yellow-300">&lt;Card</span> <span className="text-orange-300">variant</span>=<span className="text-green-300">"glass"</span> <span className="text-orange-300">padding</span>=<span className="text-green-300">"lg"</span><span className="text-yellow-300">&gt;</span>
-      <span className="text-yellow-300">&lt;div</span> <span className="text-orange-300">className</span>=<span className="text-green-300">"flex items-center gap-4"</span><span className="text-yellow-300">&gt;</span>
-        <span className="text-yellow-300">&lt;Avatar</span> <span className="text-orange-300">src</span>=<span className="text-green-300">"/user.png"</span> <span className="text-orange-300">size</span>=<span className="text-green-300">"lg"</span> <span className="text-yellow-300">/&gt;</span>
-        <span className="text-yellow-300">&lt;div&gt;</span>
-          <span className="text-yellow-300">&lt;h3&gt;</span>Sarah Connor<span className="text-yellow-300">&lt;/h3&gt;</span>
-          <span className="text-yellow-300">&lt;Button</span> <span className="text-orange-300">variant</span>=<span className="text-green-300">"gradient"</span><span className="text-yellow-300">&gt;</span>Follow<span className="text-yellow-300">&lt;/Button&gt;</span>
-        <span className="text-yellow-300">&lt;/div&gt;</span>
-      <span className="text-yellow-300">&lt;/div&gt;</span>
-    <span className="text-yellow-300">&lt;/Card&gt;</span>
+<span class="text-purple-400">export default function</span> <span class="text-blue-400">UserDetails</span>() {
+  <span class="text-purple-400">return</span> (
+    <span class="text-yellow-300">&lt;Card</span> <span class="text-orange-300">variant</span>=<span class="text-green-300">"glass"</span> <span class="text-orange-300">padding</span>=<span class="text-green-300">"lg"</span><span class="text-yellow-300">&gt;</span>
+      <span class="text-yellow-300">&lt;div</span> <span class="text-orange-300">className</span>=<span class="text-green-300">"flex items-center gap-4"</span><span class="text-yellow-300">&gt;</span>
+        <span class="text-yellow-300">&lt;Avatar</span> <span class="text-orange-300">src</span>=<span class="text-green-300">"/user.png"</span> <span class="text-orange-300">size</span>=<span class="text-green-300">"lg"</span> <span class="text-yellow-300">/&gt;</span>
+        <span class="text-yellow-300">&lt;div&gt;</span>
+          <span class="text-yellow-300">&lt;h3&gt;</span>Sarah Connor<span class="text-yellow-300">&lt;/h3&gt;</span>
+          <span class="text-yellow-300">&lt;Button</span> <span class="text-orange-300">variant</span>=<span class="text-green-300">"gradient"</span><span class="text-yellow-300">&gt;</span>Follow<span class="text-yellow-300">&lt;/Button&gt;</span>
+        <span class="text-yellow-300">&lt;/div&gt;</span>
+      <span class="text-yellow-300">&lt;/div&gt;</span>
+    <span class="text-yellow-300">&lt;/Card&gt;</span>
   );
-}`}
-                                                    </code>
+}` }} />
                                                 </pre>
                                             </div>
                                         </div>
