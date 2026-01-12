@@ -54,6 +54,7 @@ const topNav: NavItem[] = [
     { title: 'Getting Started', href: '/docs', icon: icons.book },
     { title: 'MCP for AI', href: '/docs/getting-started/mcp', icon: icons.book },
     { title: 'Theming', href: '/docs/theming', icon: icons.palette },
+    { title: 'Custom Theme', href: '/docs/theming/custom-theme', icon: icons.palette },
     { title: 'Colors & Tokens', href: '/docs/colors', icon: icons.colors },
 ];
 

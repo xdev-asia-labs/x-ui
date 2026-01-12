@@ -1,6 +1,6 @@
 /**
  * Auto-generated component list for MCP Server
- * Generated at: 2026-01-12T12:24:28.972Z
+ * Generated at: 2026-01-12T12:28:52.434Z
  * DO NOT EDIT MANUALLY - Run: pnpm generate-components
  */
 

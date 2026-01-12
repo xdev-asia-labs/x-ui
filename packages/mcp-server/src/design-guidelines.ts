@@ -159,6 +159,112 @@ export const designGuidelines = {
         touchTarget: 'Minimum 44x44px for touch devices',
         motion: 'Respect prefers-reduced-motion media query',
         semantics: 'Use proper HTML elements and ARIA attributes'
+    },
+
+    customTheming: {
+        description: 'X-UI uses CSS custom properties for full theme customization',
+
+        cssVariables: {
+            colors: `/* Override in globals.css */
+:root {
+    --x-primary: 234 88 12;        /* RGB values */
+    --x-secondary: 168 85 247;
+    --x-success: 34 197 94;
+    --x-warning: 245 158 11;
+    --x-danger: 239 68 68;
+    
+    --x-background: 255 255 255;
+    --x-foreground: 15 23 42;
+    --x-muted: 241 245 249;
+    --x-mutedForeground: 100 116 139;
+    --x-border: 226 232 240;
+}
+
+.dark {
+    --x-background: 15 23 42;
+    --x-foreground: 248 250 252;
+    --x-muted: 30 41 59;
+    --x-border: 51 65 85;
+}`,
+            glass: `/* Glassmorphism tokens */
+:root {
+    --x-glass-bg: rgba(255, 255, 255, 0.7);
+    --x-glass-border: rgba(0, 0, 0, 0.1);
+    --x-glass-blur: 12px;
+}
+
+.dark {
+    --x-glass-bg: rgba(0, 0, 0, 0.4);
+    --x-glass-border: rgba(255, 255, 255, 0.1);
+}`,
+            spacing: `--x-space-xs: 4px;
+--x-space-sm: 8px;
+--x-space-md: 16px;
+--x-space-lg: 24px;
+--x-space-xl: 32px;`,
+            radius: `--x-radius-sm: 6px;
+--x-radius-md: 12px;
+--x-radius-lg: 16px;
+--x-radius-full: 9999px;`
+        },
+
+        componentOverrides: `/* Override component styles */
+.x-button {
+    font-family: 'Poppins', sans-serif;
+    border-radius: 9999px;
+}
+
+.x-button-glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+}
+
+.x-card {
+    border-radius: 20px;
+}
+
+.x-input:focus {
+    border-color: rgb(var(--x-primary));
+    box-shadow: 0 0 0 3px rgba(var(--x-primary), 0.2);
+}`,
+
+        themePresets: `/* Create theme presets with data attributes */
+[data-theme="ocean"] {
+    --x-primary: 6 182 212;
+    --x-secondary: 59 130 246;
+}
+
+[data-theme="sunset"] {
+    --x-primary: 249 115 22;
+    --x-secondary: 239 68 68;
+}
+
+[data-theme="forest"] {
+    --x-primary: 34 197 94;
+    --x-secondary: 16 185 129;
+}
+
+/* Apply: <div data-theme="ocean">...</div> */`,
+
+        tailwindIntegration: `// tailwind.config.js
+module.exports = {
+    theme: {
+        extend: {
+            colors: {
+                'x-primary': 'rgb(var(--x-primary) / <alpha-value>)',
+                'x-secondary': 'rgb(var(--x-secondary) / <alpha-value>)',
+            },
+        },
+    },
+};`,
+
+        bestPractices: [
+            'Override CSS variables in :root for global changes',
+            'Use .dark selector for dark mode specific overrides',
+            'Use x-* class names for component-level customization',
+            'Create theme presets with data-theme attributes',
+            'Integrate with Tailwind for utility class support'
+        ]
     }
 };
 
