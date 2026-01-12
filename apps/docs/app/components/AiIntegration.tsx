@@ -153,19 +153,19 @@ export default function AiIntegration() {
                                                 <div className="absolute top-3 right-4 text-[10px] font-bold text-gray-600 uppercase tracking-tighter">tsx</div>
                                                 <pre className="text-xs text-gray-400 overflow-x-auto whitespace-pre leading-loose">
                                                     <code dangerouslySetInnerHTML={{
-                                                        __html: `<span class="text-purple-400">import</span> { Card, Button, Avatar } <span class="text-purple-400">from</span> <span class="text-green-400">'@xdev-asia/x-ui-react'</span>;
+                                                        __html: `<span style="color:#c084fc">import</span> { Card, Button, Avatar } <span style="color:#c084fc">from</span> <span style="color:#4ade80">'@xdev-asia/x-ui-react'</span>;
 
-<span class="text-purple-400">export default function</span> <span class="text-blue-400">UserDetails</span>() {
-  <span class="text-purple-400">return</span> (
-    <span class="text-yellow-300">&lt;Card</span> <span class="text-orange-300">variant</span>=<span class="text-green-300">"glass"</span> <span class="text-orange-300">padding</span>=<span class="text-green-300">"lg"</span><span class="text-yellow-300">&gt;</span>
-      <span class="text-yellow-300">&lt;div</span> <span class="text-orange-300">className</span>=<span class="text-green-300">"flex items-center gap-4"</span><span class="text-yellow-300">&gt;</span>
-        <span class="text-yellow-300">&lt;Avatar</span> <span class="text-orange-300">src</span>=<span class="text-green-300">"/user.png"</span> <span class="text-orange-300">size</span>=<span class="text-green-300">"lg"</span> <span class="text-yellow-300">/&gt;</span>
-        <span class="text-yellow-300">&lt;div&gt;</span>
-          <span class="text-yellow-300">&lt;h3&gt;</span>Sarah Connor<span class="text-yellow-300">&lt;/h3&gt;</span>
-          <span class="text-yellow-300">&lt;Button</span> <span class="text-orange-300">variant</span>=<span class="text-green-300">"gradient"</span><span class="text-yellow-300">&gt;</span>Follow<span class="text-yellow-300">&lt;/Button&gt;</span>
-        <span class="text-yellow-300">&lt;/div&gt;</span>
-      <span class="text-yellow-300">&lt;/div&gt;</span>
-    <span class="text-yellow-300">&lt;/Card&gt;</span>
+<span style="color:#c084fc">export default function</span> <span style="color:#60a5fa">UserDetails</span>() {
+  <span style="color:#c084fc">return</span> (
+    <span style="color:#fde047">&lt;Card</span> <span style="color:#fb923c">variant</span>=<span style="color:#86efac">"glass"</span> <span style="color:#fb923c">padding</span>=<span style="color:#86efac">"lg"</span><span style="color:#fde047">&gt;</span>
+      <span style="color:#fde047">&lt;div</span> <span style="color:#fb923c">className</span>=<span style="color:#86efac">"flex items-center gap-4"</span><span style="color:#fde047">&gt;</span>
+        <span style="color:#fde047">&lt;Avatar</span> <span style="color:#fb923c">src</span>=<span style="color:#86efac">"/user.png"</span> <span style="color:#fb923c">size</span>=<span style="color:#86efac">"lg"</span> <span style="color:#fde047">/&gt;</span>
+        <span style="color:#fde047">&lt;div&gt;</span>
+          <span style="color:#fde047">&lt;h3&gt;</span>Sarah Connor<span style="color:#fde047">&lt;/h3&gt;</span>
+          <span style="color:#fde047">&lt;Button</span> <span style="color:#fb923c">variant</span>=<span style="color:#86efac">"gradient"</span><span style="color:#fde047">&gt;</span>Follow<span class="text-yellow-300">&lt;/Button&gt;</span>
+        <span style="color:#fde047">&lt;/div&gt;</span>
+      <span style="color:#fde047">&lt;/div&gt;</span>
+    <span style="color:#fde047">&lt;/Card&gt;</span>
   );
 }` }} />
                                                 </pre>
