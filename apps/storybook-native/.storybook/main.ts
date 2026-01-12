@@ -19,6 +19,9 @@ const config: StorybookConfig = {
         config.resolve.alias = {
             ...config.resolve.alias,
             'react-native': path.dirname(require.resolve('react-native-web/package.json')),
+            // Resolve workspace packages from source to avoid dist dependency
+            '@xdev-asia/x-ui-native': path.resolve(__dirname, '../../../packages/native/src'),
+            '@xdev-asia/x-ui-core': path.resolve(__dirname, '../../../packages/core/src'),
         };
         config.define = {
             ...config.define,
