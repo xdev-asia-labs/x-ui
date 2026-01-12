@@ -169,7 +169,7 @@ export default function ComponentShowcase() {
                         </div>
                         <Card variant="filled" padding="md">
                             <div className="flex items-center gap-4">
-                                <Avatar fallback="JD" size="md" src="https://i.pravatar.cc/150?u=1" />
+                                <Avatar fallback="JD" size="md" src="/images/avatar.png" />
                                 <div>
                                     <div className="font-semibold text-sm">John Doe</div>
                                     <div className="text-xs text-[var(--x-mutedForeground)]">Software Engineer</div>
