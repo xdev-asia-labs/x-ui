@@ -128,5 +128,18 @@ export type { FileUploadProps } from './components/FileUpload';
 export { ColorPicker } from './components/ColorPicker';
 export type { ColorPickerProps } from './components/ColorPicker';
 
+// V0.2.x Components
+export { Calendar } from './components/Calendar';
+export type { CalendarProps } from './components/Calendar';
+
+export { TimePicker } from './components/TimePicker';
+export type { TimePickerProps } from './components/TimePicker';
+
+export { Autocomplete } from './components/Autocomplete';
+export type { AutocompleteProps, AutocompleteOption } from './components/Autocomplete';
+
+export { Carousel } from './components/Carousel';
+export type { CarouselProps } from './components/Carousel';
+
 // Re-export core utilities
 export * from '@xdev-asia/x-ui-core';
