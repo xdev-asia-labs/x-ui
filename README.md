@@ -1,9 +1,18 @@
 # X-UI
 
-Modern UI component library for **React.js**.
+<p align="center">
+  <img src="./assets/banner.png" alt="X-UI Banner" width="100%" />
+</p>
 
-![Version](https://img.shields.io/badge/version-0.0.1-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
+<p align="center">
+  Modern UI component library for <strong>React.js</strong>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/version-0.0.2-blue" alt="Version" />
+  <img src="https://img.shields.io/badge/license-MIT-green" alt="License" />
+  <img src="https://img.shields.io/npm/dm/@xdev-asia/x-ui-react" alt="Downloads" />
+</p>
 
 ## ✨ Features
 
