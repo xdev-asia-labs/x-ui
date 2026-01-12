@@ -149,6 +149,24 @@ export function TreeView({
                     )}
                     style={{ paddingLeft: `${level * 20 + 8}px` }}
                     onClick={() => !node.disabled && handleSelect(node)}
+                    role="treeitem"
+                    aria-expanded={hasChildren ? isExpanded : undefined}
+                    aria-selected={selectionMode !== 'none' ? isSelected : undefined}
+                    aria-disabled={node.disabled}
+                    tabIndex={node.disabled ? -1 : 0}
+                    onKeyDown={(e) => {
+                        if (node.disabled) return;
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            handleSelect(node);
+                        } else if (e.key === 'ArrowRight' && hasChildren && !isExpanded) {
+                            e.preventDefault();
+                            handleExpand(node.id);
+                        } else if (e.key === 'ArrowLeft' && hasChildren && isExpanded) {
+                            e.preventDefault();
+                            handleExpand(node.id);
+                        }
+                    }}
                 >
                     {/* Expand/Collapse button */}
                     <button
@@ -165,6 +183,8 @@ export function TreeView({
                             e.stopPropagation();
                             if (hasChildren) handleExpand(node.id);
                         }}
+                        aria-label={hasChildren ? (isExpanded ? 'Collapse' : 'Expand') : undefined}
+                        aria-hidden={!hasChildren}
                     >
                         <svg
                             className={cn(
@@ -210,7 +230,7 @@ export function TreeView({
 
                 {/* Children */}
                 {hasChildren && isExpanded && (
-                    <div className="x-treeview-children">
+                    <div className="x-treeview-children" role="group">
                         {node.children!.map((child) => renderTreeNode(child, level + 1))}
                     </div>
                 )}

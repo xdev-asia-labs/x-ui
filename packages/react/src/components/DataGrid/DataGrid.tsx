@@ -260,11 +260,16 @@ export function DataGrid<T extends Record<string, unknown>>({
                 'border border-white/[0.1]',
                 'bg-white/[0.02]',
             )}>
-                <table className={cn(
-                    'x-datagrid-table',
-                    'w-full border-collapse',
-                    sizeStyles[size].text,
-                )}>
+                <table
+                    className={cn(
+                        'x-datagrid-table',
+                        'w-full border-collapse',
+                        sizeStyles[size].text,
+                    )}
+                    role="grid"
+                    aria-label="Data grid"
+                    aria-rowcount={sortedData.length}
+                >
                     {/* Header */}
                     <thead className="x-datagrid-head bg-white/[0.04] border-b border-white/[0.08]">
                         <tr>
@@ -294,6 +299,18 @@ export function DataGrid<T extends Record<string, unknown>>({
                                     )}
                                     style={{ width: column.width }}
                                     onClick={column.sortable ? () => handleSort(column.key) : undefined}
+                                    scope="col"
+                                    aria-sort={sortState?.key === column.key
+                                        ? sortState.direction === 'asc' ? 'ascending' : 'descending'
+                                        : undefined}
+                                    tabIndex={column.sortable ? 0 : undefined}
+                                    onKeyDown={column.sortable ? (e) => {
+                                        if (e.key === 'Enter' || e.key === ' ') {
+                                            e.preventDefault();
+                                            handleSort(column.key);
+                                        }
+                                    } : undefined}
+                                    role="columnheader"
                                 >
                                     <div className="flex items-center gap-2">
                                         {column.headerCell ? column.headerCell() : column.header}
@@ -378,6 +395,16 @@ export function DataGrid<T extends Record<string, unknown>>({
                                             variant === 'striped' && rowIndex % 2 === 1 && 'bg-white/[0.02]',
                                         )}
                                         onClick={() => onRowClick?.(row, rowIndex)}
+                                        aria-selected={selectable ? isSelected : undefined}
+                                        aria-rowindex={rowIndex + 1}
+                                        role="row"
+                                        tabIndex={onRowClick ? 0 : undefined}
+                                        onKeyDown={onRowClick ? (e) => {
+                                            if (e.key === 'Enter' || e.key === ' ') {
+                                                e.preventDefault();
+                                                onRowClick(row, rowIndex);
+                                            }
+                                        } : undefined}
                                     >
                                         {selectable && (
                                             <td className={cn(sizeStyles[size].padding, 'w-12')}>
@@ -400,6 +427,7 @@ export function DataGrid<T extends Record<string, unknown>>({
                                                     column.align === 'center' && 'text-center',
                                                     column.align === 'right' && 'text-right',
                                                 )}
+                                                role="gridcell"
                                             >
                                                 {getCellValue(row, column, rowIndex)}
                                             </td>
