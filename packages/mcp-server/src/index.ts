@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 /**
  * X-UI MCP Server
  * Model Context Protocol server for X-UI component generation
