@@ -2,20 +2,11 @@
  * X-UI Component Templates for MCP Server
  */
 
+import { generatedComponentList } from './generated-components';
+
 export const componentTemplates = {
-  list: [
-    { name: 'ThemeProvider', platforms: ['react'], category: 'core' },
-    { name: 'Button', platforms: ['react'], category: 'button' },
-    { name: 'Box', platforms: ['react'], category: 'layout' },
-    { name: 'Card', platforms: ['react'], category: 'data-display' },
-    { name: 'Avatar', platforms: ['react'], category: 'data-display' },
-    { name: 'Badge', platforms: ['react'], category: 'data-display' },
-    { name: 'Input', platforms: ['react'], category: 'input' },
-    { name: 'Spinner', platforms: ['react'], category: 'feedback' },
-    { name: 'DataGrid', platforms: ['react'], category: 'data-display' },
-    { name: 'TreeView', platforms: ['react'], category: 'data-display' },
-    { name: 'RichTextEditor', platforms: ['react'], category: 'input' },
-  ],
+  // Auto-generated from React package exports
+  list: generatedComponentList,
 
   generate(
     name: string,
