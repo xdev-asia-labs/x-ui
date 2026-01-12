@@ -71,6 +71,7 @@ const componentCategories: NavCategory[] = [
             { title: 'Radio', href: '/docs/components/radio' },
             { title: 'Switch', href: '/docs/components/switch' },
             { title: 'DatePicker', href: '/docs/components/datepicker' },
+            { title: 'RichTextEditor', href: '/docs/components/richtexteditor' },
         ],
     },
     {
@@ -81,6 +82,8 @@ const componentCategories: NavCategory[] = [
             { title: 'Card', href: '/docs/components/card' },
             { title: 'Tag', href: '/docs/components/tag' },
             { title: 'Table', href: '/docs/components/table' },
+            { title: 'DataGrid', href: '/docs/components/datagrid' },
+            { title: 'TreeView', href: '/docs/components/treeview' },
         ],
     },
     {

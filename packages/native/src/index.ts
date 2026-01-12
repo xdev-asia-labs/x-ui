@@ -88,6 +88,12 @@ export type { ActionSheetProps, ActionSheetAction } from './components/ActionShe
 export { FAB } from './components/FAB';
 export type { FABProps, FABAction } from './components/FAB';
 
+export { RefreshableScrollView } from './components/RefreshableScrollView';
+export type { RefreshableScrollViewProps } from './components/RefreshableScrollView';
+
+export { KeyboardAvoidingContainer } from './components/KeyboardAvoidingContainer';
+export type { KeyboardAvoidingContainerProps } from './components/KeyboardAvoidingContainer';
+
 // Hooks (native-specific, overrides core's useResponsive with RN version)
 export * from './hooks';
 
