@@ -77,7 +77,6 @@ const componentCategories: NavCategory[] = [
             { title: 'Calendar', href: '/docs/components/calendar' },
             { title: 'ColorPicker', href: '/docs/components/colorpicker' },
             { title: 'FileUpload', href: '/docs/components/fileupload' },
-            { title: 'RichTextEditor', href: '/docs/components/richtexteditor' },
         ],
     },
     {

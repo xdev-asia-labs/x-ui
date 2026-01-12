@@ -147,8 +147,5 @@ export type { DataGridProps, DataGridColumn, SortState, FilterState } from './co
 export { TreeView } from './components/TreeView';
 export type { TreeViewProps, TreeNode } from './components/TreeView';
 
-export { RichTextEditor } from './components/RichTextEditor';
-export type { RichTextEditorProps, ToolbarItem } from './components/RichTextEditor';
-
 // Re-export core utilities
 export * from '@xdev-asia/x-ui-core';
