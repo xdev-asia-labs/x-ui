@@ -4,34 +4,113 @@ import React from 'react';
 import Image from 'next/image';
 import { Card, CardTitle, CardDescription } from '@xdev-asia/x-ui-react';
 
+// Beautiful gradient SVG icons
+const icons = {
+    design: (
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="designGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#f472b6" />
+                    <stop offset="100%" stopColor="#fb923c" />
+                </linearGradient>
+            </defs>
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="url(#designGrad)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M2 17L12 22L22 17" stroke="url(#designGrad)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M2 12L12 17L22 12" stroke="url(#designGrad)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+    ),
+    darkMode: (
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="moonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#a78bfa" />
+                    <stop offset="100%" stopColor="#6366f1" />
+                </linearGradient>
+            </defs>
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="url(#moonGrad)" />
+        </svg>
+    ),
+    responsive: (
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="respGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#22d3ee" />
+                    <stop offset="100%" stopColor="#6366f1" />
+                </linearGradient>
+            </defs>
+            <rect x="2" y="3" width="20" height="14" rx="2" stroke="url(#respGrad)" strokeWidth="2" />
+            <path d="M8 21H16" stroke="url(#respGrad)" strokeWidth="2" strokeLinecap="round" />
+            <path d="M12 17V21" stroke="url(#respGrad)" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+    ),
+    accessible: (
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="accessGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#34d399" />
+                    <stop offset="100%" stopColor="#2dd4bf" />
+                </linearGradient>
+            </defs>
+            <circle cx="12" cy="5" r="2" fill="url(#accessGrad)" />
+            <path d="M12 8V12M12 12L8 18M12 12L16 18" stroke="url(#accessGrad)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M7 11H17" stroke="url(#accessGrad)" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+    ),
+    ai: (
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="aiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#60a5fa" />
+                    <stop offset="100%" stopColor="#a78bfa" />
+                </linearGradient>
+            </defs>
+            <rect x="3" y="6" width="18" height="12" rx="3" stroke="url(#aiGrad)" strokeWidth="2" />
+            <circle cx="9" cy="12" r="2" fill="url(#aiGrad)" />
+            <circle cx="15" cy="12" r="2" fill="url(#aiGrad)" />
+            <path d="M8 3V6M16 3V6" stroke="url(#aiGrad)" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+    ),
+    fast: (
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="fastGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#fbbf24" />
+                    <stop offset="100%" stopColor="#f97316" />
+                </linearGradient>
+            </defs>
+            <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="url(#fastGrad)" />
+        </svg>
+    ),
+};
+
 const features = [
     {
-        icon: '🎨',
+        icon: icons.design,
         title: 'Beautiful Design',
         description: 'Glassmorphism, gradients, and micro-animations create stunning visual experiences.',
     },
     {
-        icon: '🌙',
+        icon: icons.darkMode,
         title: 'Dark Mode First',
         description: 'Built with dark mode as the default, with seamless light mode support.',
     },
     {
-        icon: '📱',
+        icon: icons.responsive,
         title: 'Responsive',
         description: 'Works beautifully on all screen sizes from mobile to desktop.',
     },
     {
-        icon: '♿',
+        icon: icons.accessible,
         title: 'Accessible',
         description: 'WCAG 2.1 AA compliant with full keyboard navigation and screen reader support.',
     },
     {
-        icon: '🤖',
+        icon: icons.ai,
         title: 'AI-Ready',
         description: 'MCP server integration for AI-powered component generation and suggestions.',
     },
     {
-        icon: '⚡',
+        icon: icons.fast,
         title: 'Blazing Fast',
         description: 'Tree-shakable, optimized bundle under 50kb. No performance compromise.',
     },
