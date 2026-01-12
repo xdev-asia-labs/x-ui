@@ -1,18 +1,13 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-echo "🔨 Running build & tests before push..."
+echo "🧪 Running tests before push..."
 
-# Run tests
+# Run tests only (build is handled by CI/CD)
 pnpm test || {
   echo "❌ Tests failed! Push aborted."
   exit 1
 }
 
-# Run build
-pnpm build || {
-  echo "❌ Build failed! Push aborted."
-  exit 1
-}
-
-echo "✅ All checks passed! Proceeding with push..."
+echo "✅ Tests passed! Proceeding with push..."
+echo "📦 Build will be verified by CI/CD."
