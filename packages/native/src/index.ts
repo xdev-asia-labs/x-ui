@@ -71,6 +71,13 @@ export type { TooltipProps } from './components/Tooltip';
 export { IconButton } from './components/IconButton';
 export type { IconButtonProps } from './components/IconButton';
 
+// V0.1.x Components
+export { Slider } from './components/Slider';
+export type { SliderProps } from './components/Slider';
+
+export { Stepper } from './components/Stepper';
+export type { StepperProps, StepItem } from './components/Stepper';
+
 // Hooks (native-specific, overrides core's useResponsive with RN version)
 export * from './hooks';
 
