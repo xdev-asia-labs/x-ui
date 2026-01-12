@@ -4,10 +4,14 @@ import React, { createContext, useContext, useMemo, ReactNode } from 'react';
 import { useTheme as useThemeHook } from '@xdev-asia/x-ui-core';
 import { ThemeConfig, ThemeMode } from '@xdev-asia/x-ui-core';
 
+export type Direction = 'ltr' | 'rtl';
+
 interface ThemeContextValue {
     theme: ThemeConfig;
     mode: ThemeMode;
+    direction: Direction;
     setMode: (mode: ThemeMode) => void;
+    setDirection: (dir: Direction) => void;
     toggleMode: () => void;
 }
 
@@ -16,6 +20,7 @@ const ThemeContext = createContext<ThemeContextValue | null>(null);
 export interface ThemeProviderProps {
     children: ReactNode;
     defaultTheme?: ThemeMode;
+    defaultDirection?: Direction;
     storageKey?: string;
 }
 
@@ -26,11 +31,17 @@ export interface ThemeProviderProps {
 export function ThemeProvider({
     children,
     defaultTheme = 'light',
+    defaultDirection = 'ltr',
     storageKey = 'x-ui-theme',
 }: ThemeProviderProps) {
     const themeState = useThemeHook({ defaultTheme, storageKey });
+    const [direction, setDirection] = React.useState<Direction>(defaultDirection);
 
-    const value = useMemo(() => themeState, [themeState]);
+    const value = useMemo(() => ({
+        ...themeState,
+        direction,
+        setDirection,
+    }), [themeState, direction]);
 
     // Apply CSS variables to document
     React.useEffect(() => {
@@ -43,6 +54,10 @@ export function ThemeProvider({
         root.classList.remove('light', 'dark');
         root.classList.add(mode);
 
+        // Set direction
+        root.dir = direction;
+        root.style.setProperty('--x-direction', direction);
+
         // Set CSS variables
         Object.entries(colors).forEach(([key, value]) => {
             root.style.setProperty(`--x-${key}`, value);
@@ -52,7 +67,7 @@ export function ThemeProvider({
         root.style.setProperty('--x-glass-bg-subtle', glass.backgroundSubtle);
         root.style.setProperty('--x-glass-border', glass.border);
         root.style.setProperty('--x-glass-blur', glass.blur);
-    }, [themeState.theme]);
+    }, [themeState.theme, direction]);
 
     return (
         <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
