@@ -82,6 +82,16 @@ jobs:
             echo "ℹ️ No packages were published, skipping tag creation."
           fi
 
+      - name: Format Published Packages
+        if: steps.changesets.outputs.published == 'true'
+        id: format-packages
+        run: |
+          echo "PACKAGES_TABLE<<EOF" >> $GITHUB_OUTPUT
+          echo "| Package | Version |" >> $GITHUB_OUTPUT
+          echo "|---------|---------|" >> $GITHUB_OUTPUT
+          echo '${{ steps.changesets.outputs.publishedPackages }}' | jq -r '.[] | "| \(.name) | \(.version) |"' >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
       - name: Create GitHub Release
         if: steps.changesets.outputs.published == 'true'
         uses: softprops/action-gh-release@v2
@@ -91,7 +101,7 @@ jobs:
           body: |
             ## 📦 Published Packages
             
-            ${{ steps.changesets.outputs.publishedPackages }}
+            ${{ steps.format-packages.outputs.PACKAGES_TABLE }}
             
             See [CHANGELOG](https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md) for details.
           generate_release_notes: true
