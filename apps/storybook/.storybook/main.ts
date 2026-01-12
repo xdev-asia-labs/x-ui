@@ -14,6 +14,15 @@ const config: StorybookConfig = {
         autodocs: 'tag',
     },
     viteFinal: async (config) => {
+        config.resolve = config.resolve || {};
+        config.resolve.alias = {
+            ...config.resolve.alias,
+            'react-native': 'react-native-web',
+        };
+        config.define = {
+            ...config.define,
+            __DEV__: JSON.stringify(process.env.NODE_ENV !== 'production'),
+        };
         return config;
     },
 };

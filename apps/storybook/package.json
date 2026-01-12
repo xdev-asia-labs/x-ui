@@ -8,10 +8,12 @@
         "preview": "npx serve dist"
     },
     "dependencies": {
-        "@xdev-asia/x-ui-react": "workspace:*",
         "@xdev-asia/x-ui-core": "workspace:*",
+        "@xdev-asia/x-ui-native": "workspace:^",
+        "@xdev-asia/x-ui-react": "workspace:*",
         "react": "^18.3.0",
-        "react-dom": "^18.3.0"
+        "react-dom": "^18.3.0",
+        "react-native-web": "^0.21.2"
     },
     "devDependencies": {
         "@storybook/addon-essentials": "^8.4.0",
