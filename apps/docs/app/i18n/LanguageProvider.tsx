@@ -26,7 +26,7 @@ const translations: Record<Language, Record<string, string>> = {
 
         // Getting Started
         'getting.title': 'Bắt đầu',
-        'getting.description': 'X-UI là thư viện component hiện đại cho React và React Native với thiết kế glassmorphism, animations mượt mà và hỗ trợ dark/light mode.',
+        'getting.description': 'X-UI là thư viện component hiện đại cho React với thiết kế glassmorphism, animations mượt mà và hỗ trợ dark/light mode.',
         'getting.install': 'Cài đặt',
         'getting.install.desc': 'Cài đặt package qua npm hoặc pnpm:',
         'getting.setup': 'Setup ThemeProvider',
@@ -36,7 +36,7 @@ const translations: Record<Language, Record<string, string>> = {
         'getting.features': 'Tính năng',
         'getting.feature.darkmode': 'Chuyển đổi theme mượt mà với CSS variables',
         'getting.feature.glass': 'Hiệu ứng glass modern với backdrop blur',
-        'getting.feature.crossplatform': 'Hỗ trợ React và React Native',
+        'getting.feature.crossplatform': 'Responsive cho mọi kích thước màn hình',
         'getting.feature.typescript': 'Type-safe với IntelliSense đầy đủ',
         'getting.feature.accessible': 'WAI-ARIA compliant components',
 
@@ -116,7 +116,7 @@ const translations: Record<Language, Record<string, string>> = {
 
         // Getting Started
         'getting.title': 'Getting Started',
-        'getting.description': 'X-UI is a modern component library for React and React Native featuring glassmorphism design, smooth animations, and dark/light mode support.',
+        'getting.description': 'X-UI is a modern component library for React featuring glassmorphism design, smooth animations, and dark/light mode support.',
         'getting.install': 'Installation',
         'getting.install.desc': 'Install the package via npm or pnpm:',
         'getting.setup': 'Setup ThemeProvider',
@@ -126,7 +126,7 @@ const translations: Record<Language, Record<string, string>> = {
         'getting.features': 'Features',
         'getting.feature.darkmode': 'Smooth theme transitions with CSS variables',
         'getting.feature.glass': 'Modern glass effect with backdrop blur',
-        'getting.feature.crossplatform': 'Supports React and React Native',
+        'getting.feature.crossplatform': 'Responsive for all screen sizes',
         'getting.feature.typescript': 'Type-safe with full IntelliSense',
         'getting.feature.accessible': 'WAI-ARIA compliant components',
 

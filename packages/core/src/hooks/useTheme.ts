@@ -15,7 +15,7 @@ interface UseThemeReturn {
 
 /**
  * Hook for managing theme state
- * Works on both React (web) and React Native
+ * Works on React (web)
  */
 export function useTheme(options: UseThemeOptions = {}): UseThemeReturn {
     const { defaultTheme = 'light', storageKey = 'x-ui-theme' } = options;

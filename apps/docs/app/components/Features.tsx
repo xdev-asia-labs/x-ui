@@ -17,7 +17,7 @@ const features = [
     {
         icon: '📱',
         title: 'Cross-Platform',
-        description: 'One codebase, two platforms. Works seamlessly on React and React Native.',
+        description: 'One codebase for modern React web applications. Responsive and accessible.',
     },
     {
         icon: '♿',

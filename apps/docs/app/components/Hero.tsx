@@ -40,7 +40,7 @@ export default function Hero() {
                         size="lg"
                         leftIcon={<span style={{ marginRight: 4 }}>✨</span>}
                     >
-                        Now supporting React Native
+                        Modern UI Components
                     </Badge>
                 </div>
 

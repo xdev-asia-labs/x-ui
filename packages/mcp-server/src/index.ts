@@ -35,7 +35,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
         tools: [
             {
                 name: 'generate_component',
-                description: 'Generate a new X-UI component for React or React Native',
+                description: 'Generate a new X-UI component for React',
                 inputSchema: {
                     type: 'object',
                     properties: {

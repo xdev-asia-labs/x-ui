@@ -51,7 +51,7 @@ export default function Footer() {
                             lineHeight: 1.7,
                             maxWidth: '280px',
                         }}>
-                            Beautiful, accessible, and performant components for React and React Native.
+                            Beautiful, accessible, and performant components for React.
                         </p>
                     </div>
 

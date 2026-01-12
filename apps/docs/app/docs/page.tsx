@@ -140,7 +140,7 @@ function MyComponent() {
                         {[
                             { icon: '🌓', title: 'Dark/Light Mode', desc: 'Built-in theme support with automatic persistence' },
                             { icon: '✨', title: 'Glassmorphism', desc: 'Modern liquid glass design system' },
-                            { icon: '📱', title: 'Cross-platform', desc: 'Works on React and React Native' },
+                            { icon: '📱', title: 'Responsive', desc: 'Works on all screen sizes' },
                             { icon: '🎯', title: 'TypeScript', desc: 'Full TypeScript support with complete types' },
                             { icon: '♿', title: 'Accessible', desc: 'WAI-ARIA compliant components' },
                         ].map((feature, i) => (

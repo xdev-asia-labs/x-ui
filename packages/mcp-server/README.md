@@ -46,7 +46,7 @@ Add to `claude_desktop_config.json`:
 
 | Tool | Description |
 |------|-------------|
-| `generate_component` | Generate a new X-UI component for React or React Native |
+| `generate_component` | Generate a new X-UI component for React |
 | `get_design_tokens` | Get X-UI design tokens (colors, spacing, typography, etc.) |
 | `list_components` | List all available X-UI components |
 | `get_component_usage` | Get usage examples for a specific component |
