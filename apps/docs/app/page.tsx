@@ -3,7 +3,6 @@ import Hero from './components/Hero';
 import Features from './components/Features';
 import ComponentShowcase from './components/ComponentShowcase';
 import CodeExample from './components/CodeExample';
-import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
 
 export default function HomePage() {
@@ -15,7 +14,6 @@ export default function HomePage() {
                 <Features />
                 <ComponentShowcase />
                 <CodeExample />
-                <Testimonials />
             </main>
             <Footer />
         </>
