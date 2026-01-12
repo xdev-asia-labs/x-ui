@@ -112,6 +112,21 @@ export const componentCount = ${list.length};
 
 // Main
 try {
+    // Check if source file exists (may not exist in Docker isolated build)
+    if (!fs.existsSync(REACT_INDEX)) {
+        console.log('ℹ️  React source not found, using pre-generated component list');
+
+        // Check if generated file already exists
+        if (fs.existsSync(OUTPUT_FILE)) {
+            console.log('✅ Using existing generated-components.ts');
+            process.exit(0);
+        } else {
+            console.error('❌ No generated-components.ts found and cannot generate');
+            console.error('   Run this script from the monorepo root first');
+            process.exit(1);
+        }
+    }
+
     const content = fs.readFileSync(REACT_INDEX, 'utf-8');
     const components = extractComponents(content);
     const output = generateOutput(components);
