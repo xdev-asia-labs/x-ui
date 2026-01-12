@@ -10,97 +10,137 @@ function App() {
   );
 }`;
 
-    return (
-        <section id="code" style={{
-            padding: '120px 2rem',
-            background: 'linear-gradient(180deg, transparent 0%, rgba(0,102,255,0.02) 100%)',
-        }}>
-            <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-                {/* Section header */}
-                <div style={{ textAlign: 'center', marginBottom: '64px' }}>
-                    <h2 style={{
-                        fontSize: '2.5rem',
-                        fontWeight: 700,
-                        marginBottom: '16px',
-                        letterSpacing: '-0.02em',
-                    }}>
-                        Get Started in <span className="gradient-text">Seconds</span>
-                    </h2>
-                    <p style={{ color: '#94a3b8', fontSize: '1.125rem', maxWidth: '500px', margin: '0 auto' }}>
-                        Install X-UI and start building beautiful interfaces immediately.
-                    </p>
-                </div>
+    // Simple syntax highlighting simulation
+    const highlightedCode = (
+        <>
+            <span style={{ color: '#c678dd' }}>import</span> <span style={{ color: '#e5c07b' }}>{'{'}</span> <span style={{ color: '#e06c75' }}>Button</span>, <span style={{ color: '#e06c75' }}>Card</span>, <span style={{ color: '#e06c75' }}>Input</span> <span style={{ color: '#e5c07b' }}>{'}'}</span> <span style={{ color: '#c678dd' }}>from</span> <span style={{ color: '#98c379' }}>'@xdev-asia/x-ui-react'</span>;
+            {'\n\n'}
+            <span style={{ color: '#c678dd' }}>function</span> <span style={{ color: '#61afef' }}>App</span>() <span style={{ color: '#e5c07b' }}>{'{'}</span>
+            {'\n  '}
+            <span style={{ color: '#c678dd' }}>return</span> (
+            {'\n    '}
+            <span style={{ color: '#e06c75' }}>&lt;Card</span> <span style={{ color: '#d19a66' }}>variant</span>=<span style={{ color: '#98c379' }}>"glass"</span><span style={{ color: '#e06c75' }}>&gt;</span>
+            {'\n      '}
+            <span style={{ color: '#e06c75' }}>&lt;Input</span> <span style={{ color: '#d19a66' }}>placeholder</span>=<span style={{ color: '#98c379' }}>"Enter your email"</span> <span style={{ color: '#e06c75' }}>/&gt;</span>
+            {'\n      '}
+            <span style={{ color: '#e06c75' }}>&lt;Button&gt;</span>Subscribe<span style={{ color: '#e06c75' }}>&lt;/Button&gt;</span>
+            {'\n    '}
+            <span style={{ color: '#e06c75' }}>&lt;/Card&gt;</span>
+            {'\n  '}
+            );
+            {'\n'}
+            <span style={{ color: '#e5c07b' }}>{'}'}</span>
+        </>
+    );
 
-                {/* Code blocks */}
-                <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-                    gap: '32px',
-                }}>
-                    {/* Install */}
-                    <div className="glass-card" style={{ padding: '24px' }}>
-                        <div style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'space-between',
-                            marginBottom: '16px',
-                        }}>
-                            <span style={{ fontSize: '14px', fontWeight: 600, color: '#94a3b8' }}>
-                                Installation
+    return (
+        <section id="code" className="py-24 relative">
+            <div className="container relative">
+                <div className="flex flex-col lg:flex-row items-center gap-16">
+                    {/* Text Content */}
+                    <div className="flex-1 text-center lg:text-left animate-slide-in-left">
+                        <span
+                            className="liquid-pill inline-block mb-6"
+                            style={{
+                                background: 'rgba(99, 102, 241, 0.1)',
+                                color: '#818cf8',
+                                border: '1px solid rgba(99, 102, 241, 0.2)',
+                            }}
+                        >
+                            🚀 Developer Experience
+                        </span>
+                        <h2
+                            style={{
+                                fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
+                                fontWeight: 800,
+                                marginBottom: '24px',
+                                lineHeight: 1.1,
+                                letterSpacing: '-0.02em',
+                            }}
+                        >
+                            Build faster with <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">
+                                intuitive APIs
                             </span>
-                            <div style={{ display: 'flex', gap: '8px' }}>
-                                <span style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ef4444' }} />
-                                <span style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#f59e0b' }} />
-                                <span style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#10b981' }} />
+                        </h2>
+                        <p style={{
+                            color: 'var(--x-mutedForeground)',
+                            fontSize: '1.25rem',
+                            marginBottom: '32px',
+                            lineHeight: 1.6,
+                            maxWidth: '500px',
+                        }}>
+                            Plug-and-play components designed for modern development. Fully typed, accessible, and themeable out of the box.
+                        </p>
+                        <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+                            <div className="flex items-center gap-2 text-sm text-[var(--x-mutedForeground)]">
+                                <span className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center text-green-400">✓</span>
+                                TypeScript Ready
+                            </div>
+                            <div className="flex items-center gap-2 text-sm text-[var(--x-mutedForeground)]">
+                                <span className="w-5 h-5 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">✓</span>
+                                Accessible (A11y)
+                            </div>
+                            <div className="flex items-center gap-2 text-sm text-[var(--x-mutedForeground)]">
+                                <span className="w-5 h-5 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400">✓</span>
+                                Dark Mode
                             </div>
                         </div>
-                        <pre style={{
-                            background: 'rgba(0,0,0,0.3)',
-                            borderRadius: '12px',
-                            padding: '20px',
-                            overflow: 'auto',
-                            fontSize: '14px',
-                            fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
-                        }}>
-                            <code style={{ color: '#e2e8f0' }}>
-                                <span style={{ color: '#94a3b8' }}>$ </span>
-                                <span style={{ color: '#a78bfa' }}>npm install</span>
-                                {' '}
-                                <span style={{ color: '#0066ff' }}>@xdev-asia/x-ui-react</span>
-                            </code>
-                        </pre>
                     </div>
 
-                    {/* Usage */}
-                    <div className="glass-card" style={{ padding: '24px' }}>
-                        <div style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'space-between',
-                            marginBottom: '16px',
-                        }}>
-                            <span style={{ fontSize: '14px', fontWeight: 600, color: '#94a3b8' }}>
-                                Usage
-                            </span>
-                            <div style={{ display: 'flex', gap: '8px' }}>
-                                <span style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ef4444' }} />
-                                <span style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#f59e0b' }} />
-                                <span style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#10b981' }} />
+                    {/* IDE Window */}
+                    <div className="flex-1 w-full max-w-2xl perspective-1000">
+                        <div
+                            className="liquid-glass-elevated transform transition-transform duration-500 hover:scale-[1.02] hover:-rotate-1"
+                            style={{
+                                border: '1px solid rgba(255, 255, 255, 0.08)',
+                                boxShadow: '0 24px 80px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05)',
+                                overflow: 'hidden',
+                                borderRadius: '12px',
+                                background: '#1e1e1e', // VS Code dark bg
+                            }}
+                        >
+                            {/* Window Header */}
+                            <div className="flex items-center justify-between px-4 py-3 bg-[#252526] border-b border-[#3e3e42]">
+                                <div className="flex gap-2">
+                                    <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
+                                    <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
+                                    <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
+                                </div>
+                                <div className="text-xs text-gray-400 font-mono">App.tsx</div>
+                                <div className="w-10" />
+                            </div>
+
+                            {/* Code Area */}
+                            <div className="p-6 overflow-x-auto">
+                                <pre style={{
+                                    fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
+                                    fontSize: '14px',
+                                    lineHeight: 1.6,
+                                    margin: 0,
+                                }}>
+                                    <code>{highlightedCode}</code>
+                                </pre>
+                            </div>
+
+                            {/* Status Bar */}
+                            <div className="flex items-center justify-between px-3 py-1 bg-[#007acc] text-white text-[10px] font-sans">
+                                <div className="flex gap-3">
+                                    <span>main*</span>
+                                    <span>0 errors</span>
+                                    <span>0 warnings</span>
+                                </div>
+                                <div className="flex gap-3">
+                                    <span>Ln 11, Col 1</span>
+                                    <span>UTF-8</span>
+                                    <span>TypeScript React</span>
+                                </div>
                             </div>
                         </div>
-                        <pre style={{
-                            background: 'rgba(0,0,0,0.3)',
-                            borderRadius: '12px',
-                            padding: '20px',
-                            overflow: 'auto',
-                            fontSize: '13px',
-                            fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
-                            lineHeight: 1.6,
-                        }}>
-                            <code style={{ color: '#e2e8f0' }}>
-                                {codeSnippet}
-                            </code>
-                        </pre>
+
+                        {/* Decoration blobs */}
+                        <div className="absolute -top-20 -right-20 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl -z-10 animate-pulse" />
+                        <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl -z-10 animate-pulse delay-1000" />
                     </div>
                 </div>
             </div>
