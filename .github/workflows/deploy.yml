@@ -44,18 +44,11 @@ jobs:
       - name: Build Storybook
         run: pnpm --filter @xdev-asia/x-ui-storybook build
 
-      - name: Build Storybook Native
-        run: pnpm --filter @xdev-asia/x-ui-storybook-native build
-
-      - name: Combine docs and Storybooks
+      - name: Combine docs and Storybook
         run: |
           # Copy React Storybook into docs output at /storybook/
           mkdir -p ./apps/docs/out/storybook
           cp -r ./apps/storybook/dist/* ./apps/docs/out/storybook/
-          
-          # Copy Native Storybook into docs output at /storybook-native/
-          mkdir -p ./apps/docs/out/storybook-native
-          cp -r ./apps/storybook-native/dist/* ./apps/docs/out/storybook-native/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
