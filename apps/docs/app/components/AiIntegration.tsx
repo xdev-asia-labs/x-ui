@@ -100,9 +100,11 @@ export default function AiIntegration() {
                         </div>
 
                         <div className="mt-12">
-                            <Button size="lg" className="bg-gradient-to-r from-indigo-500 to-fuchsia-600 hover:opacity-90 transition-opacity border-0 shadow-2xl shadow-indigo-500/40 px-8 py-6 text-lg">
-                                Start Building with AI
-                            </Button>
+                            <a href="/docs/getting-started/mcp">
+                                <Button size="lg" className="bg-gradient-to-r from-indigo-500 to-fuchsia-600 hover:opacity-90 transition-opacity border-0 shadow-2xl shadow-indigo-500/40 px-8 py-6 text-lg">
+                                    Start Building with AI
+                                </Button>
+                            </a>
                         </div>
                     </div>
 
