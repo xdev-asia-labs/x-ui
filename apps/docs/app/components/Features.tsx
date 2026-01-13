@@ -114,15 +114,60 @@ const features = [
         title: 'Blazing Fast',
         description: 'Tree-shakable, optimized bundle under 50kb. No performance compromise.',
     },
+    {
+        icon: (
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M3 3H21V21H12V12H3V3Z" fill="#3178c6" />
+                <path d="M14 14V17H16.5V15H18V21H16.5V18.5H11.5V21H10V14H14Z" fill="#3178c6" />
+                <path d="M6 15H4V14H9V15H7V21H6V15Z" fill="#3178c6" />
+            </svg>
+        ),
+        title: 'TypeScript First',
+        description: 'Built entirely in TypeScript with full type definitions and IntelliSense support.',
+    },
+    {
+        icon: (
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <defs>
+                    <linearGradient id="crossGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#22d3ee" />
+                        <stop offset="100%" stopColor="#8b5cf6" />
+                    </linearGradient>
+                </defs>
+                <rect x="2" y="4" width="20" height="12" rx="2" stroke="url(#crossGrad)" strokeWidth="2" fill="none" />
+                <rect x="7" y="18" width="10" height="2" rx="1" fill="url(#crossGrad)" />
+                <circle cx="12" cy="10" r="3" fill="url(#crossGrad)" />
+            </svg>
+        ),
+        title: 'Cross Platform',
+        description: 'Unified API for React and React Native. Build once, deploy everywhere.',
+    },
 ];
 
 export default function Features() {
     return (
         <section id="features" className="section" style={{
-            background: `url('/images/features-bg.png') center/cover no-repeat, linear-gradient(180deg, transparent 0%, rgba(0,102,255,0.02) 100%)`,
             position: 'relative',
+            overflow: 'hidden',
         }}>
-            <div className="container">
+            {/* Background Image */}
+            <div style={{
+                position: 'absolute',
+                inset: 0,
+                backgroundImage: 'url(/images/features-bg.png)',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                opacity: 0.6,
+                zIndex: 0,
+            }} />
+            {/* Gradient Overlay */}
+            <div style={{
+                position: 'absolute',
+                inset: 0,
+                background: 'linear-gradient(180deg, rgba(10,10,15,0.9) 0%, rgba(10,10,15,0.7) 50%, rgba(10,10,15,0.9) 100%)',
+                zIndex: 1,
+            }} />
+            <div className="container" style={{ position: 'relative', zIndex: 2 }}>
                 {/* Section header with image */}
                 <div
                     className="features-header-grid"
@@ -209,20 +254,25 @@ export default function Features() {
                             isInteractive
                             className="animate-fade-in"
                             style={{
-                                animationDelay: `${index * 100}ms`
+                                animationDelay: `${index * 100}ms`,
+                                background: 'rgba(255,255,255,0.03)',
+                                backdropFilter: 'blur(20px)',
+                                border: '1px solid rgba(255,255,255,0.08)',
+                                boxShadow: '0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05)',
                             }}
                         >
                             <div style={{
                                 width: '56px',
                                 height: '56px',
-                                borderRadius: '14px',
-                                background: 'linear-gradient(135deg, rgba(59,130,246,0.1) 0%, rgba(139,92,246,0.1) 100%)',
+                                borderRadius: '16px',
+                                background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%)',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 fontSize: '28px',
                                 marginBottom: '20px',
-                                border: '1px solid rgba(255,255,255,0.05)'
+                                border: '1px solid rgba(139, 92, 246, 0.3)',
+                                boxShadow: '0 0 20px rgba(139, 92, 246, 0.2), inset 0 1px 0 rgba(255,255,255,0.1)',
                             }}>
                                 {feature.icon}
                             </div>
