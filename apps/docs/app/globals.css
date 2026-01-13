@@ -574,3 +574,45 @@ body::after {
     outline: 2px solid var(--accent-blue);
     outline-offset: 2px;
 }
+
+/* ============================================
+   CURSOR POINTER FOR INTERACTIVE ELEMENTS
+   ============================================ */
+
+button,
+[role="button"],
+a,
+input[type="checkbox"],
+input[type="radio"],
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+select,
+label[for],
+.x-button,
+.x-checkbox,
+.x-radio,
+.x-switch,
+.x-select,
+.x-tabs-trigger,
+.x-accordion-trigger,
+.x-dropdown-trigger,
+.x-modal-close,
+.x-drawer-close,
+[data-clickable],
+[onclick] {
+    cursor: pointer;
+}
+
+/* Links */
+a:not([disabled]) {
+    cursor: pointer;
+}
+
+/* Disabled state */
+button:disabled,
+input:disabled,
+select:disabled,
+[aria-disabled="true"] {
+    cursor: not-allowed;
+}
