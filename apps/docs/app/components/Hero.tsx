@@ -82,19 +82,23 @@ export default function Hero() {
                     flexWrap: 'wrap',
                     animationDelay: '300ms'
                 }}>
-                    <Button
-                        size="lg"
-                        style={{ padding: '0 40px', height: '56px', fontSize: '16px', fontWeight: 600, borderRadius: '99px' }}
-                    >
-                        Get Started
-                    </Button>
-                    <Button
-                        variant="outline"
-                        size="lg"
-                        style={{ padding: '0 32px', height: '56px', fontSize: '16px', fontWeight: 600, borderRadius: '99px' }}
-                    >
-                        View on GitHub
-                    </Button>
+                    <a href="/docs">
+                        <Button
+                            size="lg"
+                            style={{ padding: '0 40px', height: '56px', fontSize: '16px', fontWeight: 600, borderRadius: '99px' }}
+                        >
+                            Get Started
+                        </Button>
+                    </a>
+                    <a href="https://github.com/xdev-asia-labs/x-ui" target="_blank" rel="noopener noreferrer">
+                        <Button
+                            variant="outline"
+                            size="lg"
+                            style={{ padding: '0 32px', height: '56px', fontSize: '16px', fontWeight: 600, borderRadius: '99px' }}
+                        >
+                            View on GitHub
+                        </Button>
+                    </a>
                 </div>
 
                 {/* Stats */}
