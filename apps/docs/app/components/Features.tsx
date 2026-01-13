@@ -119,7 +119,8 @@ const features = [
 export default function Features() {
     return (
         <section id="features" className="section" style={{
-            background: 'linear-gradient(180deg, transparent 0%, rgba(0,102,255,0.02) 100%)',
+            background: `url('/images/features-bg.png') center/cover no-repeat, linear-gradient(180deg, transparent 0%, rgba(0,102,255,0.02) 100%)`,
+            position: 'relative',
         }}>
             <div className="container">
                 {/* Section header with image */}
