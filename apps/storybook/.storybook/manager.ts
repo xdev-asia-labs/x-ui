@@ -7,7 +7,7 @@ const xuiTheme = create({
     // Brand
     brandTitle: 'X-UI Component Library',
     brandUrl: 'https://x-ui.xdev.asia',
-    brandImage: '/logo.png',
+    brandImage: '/logo-small.png',
     brandTarget: '_blank',
 
     // Colors - matching docs site
