@@ -98,3 +98,39 @@ export const Interactive: Story = {
         </div>
     ),
 };
+
+/**
+ * Interactive Playground - Try all the props!
+ */
+export const Playground: Story = {
+    args: {
+        variant: 'elevated',
+        padding: 'md',
+        isInteractive: false,
+        isSelected: false,
+    },
+    render: (args) => (
+        <Card {...args} style={{ width: '320px' }}>
+            <CardHeader>
+                <CardTitle>Card Title</CardTitle>
+                <CardDescription>This is a card description</CardDescription>
+            </CardHeader>
+            <CardContent>
+                <p style={{ margin: 0, color: 'var(--x-mutedForeground)' }}>
+                    Card content goes here. Try the controls below!
+                </p>
+            </CardContent>
+            <CardFooter>
+                <Button variant="outline" size="sm">Cancel</Button>
+                <Button size="sm">Save</Button>
+            </CardFooter>
+        </Card>
+    ),
+    parameters: {
+        docs: {
+            description: {
+                story: '🎮 **Interactive Playground** - Use the Controls panel to experiment with all Card props.',
+            },
+        },
+    },
+};

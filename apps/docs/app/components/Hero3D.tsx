@@ -39,6 +39,7 @@ export default function Hero3D() {
     return (
         <div
             ref={containerRef}
+            className="hero-3d-container"
             style={{
                 position: 'absolute',
                 right: '-5%',
@@ -319,6 +320,12 @@ export default function Hero3D() {
                 @keyframes float6 {
                     0%, 100% { transform: translateY(0) translateZ(90px); }
                     50% { transform: translateY(-14px) translateZ(110px); }
+                }
+                
+                @media (max-width: 1024px) {
+                    .hero-3d-container {
+                        display: none !important;
+                    }
                 }
             `}</style>
         </div>

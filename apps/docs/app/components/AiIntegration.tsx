@@ -39,7 +39,7 @@ export default function AiIntegration() {
                             MCP Server Integrated
                         </div>
 
-                        <h2 className="text-4xl md:text-6xl font-extrabold mb-8 leading-[1.1] tracking-tight text-white">
+                        <h2 className="text-3xl md:text-4xl lg:text-6xl font-extrabold mb-8 leading-[1.1] tracking-tight text-white">
                             Your Personal <br />
                             <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-indigo-400">
                                 AI Design Assistant
@@ -123,7 +123,7 @@ export default function AiIntegration() {
                                 </div>
 
                                 {/* Terminal Content */}
-                                <div className="p-8 font-mono text-sm leading-relaxed min-h-[500px]">
+                                <div className="p-4 md:p-8 font-mono text-sm leading-relaxed min-h-[350px] md:min-h-[500px]">
                                     {/* User Prompt */}
                                     <div className="flex gap-4 mb-8">
                                         <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-500 to-cyan-500 flex items-center justify-center text-xs font-bold text-white shrink-0 shadow-lg shadow-indigo-500/20">
@@ -149,7 +149,7 @@ export default function AiIntegration() {
                                             </div>
 
                                             {/* Code Block */}
-                                            <div className="rounded-xl bg-black/40 border border-white/10 p-6 overflow-hidden relative shadow-inner">
+                                            <div className="rounded-xl bg-black/40 border border-white/10 p-3 md:p-6 overflow-hidden relative shadow-inner">
                                                 <div className="absolute top-3 right-4 text-[10px] font-bold text-gray-600 uppercase tracking-tighter">tsx</div>
                                                 <pre className="text-xs text-gray-400 overflow-x-auto whitespace-pre leading-loose">
                                                     <code dangerouslySetInnerHTML={{

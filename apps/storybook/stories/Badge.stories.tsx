@@ -52,3 +52,22 @@ export const Sizes: Story = {
         </div>
     ),
 };
+
+/**
+ * Interactive Playground - Try all the props!
+ */
+export const Playground: Story = {
+    args: {
+        children: 'Badge Text',
+        colorScheme: 'primary',
+        variant: 'solid',
+        size: 'md',
+    },
+    parameters: {
+        docs: {
+            description: {
+                story: '🎮 **Interactive Playground** - Use the Controls panel to experiment with all Badge props.',
+            },
+        },
+    },
+};

@@ -89,3 +89,26 @@ export const Disabled: Story = {
         isDisabled: true,
     },
 };
+
+/**
+ * Interactive Playground - Try all the props!
+ */
+export const Playground: Story = {
+    args: {
+        label: 'Email Address',
+        placeholder: 'you@example.com',
+        helperText: 'We will never share your email',
+        variant: 'outline',
+        size: 'md',
+        isDisabled: false,
+        isInvalid: false,
+        isReadOnly: false,
+    },
+    parameters: {
+        docs: {
+            description: {
+                story: '🎮 **Interactive Playground** - Use the Controls panel to experiment with all Input props.',
+            },
+        },
+    },
+};

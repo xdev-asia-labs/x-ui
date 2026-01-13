@@ -123,13 +123,16 @@ export default function Features() {
         }}>
             <div className="container">
                 {/* Section header with image */}
-                <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: '1fr 1fr',
-                    gap: '60px',
-                    alignItems: 'center',
-                    marginBottom: '80px',
-                }}>
+                <div
+                    className="features-header-grid"
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns: '1fr 1fr',
+                        gap: '60px',
+                        alignItems: 'center',
+                        marginBottom: '80px',
+                    }}
+                >
                     <div>
                         <h2 className="text-gradient" style={{
                             fontSize: 'clamp(2rem, 4vw, 3rem)',
@@ -194,7 +197,7 @@ export default function Features() {
                 {/* Features grid */}
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))',
                     gap: '24px',
                 }}>
                     {features.map((feature, index) => (
@@ -236,9 +239,10 @@ export default function Features() {
             {/* Responsive styles */}
             <style jsx>{`
                 @media (max-width: 900px) {
-                    div[style*="grid-template-columns: 1fr 1fr"] {
+                    .features-header-grid {
                         grid-template-columns: 1fr !important;
                         text-align: center;
+                        gap: 40px !important;
                     }
                 }
             `}</style>

@@ -93,3 +93,26 @@ export const FullWidth: Story = {
         </div>
     ),
 };
+
+/**
+ * Interactive Playground - Try all the props!
+ * Use the Controls panel below to experiment with different combinations.
+ */
+export const Playground: Story = {
+    args: {
+        children: 'Click me!',
+        variant: 'solid',
+        size: 'md',
+        colorScheme: 'primary',
+        isDisabled: false,
+        isLoading: false,
+        fullWidth: false,
+    },
+    parameters: {
+        docs: {
+            description: {
+                story: '🎮 **Interactive Playground** - Use the Controls panel below to experiment with all Button props in real-time.',
+            },
+        },
+    },
+};

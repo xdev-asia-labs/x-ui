@@ -138,6 +138,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
     const pathname = usePathname();
     const [searchQuery, setSearchQuery] = useState('');
     const [expandedCategories, setExpandedCategories] = useState<string[]>(componentCategories.map(c => c.title));
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const isActive = (href: string) => pathname === href;
 
@@ -359,7 +360,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
                 </aside>
 
                 {/* Main Content */}
-                <main style={{
+                <main className="docs-main-content" style={{
                     flex: 1,
                     marginLeft: '304px',
                     padding: '32px 48px',
@@ -374,14 +375,284 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
             <style jsx global>{`
                 @media (max-width: 768px) {
                     .docs-sidebar {
-                        display: none;
+                        display: none !important;
                     }
-                    main {
+                    .docs-main-content {
                         margin-left: 0 !important;
-                        padding: 20px !important;
+                        padding: 16px !important;
+                        max-width: 100% !important;
+                    }
+                    .mobile-docs-menu-btn {
+                        display: flex !important;
+                    }
+                    .mobile-sidebar-overlay {
+                        display: block !important;
+                    }
+                    .mobile-sidebar-drawer {
+                        display: flex !important;
+                    }
+                }
+                @media (min-width: 769px) {
+                    .mobile-docs-menu-btn {
+                        display: none !important;
+                    }
+                    .mobile-sidebar-overlay {
+                        display: none !important;
+                    }
+                    .mobile-sidebar-drawer {
+                        display: none !important;
                     }
                 }
             `}</style>
+
+            {/* Mobile Menu Button */}
+            <button
+                className="mobile-docs-menu-btn"
+                onClick={() => setMobileMenuOpen(true)}
+                style={{
+                    position: 'fixed',
+                    bottom: '20px',
+                    right: '20px',
+                    zIndex: 90,
+                    width: '56px',
+                    height: '56px',
+                    borderRadius: '50%',
+                    background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
+                    border: 'none',
+                    cursor: 'pointer',
+                    display: 'none',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    boxShadow: '0 8px 32px rgba(99, 102, 241, 0.4)',
+                    color: 'white',
+                }}
+                aria-label="Open navigation"
+            >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M3 12h18M3 6h18M3 18h18" />
+                </svg>
+            </button>
+
+            {/* Mobile Sidebar Overlay */}
+            {mobileMenuOpen && (
+                <div
+                    className="mobile-sidebar-overlay"
+                    onClick={() => setMobileMenuOpen(false)}
+                    style={{
+                        position: 'fixed',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        background: 'rgba(0, 0, 0, 0.6)',
+                        backdropFilter: 'blur(4px)',
+                        zIndex: 98,
+                    }}
+                />
+            )}
+
+            {/* Mobile Sidebar Drawer */}
+            <div
+                className="mobile-sidebar-drawer"
+                style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: mobileMenuOpen ? 0 : '-300px',
+                    width: '280px',
+                    height: '100vh',
+                    background: 'var(--x-background, #0a0a0f)',
+                    borderRight: '1px solid rgba(255,255,255,0.1)',
+                    zIndex: 99,
+                    transition: 'left 0.3s ease',
+                    display: 'none',
+                    flexDirection: 'column',
+                    overflowY: 'auto',
+                    padding: '16px',
+                }}
+            >
+                {/* Close Button */}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+                    <span style={{ fontWeight: 600, fontSize: '16px', color: 'var(--x-foreground)' }}>Navigation</span>
+                    <button
+                        onClick={() => setMobileMenuOpen(false)}
+                        style={{
+                            background: 'transparent',
+                            border: 'none',
+                            color: 'var(--x-mutedForeground)',
+                            cursor: 'pointer',
+                            padding: '8px',
+                        }}
+                        aria-label="Close menu"
+                    >
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M18 6L6 18M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                {/* Search */}
+                <div style={{ marginBottom: '16px' }}>
+                    <div
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '10px',
+                            padding: '10px 14px',
+                            borderRadius: '12px',
+                            background: 'rgba(255,255,255,0.05)',
+                            border: '1px solid rgba(255,255,255,0.1)',
+                        }}
+                    >
+                        <span style={{ color: 'var(--x-mutedForeground)' }}>{icons.search}</span>
+                        <input
+                            type="text"
+                            placeholder="Search components..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            style={{
+                                flex: 1,
+                                background: 'transparent',
+                                border: 'none',
+                                outline: 'none',
+                                color: 'var(--x-foreground)',
+                                fontSize: '14px',
+                            }}
+                        />
+                        {searchQuery && (
+                            <button
+                                onClick={() => setSearchQuery('')}
+                                style={{
+                                    background: 'transparent',
+                                    border: 'none',
+                                    color: 'var(--x-mutedForeground)',
+                                    cursor: 'pointer',
+                                    padding: '2px',
+                                }}
+                            >
+                                ✕
+                            </button>
+                        )}
+                    </div>
+                </div>
+
+                <nav style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                    {/* Top Navigation */}
+                    {!searchQuery && topNav.map((item) => (
+                        <Link
+                            key={item.href}
+                            href={item.href}
+                            onClick={() => setMobileMenuOpen(false)}
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '10px',
+                                padding: '10px 14px',
+                                borderRadius: '10px',
+                                fontSize: '14px',
+                                fontWeight: isActive(item.href) ? 600 : 400,
+                                color: isActive(item.href) ? 'white' : 'var(--x-mutedForeground)',
+                                background: isActive(item.href) ? 'var(--gradient-primary)' : 'transparent',
+                                textDecoration: 'none',
+                            }}
+                        >
+                            {item.icon && <span style={{ opacity: 0.8 }}>{item.icon}</span>}
+                            {item.title}
+                        </Link>
+                    ))}
+
+                    {/* Components Header */}
+                    {!searchQuery && (
+                        <div style={{
+                            padding: '16px 14px 8px',
+                            fontSize: '11px',
+                            fontWeight: 600,
+                            color: 'var(--x-mutedForeground)',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.5px',
+                        }}>
+                            Components
+                        </div>
+                    )}
+
+                    {/* Component Categories */}
+                    {filteredCategories.map((category) => (
+                        <div key={category.title} style={{ marginBottom: '4px' }}>
+                            <button
+                                onClick={() => toggleCategory(category.title)}
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'space-between',
+                                    width: '100%',
+                                    padding: '8px 14px',
+                                    borderRadius: '8px',
+                                    background: 'transparent',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                    color: 'var(--x-mutedForeground)',
+                                    fontSize: '12px',
+                                    fontWeight: 600,
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '0.3px',
+                                }}
+                            >
+                                <span>{category.title}</span>
+                                <svg
+                                    width="12"
+                                    height="12"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    style={{
+                                        transform: expandedCategories.includes(category.title) ? 'rotate(180deg)' : 'rotate(0deg)',
+                                        transition: 'transform 0.2s',
+                                    }}
+                                >
+                                    <path d="m6 9 6 6 6-6" />
+                                </svg>
+                            </button>
+                            {expandedCategories.includes(category.title) && (
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', marginTop: '2px' }}>
+                                    {category.items.map((item) => (
+                                        <Link
+                                            key={item.href}
+                                            href={item.href}
+                                            onClick={() => setMobileMenuOpen(false)}
+                                            style={{
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '10px',
+                                                padding: '8px 12px 8px 24px',
+                                                borderRadius: '10px',
+                                                fontSize: '13px',
+                                                fontWeight: isActive(item.href) ? 600 : 400,
+                                                color: isActive(item.href) ? 'white' : 'var(--x-mutedForeground)',
+                                                background: isActive(item.href) ? 'var(--gradient-primary)' : 'transparent',
+                                                textDecoration: 'none',
+                                            }}
+                                        >
+                                            {item.title}
+                                        </Link>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    ))}
+
+                    {/* No results */}
+                    {searchQuery && filteredCategories.length === 0 && (
+                        <div style={{
+                            padding: '24px',
+                            textAlign: 'center',
+                            color: 'var(--x-mutedForeground)',
+                            fontSize: '14px',
+                        }}>
+                            No components found for &quot;{searchQuery}&quot;
+                        </div>
+                    )}
+                </nav>
+            </div>
         </div>
     );
 }

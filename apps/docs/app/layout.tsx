@@ -48,8 +48,20 @@ export default function RootLayout({
                 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
                 <link rel="icon" href="/favicon.ico" sizes="any" />
                 <meta name="theme-color" content="#0a0a0f" />
+                {/* Google Analytics */}
+                <script async src="https://www.googletagmanager.com/gtag/js?id=G-JD4LJ6CX1K"></script>
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            window.dataLayer = window.dataLayer || [];
+                            function gtag(){dataLayer.push(arguments);}
+                            gtag('js', new Date());
+                            gtag('config', 'G-JD4LJ6CX1K');
+                        `,
+                    }}
+                />
             </head>
-            <body>
+            <body suppressHydrationWarning>
                 {children}
             </body>
         </html>
