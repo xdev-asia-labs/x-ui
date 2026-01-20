@@ -106,7 +106,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                     `x-button-${variant}`,
                     `x-button-${size}`,
                     // Base styles with Liquid Glass aesthetics
-                    'inline-flex items-center justify-center font-semibold',
+                    'inline-flex items-center justify-center font-semibold cursor-pointer',
                     'transition-all duration-200 ease-out',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--x-ring)] focus-visible:ring-offset-2',
                     'disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none',

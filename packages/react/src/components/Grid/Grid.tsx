@@ -116,7 +116,7 @@ export const Grid = forwardRef<HTMLDivElement, GridProps>(
     (
         {
             columns = 12,
-            gap,
+            gap = 8,
             rowGap,
             columnGap,
             align = 'stretch',

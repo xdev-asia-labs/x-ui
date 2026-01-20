@@ -17,7 +17,7 @@ import {
 import { componentTemplates } from './templates';
 import { designTokens } from './tokens';
 import { componentUsageExamples, componentCategories } from './usage-examples';
-import { designGuidelines, pageLayouts } from './design-guidelines';
+import { designGuidelines, pageLayouts, integrationNotes } from './design-guidelines';
 
 const server = new Server(
     {
@@ -140,6 +140,37 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
                     required: ['code'],
                 },
             },
+            {
+                name: 'get_integration_guide',
+                description: 'Get complete CSS and configuration guide for integrating x-ui with Tailwind CSS v4',
+                inputSchema: {
+                    type: 'object',
+                    properties: {
+                        framework: {
+                            type: 'string',
+                            enum: ['vite', 'nextjs', 'cra'],
+                            description: 'Target framework (default: vite)',
+                        },
+                    },
+                },
+            },
+            {
+                name: 'generate_project_structure',
+                description: 'Generate standard frontend project structure with x-ui integration (folders, aliases, boilerplate files)',
+                inputSchema: {
+                    type: 'object',
+                    properties: {
+                        projectName: {
+                            type: 'string',
+                            description: 'Name of the project',
+                        },
+                        includeExamples: {
+                            type: 'boolean',
+                            description: 'Include example files (default: true)',
+                        },
+                    },
+                },
+            },
         ],
     };
 });
@@ -163,6 +194,10 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             return listComponents(args as any);
         case 'validate_accessibility':
             return validateAccessibility(args as any);
+        case 'get_integration_guide':
+            return getIntegrationGuide(args as any);
+        case 'generate_project_structure':
+            return generateProjectStructure(args as any);
         default:
             throw new Error(`Unknown tool: ${name}`);
     }
@@ -202,6 +237,12 @@ server.setRequestHandler(ListResourcesRequestSchema, async () => {
                 description: 'Pre-built page layout patterns',
                 mimeType: 'application/json',
             },
+            {
+                uri: 'x-ui://guidelines/integration',
+                name: 'Integration Notes',
+                description: 'Critical CSS setup, common pitfalls, and troubleshooting for x-ui + Tailwind v4 integration',
+                mimeType: 'application/json',
+            },
         ],
     };
 });
@@ -216,6 +257,7 @@ server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
         'x-ui://tokens/all': designTokens,
         'x-ui://components/list': { components: componentTemplates.list, categories: componentCategories },
         'x-ui://layouts/templates': pageLayouts,
+        'x-ui://guidelines/integration': integrationNotes,
     };
 
     if (resources[uri]) {
@@ -458,6 +500,327 @@ function validateAccessibility(args: { code: string }) {
     }
 
     return { content: [{ type: 'text', text: `# Accessibility Issues Found\n\n${issues.join('\n')}\n\n## Recommendations\n- Use semantic HTML elements\n- Add ARIA attributes where needed\n- Ensure keyboard navigability\n- Test with screen reader` }] };
+}
+
+function getIntegrationGuide(args: { framework?: string }) {
+    const framework = args.framework || 'vite';
+
+    const cssContent = `@import "tailwindcss";
+@source "@xdev-asia/x-ui-react/dist";
+
+/* Tailwind v4: Extend theme with x-ui colors */
+@theme {
+  --color-x-primary: var(--x-primary, #0066FF);
+  --color-x-secondary: var(--x-secondary, #8B5CF6);
+  --color-x-success: var(--x-success, #10B981);
+  --color-x-warning: var(--x-warning, #F59E0B);
+  --color-x-error: var(--x-error, #EF4444);
+  --color-x-background: var(--x-background, #020617);
+  --color-x-foreground: var(--x-foreground, #f8fafc);
+  --color-x-card: var(--x-card, #0f172a);
+}
+
+/* X-UI Component Styles */
+.x-card-glass {
+  background: rgba(255, 255, 255, 0.06) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.x-card-elevated {
+  background: var(--x-card, #0f172a);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.x-badge-success { background: rgba(16, 185, 129, 0.15); color: #10B981; }
+.x-badge-warning { background: rgba(245, 158, 11, 0.15); color: #F59E0B; }
+.x-badge-error { background: rgba(239, 68, 68, 0.15); color: #EF4444; }
+.x-badge-primary { background: rgba(0, 102, 255, 0.15); color: #0066FF; }`;
+
+    const appSetup = `import { ThemeProvider, ToastProvider } from '@xdev-asia/x-ui-react';
+
+function App() {
+  return (
+    <ThemeProvider defaultTheme="dark">
+      <ToastProvider>
+        {/* Your app content */}
+      </ToastProvider>
+    </ThemeProvider>
+  );
+}`;
+
+    let frameworkConfig = '';
+    if (framework === 'vite') {
+        frameworkConfig = `// vite.config.ts
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+})`;
+    } else if (framework === 'nextjs') {
+        frameworkConfig = `// next.config.js
+module.exports = {
+  transpilePackages: ['@xdev-asia/x-ui-react', '@xdev-asia/x-ui-core'],
+}`;
+    }
+
+    const output = `# X-UI Integration Guide for ${framework.toUpperCase()}
+
+## 1. Install Dependencies
+\`\`\`bash
+npm install @xdev-asia/x-ui-react tailwindcss@^4 @tailwindcss/vite
+\`\`\`
+
+## 2. CSS Configuration (index.css)
+\`\`\`css
+${cssContent}
+\`\`\`
+
+> **IMPORTANT**: 
+> - Use \`@source "@xdev-asia/x-ui-react/dist"\` to let Tailwind scan x-ui classes
+> - ThemeProvider auto-injects CSS variables, but component styles need explicit CSS
+> - Add x-card-glass, x-badge-* styles to ensure proper rendering
+
+## 3. App Setup
+\`\`\`tsx
+${appSetup}
+\`\`\`
+
+## 4. Framework Config
+\`\`\`typescript
+${frameworkConfig}
+\`\`\`
+
+## 5. Common Issues
+
+### Glass effect not visible
+Add these CSS classes explicitly:
+\`\`\`css
+.x-card-glass {
+  background: rgba(255, 255, 255, 0.06) !important;
+  backdrop-filter: blur(16px) !important;
+}
+\`\`\`
+
+### Colors not applying
+Use \`@theme\` directive to expose x-ui variables to Tailwind:
+\`\`\`css
+@theme {
+  --color-x-primary: var(--x-primary, #0066FF);
+}
+\`\`\`
+`;
+
+    return { content: [{ type: 'text', text: output }] };
+}
+
+function generateProjectStructure(args: { projectName?: string; includeExamples?: boolean }) {
+    const projectName = args.projectName || 'my-app';
+    const includeExamples = args.includeExamples !== false;
+
+    const folderStructure = `
+src/
+├── components/       # Reusable UI components
+│   ├── ui/           # Generic x-ui wrapper components
+│   └── layout/       # Layout components (Sidebar, Header, etc.)
+├── pages/            # Page components
+├── hooks/            # Custom React hooks
+│   └── index.ts      # Re-export all hooks
+├── services/         # API and external services
+│   └── api.ts        # Axios instance with interceptors
+├── types/            # TypeScript type definitions
+│   └── index.ts      # Shared types
+├── utils/            # Utility functions
+│   ├── cn.ts         # Class name merge utility
+│   └── index.ts      # Re-export utils
+├── styles/           # Additional CSS files
+├── App.tsx           # Main app with providers
+├── main.tsx          # Entry point
+└── index.css         # Global CSS with x-ui integration
+`;
+
+    const tsconfigApp = `{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+
+    /* Path aliases */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/pages/*": ["./src/pages/*"],
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/services/*": ["./src/services/*"],
+      "@/types/*": ["./src/types/*"],
+      "@/utils/*": ["./src/utils/*"]
+    }
+  },
+  "include": ["src"]
+}`;
+
+    const viteConfig = `import path from 'path'
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+      '@/components': path.resolve(__dirname, './src/components'),
+      '@/pages': path.resolve(__dirname, './src/pages'),
+      '@/hooks': path.resolve(__dirname, './src/hooks'),
+      '@/services': path.resolve(__dirname, './src/services'),
+      '@/types': path.resolve(__dirname, './src/types'),
+      '@/utils': path.resolve(__dirname, './src/utils'),
+    },
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8888',
+        changeOrigin: true,
+      },
+    },
+  },
+})`;
+
+    const indexCss = `@import "tailwindcss";
+@source "@xdev-asia/x-ui-react/dist";
+
+@theme {
+  --color-x-primary: var(--x-primary, #0066FF);
+  --color-x-background: var(--x-background, #020617);
+  --color-x-foreground: var(--x-foreground, #f8fafc);
+  --color-x-card: var(--x-card, #0f172a);
+}
+
+/* Box sizing reset - DO NOT add margin: 0 or padding: 0 as it overrides Tailwind utilities! */
+*, *::before, *::after { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+body { font-family: Inter, -apple-system, sans-serif; }
+
+.dark body { background: linear-gradient(135deg, #020617 0%, #0f172a 100%); color: #f8fafc; }
+
+/* X-UI Component Styles */
+.x-card-glass {
+  background: rgba(255, 255, 255, 0.06) !important;
+  backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}`;
+
+    const appTsx = `import { ThemeProvider, ToastProvider } from '@xdev-asia/x-ui-react'
+
+function AppContent() {
+  return (
+    <div className="min-h-screen">
+      <h1>Welcome to ${projectName}</h1>
+    </div>
+  )
+}
+
+export default function App() {
+  return (
+    <ThemeProvider defaultTheme="dark">
+      <ToastProvider>
+        <AppContent />
+      </ToastProvider>
+    </ThemeProvider>
+  )
+}`;
+
+    const apiService = `import axios from 'axios'
+
+export const api = axios.create({
+  baseURL: '/api',
+  timeout: 30000,
+})
+
+api.interceptors.response.use(
+  (response) => response,
+  (error) => Promise.reject(error)
+)
+
+export default api`;
+
+    const output = `# ${projectName} - Project Structure
+
+## Folder Structure
+\`\`\`
+${folderStructure}
+\`\`\`
+
+## Setup Commands
+\`\`\`bash
+# Create folders
+mkdir -p src/components/ui src/components/layout src/pages src/hooks src/services src/types src/utils src/styles
+
+# Install dependencies
+npm install @xdev-asia/x-ui-react tailwindcss@^4 @tailwindcss/vite @tanstack/react-query axios lucide-react
+npm install -D clsx tailwind-merge @types/node
+\`\`\`
+
+## Configuration Files
+
+### tsconfig.app.json
+\`\`\`json
+${tsconfigApp}
+\`\`\`
+
+### vite.config.ts
+\`\`\`typescript
+${viteConfig}
+\`\`\`
+
+### src/index.css
+\`\`\`css
+${indexCss}
+\`\`\`
+
+### src/App.tsx
+\`\`\`tsx
+${appTsx}
+\`\`\`
+
+### src/services/api.ts
+\`\`\`typescript
+${apiService}
+\`\`\`
+
+## Path Aliases
+| Alias | Path |
+|-------|------|
+| \`@/*\` | \`./src/*\` |
+| \`@/components/*\` | \`./src/components/*\` |
+| \`@/hooks/*\` | \`./src/hooks/*\` |
+| \`@/services/*\` | \`./src/services/*\` |
+| \`@/types/*\` | \`./src/types/*\` |
+| \`@/utils/*\` | \`./src/utils/*\` |
+
+## Usage Example
+\`\`\`tsx
+import { Button, Card } from '@xdev-asia/x-ui-react'
+import { useClusterInfo } from '@/hooks'
+import api from '@/services/api'
+import type { ClusterInfo } from '@/types'
+\`\`\`
+`;
+
+    return { content: [{ type: 'text', text: output }] };
 }
 
 // Start server

@@ -1,6 +1,6 @@
 /**
  * Auto-generated component list for MCP Server
- * Generated at: 2026-01-12T12:28:52.434Z
+ * Generated at: 2026-01-19T16:32:10.701Z
  * DO NOT EDIT MANUALLY - Run: pnpm generate-components
  */
 
@@ -377,6 +377,90 @@ export const generatedComponentList = [
     "category": "other"
   },
   {
+    "name": "Sheet",
+    "platforms": [
+      "react"
+    ],
+    "category": "other"
+  },
+  {
+    "name": "SheetHeader",
+    "platforms": [
+      "react"
+    ],
+    "category": "other"
+  },
+  {
+    "name": "SheetContent",
+    "platforms": [
+      "react"
+    ],
+    "category": "other"
+  },
+  {
+    "name": "SheetFooter",
+    "platforms": [
+      "react"
+    ],
+    "category": "other"
+  },
+  {
+    "name": "Sidebar",
+    "platforms": [
+      "react"
+    ],
+    "category": "other"
+  },
+  {
+    "name": "SidebarHeader",
+    "platforms": [
+      "react"
+    ],
+    "category": "other"
+  },
+  {
+    "name": "SidebarNav",
+    "platforms": [
+      "react"
+    ],
+    "category": "other"
+  },
+  {
+    "name": "SidebarNavItem",
+    "platforms": [
+      "react"
+    ],
+    "category": "other"
+  },
+  {
+    "name": "SidebarSection",
+    "platforms": [
+      "react"
+    ],
+    "category": "other"
+  },
+  {
+    "name": "SidebarFooter",
+    "platforms": [
+      "react"
+    ],
+    "category": "other"
+  },
+  {
+    "name": "SidebarToggle",
+    "platforms": [
+      "react"
+    ],
+    "category": "other"
+  },
+  {
+    "name": "SidebarUser",
+    "platforms": [
+      "react"
+    ],
+    "category": "other"
+  },
+  {
     "name": "DatePicker",
     "platforms": [
       "react"
@@ -567,4 +651,4 @@ export const generatedComponentList = [
   }
 ];
 
-export const componentCount = 80;
+export const componentCount = 92;

@@ -96,6 +96,12 @@ export type { IconButtonProps } from './components/IconButton';
 export { Drawer, DrawerHeader, DrawerBody, DrawerFooter } from './components/Drawer';
 export type { DrawerProps } from './components/Drawer';
 
+export { Sheet, SheetHeader, SheetContent, SheetFooter } from './components/Sheet';
+export type { SheetProps, SheetHeaderProps, SheetContentProps, SheetFooterProps } from './components/Sheet';
+
+export { Sidebar, SidebarHeader, SidebarNav, SidebarNavItem, SidebarSection, SidebarFooter, SidebarToggle, SidebarUser } from './components/Sidebar';
+export type { SidebarProps, SidebarHeaderProps, SidebarNavProps, SidebarNavItemProps, SidebarSectionProps, SidebarFooterProps, SidebarToggleProps, SidebarUserProps } from './components/Sidebar';
+
 // Custom Icons
 export * from './components/Icons';
 

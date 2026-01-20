@@ -92,7 +92,7 @@ Stack.displayName = 'Stack';
 
 // HStack shorthand
 export const HStack = forwardRef<HTMLDivElement, Omit<StackProps, 'direction'>>(
-    (props, ref) => <Stack ref={ref} direction="row" {...props} />
+    ({ align = 'center', ...props }, ref) => <Stack ref={ref} direction="row" align={align} {...props} />
 );
 HStack.displayName = 'HStack';
 

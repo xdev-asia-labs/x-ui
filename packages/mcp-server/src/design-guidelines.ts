@@ -57,7 +57,10 @@ export const designGuidelines = {
             'Use md (16px) as default padding for cards and containers',
             'Use sm (8px) for related element grouping',
             'Use lg/xl (24-32px) between major sections',
-            'Maintain consistent spacing within component variants'
+            'Use 8+ (32px+) for Grid gap to prevent cards from feeling cramped',
+            'Maintain consistent spacing within component variants',
+            'Recommended Grid gaps: gap={8} for cards, gap={6} for tight layouts',
+            'HStack/VStack default align is "center" for proper icon alignment'
         ]
     },
 
@@ -114,9 +117,9 @@ export const designGuidelines = {
 </Stack>`
         },
         cards: {
-            layout: 'Use Grid with gap="md" for card layouts',
-            responsive: 'cols={[1, 2, 3]} for responsive grids',
-            example: `<Grid cols={[1, 2, 3]} gap="md">
+            layout: 'Use Grid with gap={8} for card layouts (prevents cramped appearance)',
+            responsive: 'columns={{ base: 1, md: 2, lg: 3 }} for responsive grids',
+            example: `<Grid columns={{ base: 1, md: 2, lg: 3 }} gap={8}>
   {items.map(item => (
     <Card key={item.id} variant="glass">
       <CardContent>{item.name}</CardContent>
@@ -140,6 +143,25 @@ export const designGuidelines = {
             medium: 'Use DataGrid for 10-1000 items with sorting/filtering',
             large: 'Use virtualized DataGrid for > 1000 items'
         }
+    },
+
+    icons: {
+        recommendation: 'Use built-in x-ui icons instead of external icon libraries',
+        available: [
+            'XIcon', 'MenuIcon', 'SunIcon', 'MoonIcon',
+            'ChevronDownIcon', 'ChevronLeftIcon', 'ChevronRightIcon',
+            'CheckIcon', 'SearchIcon', 'AlertCircleIcon', 'InfoIcon', 'LoaderIcon'
+        ],
+        usage: 'Import from @xdev-asia/x-ui-react - all icons are inline SVG',
+        benefits: [
+            'No external dependencies (lucide-react not needed)',
+            'Smaller bundle size',
+            'Better tree-shaking',
+            'Consistent styling with stroke="currentColor"'
+        ],
+        example: `import { MenuIcon, SunIcon, MoonIcon } from '@xdev-asia/x-ui-react'
+
+<IconButton icon={<MenuIcon size={20} />} />`
     },
 
     darkMode: {
@@ -276,7 +298,7 @@ export const pageLayouts = {
   <Box className="flex-1 flex flex-col">
     <Header />
     <main className="flex-1 p-6">
-      <Grid cols={[1, 2, 3]} gap="md">
+      <Grid columns={{ base: 1, sm: 2, lg: 3 }} gap={4}>
         <StatCard />
         <ChartCard />
         <ActivityCard />
@@ -312,5 +334,110 @@ export const pageLayouts = {
     ...
   </Tabs>
 </Box>`
+    }
+};
+
+/**
+ * Integration Notes - Critical setup requirements and common pitfalls
+ */
+export const integrationNotes = {
+    cssSetup: {
+        title: 'CSS Setup for Tailwind v4',
+        description: 'X-UI requires proper CSS configuration with Tailwind v4',
+
+        requiredSourceDirectives: `/* index.css - Add these @source directives for Tailwind v4 to scan classes */
+@import "tailwindcss";
+
+/* Source paths for Tailwind v4 to scan for classes */
+@source "./**/*.tsx";
+@source "./**/*.ts";
+@source "../../packages/x-ui/packages/react/src/**/*.tsx";
+@source "../../packages/x-ui/packages/core/src/**/*.ts";`,
+
+        requiredCSSVariables: `/* Add these CSS variables for x-ui components to work correctly */
+:root {
+    --x-background: rgb(10 10 15);
+    --x-foreground: rgb(248 250 252);
+    --x-primary: rgb(99 102 241);
+    --x-primaryForeground: rgb(255 255 255);
+    --x-secondary: rgb(30 41 59);
+    --x-secondaryForeground: rgb(248 250 252);
+    --x-muted: rgb(15 23 42);
+    --x-mutedForeground: rgb(148 163 184);
+    --x-success: rgb(16 185 129);
+    --x-warning: rgb(245 158 11);
+    --x-error: rgb(239 68 68);
+    --x-card: rgb(15 23 42);
+    --x-cardForeground: rgb(248 250 252);
+    --x-border: rgb(30 41 59);
+    --x-ring: rgb(99 102 241);
+    --x-radius: 0.75rem;
+}`,
+
+        globalResetWarning: {
+            issue: 'Global CSS reset overrides Tailwind utilities',
+            problem: '* { margin: 0; padding: 0; } will override p-4, m-4, etc.',
+            solution: `/* WRONG - This overrides Tailwind utilities */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* CORRECT - Only set box-sizing */
+*, *::before, *::after { box-sizing: border-box; }`
+        }
+    },
+
+    commonPitfalls: {
+        gridComponent: {
+            issue: 'Grid responsive syntax',
+            wrong: 'cols={[1, 2, 4]} or gap="lg"',
+            correct: 'columns={{ base: 1, sm: 2, lg: 4 }} gap={6}',
+            explanation: 'Grid uses "columns" prop (not "cols") with responsive object format, gap is a number (multiplied by 4 for pixels)'
+        },
+
+        colSpan: {
+            issue: 'Column spanning in Grid',
+            wrong: '<Card className="col-span-2">',
+            correct: '<Col span={{ base: 1, lg: 2 }}><Card>...</Card></Col>',
+            explanation: 'Use Col component with span prop for responsive spanning'
+        },
+
+        cardPadding: {
+            issue: 'Card padding override',
+            wrong: '<Card className="p-5">',
+            correct: '<Card padding="none" className="p-5"> or <Card padding="md">',
+            explanation: 'Card has default padding="md". To use custom className padding, set padding="none" first'
+        },
+
+        tailwindSourceMissing: {
+            issue: 'Tailwind classes not applying',
+            symptoms: ['p-4 shows padding: 0px', 'text-white not working', 'bg-blue-500 not applying'],
+            solution: 'Add @source directive pointing to your source files in index.css'
+        }
+    },
+
+    troubleshooting: {
+        noStyles: {
+            symptom: 'Components have no styling/padding',
+            checks: [
+                '1. Verify @source directives include all source paths',
+                '2. Check for * { padding: 0 } overriding utilities',
+                '3. Ensure CSS variables are defined in :root',
+                '4. Verify ThemeProvider wraps your app'
+            ]
+        },
+
+        layoutBroken: {
+            symptom: 'Layout not responsive',
+            checks: [
+                '1. Use columns={{ base: 1, sm: 2 }} format, NOT cols={[1, 2]}',
+                '2. Use gap={4} (number), NOT gap="md" (string)',
+                '3. Wrap grid items in <Col> for spanning',
+                '4. Check @source includes x-ui source paths'
+            ]
+        }
+    },
+
+    referenceFiles: {
+        docsExample: 'packages/x-ui/apps/docs/app/globals.css',
+        description: 'Reference the docs globals.css for a complete working CSS setup'
     }
 };
