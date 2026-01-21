@@ -3,7 +3,7 @@
 import React from 'react';
 import DocsLayout from '@docs/DocsLayout';
 import CodeBlock from '@components/CodeBlock';
-import { IconButton, X, Settings, Menu, Search } from '@xdev-asia/x-ui-react';
+import { IconButton, XIcon, MenuIcon, SearchIcon } from '@xdev-asia/x-ui-react';
 
 export default function IconButtonPage() {
     return (
@@ -17,7 +17,7 @@ export default function IconButtonPage() {
                 </p>
 
                 <section style={{ marginBottom: '32px' }}>
-                    <CodeBlock language="tsx" code={`import { IconButton, X, Settings, Menu } from '@xdev-asia/x-ui-react';`} />
+                    <CodeBlock language="tsx" code={`import { IconButton, XIcon, MenuIcon } from '@xdev-asia/x-ui-react';`} />
                 </section>
 
                 <section style={{ marginBottom: '48px' }}>
@@ -25,10 +25,9 @@ export default function IconButtonPage() {
                         Examples
                     </h2>
                     <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                        <IconButton aria-label="Close" icon={<X />} />
-                        <IconButton aria-label="Settings" icon={<Settings />} variant="outline" />
-                        <IconButton aria-label="Menu" icon={<Menu />} variant="ghost" />
-                        <IconButton aria-label="Search" icon={<Search />} size="lg" />
+                        <IconButton aria-label="Close" icon={<XIcon />} />
+                        <IconButton aria-label="Menu" icon={<MenuIcon />} variant="ghost" />
+                        <IconButton aria-label="Search" icon={<SearchIcon />} size="lg" />
                     </div>
                 </section>
 

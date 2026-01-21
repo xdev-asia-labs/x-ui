@@ -2,14 +2,9 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import {
-    Activity, Airplay, AlarmClock, AlertCircle, AlignJustify, Anchor, Aperture, Archive, ArrowRight, AtSign, Search,
     Button, Input, Card, CardTitle, CardDescription, Badge, Avatar, Switch, Checkbox, Progress, Tag, Spinner,
-    Grid, Col
+    Grid, Col, SearchIcon
 } from '@xdev-asia/x-ui-react';
-
-const icons = [
-    Activity, Airplay, AlarmClock, AlertCircle, AlignJustify, Anchor, Aperture, Archive, ArrowRight, AtSign, Search
-];
 
 function TiltCard({ children, className, delay = 0 }: { children: React.ReactNode, className?: string, delay?: number }) {
     const ref = useRef<HTMLDivElement>(null);
@@ -153,7 +148,7 @@ export default function ComponentShowcase() {
                         </div>
                         <div className="flex flex-col gap-5">
                             <Input placeholder="Default input" />
-                            <Input variant="glass" placeholder="Glass input" leftIcon={<Search size={18} />} />
+                            <Input variant="glass" placeholder="Glass input" leftIcon={<SearchIcon size={18} />} />
                         </div>
                     </TiltCard>
 

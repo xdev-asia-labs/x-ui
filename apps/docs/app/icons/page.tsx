@@ -6,32 +6,59 @@ import Footer from '../components/Footer';
 import {
     Input,
     Card,
-    Search,
-    Menu,
-    X,
-    Check,
-    ChevronDown,
-    ChevronRight,
-    Home,
-    Settings,
-    User,
-    Activity,
-    AlertCircle,
-    Bell,
-    ArrowRight,
-    Airplay,
-    AlarmClock,
-    AlignJustify,
-    Anchor,
-    Aperture,
-    Archive,
-    AtSign
+    SearchIcon,
+    MenuIcon,
+    XIcon,
+    CheckIcon,
+    ChevronDownIcon,
+    ChevronRightIcon,
+    ChevronLeftIcon,
+    AlertCircleIcon,
+    InfoIcon,
+    SunIcon,
+    MoonIcon,
+    LoaderIcon,
+    HomeIcon,
+    SettingsIcon,
+    UserIcon,
+    ActivityIcon,
+    BellIcon,
+    ArrowRightIcon,
+    AirplayIcon,
+    AlarmClockIcon,
+    AlignJustifyIcon,
+    AnchorIcon,
+    ApertureIcon,
+    ArchiveIcon,
+    AtSignIcon
 } from '@xdev-asia/x-ui-react';
 
 const ALL_ICONS: Record<string, React.ComponentType<any>> = {
-    Search, Menu, X, Check, ChevronDown, ChevronRight, Home, Settings, User,
-    Activity, AlertCircle, Bell, ArrowRight, Airplay, AlarmClock, AlignJustify,
-    Anchor, Aperture, Archive, AtSign
+    SearchIcon,
+    MenuIcon,
+    XIcon,
+    CheckIcon,
+    ChevronDownIcon,
+    ChevronRightIcon,
+    ChevronLeftIcon,
+    AlertCircleIcon,
+    InfoIcon,
+    SunIcon,
+    MoonIcon,
+    LoaderIcon,
+    HomeIcon,
+    SettingsIcon,
+    UserIcon,
+    ActivityIcon,
+    BellIcon,
+    ArrowRightIcon,
+    AirplayIcon,
+    AlarmClockIcon,
+    AlignJustifyIcon,
+    AnchorIcon,
+    ApertureIcon,
+    ArchiveIcon,
+    AtSignIcon
 };
 
 export default function IconsPage() {
@@ -74,7 +101,7 @@ export default function IconsPage() {
                                 value={search}
                                 onChange={(e) => setSearch(e.target.value)}
                                 variant="glass"
-                                leftIcon={<Search size={20} />}
+                                leftIcon={<SearchIcon size={20} />}
                                 style={{ height: '50px', fontSize: '1.125rem' }}
                             />
                         </div>
