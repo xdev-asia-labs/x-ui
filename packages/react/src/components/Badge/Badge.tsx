@@ -4,10 +4,10 @@ import React, { forwardRef, HTMLAttributes, ReactNode } from 'react';
 import { cn } from '@xdev-asia/x-ui-core';
 
 export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
-    /** Badge variant */
-    variant?: 'solid' | 'outline' | 'subtle' | 'glass';
+    /** Badge variant - includes status variants as shortcuts */
+    variant?: 'solid' | 'outline' | 'subtle' | 'glass' | 'success' | 'error' | 'warning' | 'info';
     /** Color scheme */
-    colorScheme?: 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'neutral';
+    colorScheme?: 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'neutral' | 'info';
     /** Badge size */
     size?: 'sm' | 'md' | 'lg';
     /** Make badge rounded (pill shape) */
@@ -56,6 +56,12 @@ const colorSchemes = {
         subtle: 'bg-red-500/15 text-red-400',
         glass: 'bg-red-500/15 backdrop-blur-xl text-red-400 border border-red-500/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]',
     },
+    info: {
+        solid: 'bg-blue-500 text-white shadow-[0_2px_8px_rgba(59,130,246,0.25)]',
+        outline: 'border border-blue-500/60 text-blue-500 bg-blue-500/5',
+        subtle: 'bg-blue-500/15 text-blue-400',
+        glass: 'bg-blue-500/15 backdrop-blur-xl text-blue-400 border border-blue-500/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]',
+    },
     neutral: {
         solid: 'bg-white/15 text-[var(--x-foreground)] shadow-[0_2px_8px_rgba(0,0,0,0.1)]',
         outline: 'border border-white/15 text-[var(--x-mutedForeground)] bg-transparent',
@@ -63,6 +69,14 @@ const colorSchemes = {
         glass: 'bg-white/8 backdrop-blur-xl text-[var(--x-mutedForeground)] border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]',
     },
 };
+
+// Status variant shortcuts mapping
+const statusVariants = ['success', 'error', 'warning', 'info'] as const;
+type StatusVariant = typeof statusVariants[number];
+
+function isStatusVariant(variant: string): variant is StatusVariant {
+    return statusVariants.includes(variant as StatusVariant);
+}
 
 /**
  * Badge component with Liquid Glass design
@@ -82,13 +96,24 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
         },
         ref
     ) => {
+        // Handle status variants as shortcuts (e.g., variant="success" => colorScheme="success", variant="solid")
+        let resolvedVariant: 'solid' | 'outline' | 'subtle' | 'glass' = 'solid';
+        let resolvedColorScheme = colorScheme;
+
+        if (isStatusVariant(variant)) {
+            resolvedColorScheme = variant;
+            resolvedVariant = 'solid';
+        } else {
+            resolvedVariant = variant as 'solid' | 'outline' | 'subtle' | 'glass';
+        }
+
         return (
             <span
                 ref={ref}
                 className={cn(
                     // X-UI identifier classes
                     'x-badge',
-                    `x-badge-${variant}`,
+                    `x-badge-${resolvedVariant}`,
                     `x-badge-${size}`,
                     // Base Liquid Glass styles
                     'inline-flex items-center gap-1.5 font-semibold',
@@ -96,7 +121,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
                     // Size
                     sizeStyles[size],
                     // Color scheme + variant
-                    colorSchemes[colorScheme][variant],
+                    colorSchemes[resolvedColorScheme][resolvedVariant],
                     // Rounded
                     rounded ? 'rounded-full' : 'rounded-lg',
                     className

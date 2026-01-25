@@ -520,20 +520,82 @@ function getIntegrationGuide(args: { framework?: string }) {
   --color-x-card: var(--x-card, #0f172a);
 }
 
-/* X-UI Component Styles */
+/* ============================================ */
+/* CRITICAL: Explicit X-UI Component Styles    */
+/* Tailwind v4 @source may NOT scan x-ui dist! */
+/* ============================================ */
+
+/* X-UI Input Component */
+.x-input {
+  width: 100% !important;
+  transition: all 0.2s ease-out !important;
+  color: var(--x-foreground, #f8fafc) !important;
+  outline: none !important;
+}
+
+.x-input::placeholder { color: rgba(148, 163, 184, 0.6) !important; }
+.x-input:disabled { opacity: 0.5 !important; cursor: not-allowed !important; }
+.x-input:focus { outline: none !important; box-shadow: 0 0 0 2px rgba(0, 102, 255, 0.2) !important; }
+
+/* Input Autofill Override */
+.x-input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px #0f172a inset !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+
+/* Input Variants */
+.x-input-outline { border: 1px solid rgba(255, 255, 255, 0.1) !important; background: rgba(255, 255, 255, 0.02) !important; }
+.x-input-outline:focus { border-color: var(--x-ring, #0066FF) !important; background: rgba(255, 255, 255, 0.04) !important; }
+.x-input-glass { border: 1px solid rgba(255, 255, 255, 0.1) !important; background: rgba(255, 255, 255, 0.06) !important; backdrop-filter: blur(16px) !important; }
+
+/* Input Sizes */
+.x-input-sm { height: 2.25rem; font-size: 0.875rem; padding: 0 0.75rem; border-radius: 0.75rem; }
+.x-input-md { height: 2.75rem; font-size: 0.875rem; padding: 0 1rem; border-radius: 0.75rem; }
+.x-input-lg { height: 3.25rem; font-size: 1rem; padding: 0 1.25rem; border-radius: 1rem; }
+.x-input.pl-11 { padding-left: 2.75rem !important; }
+
+/* X-UI Button Component */
+.x-button {
+  display: inline-flex; align-items: center; justify-content: center;
+  font-weight: 600; cursor: pointer; transition: all 0.2s ease-out; outline: none;
+}
+.x-button:disabled { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
+.x-button:focus-visible { box-shadow: 0 0 0 2px var(--x-background, #020617), 0 0 0 4px var(--x-ring, #0066FF); }
+
+/* Button Variants */
+.x-button-solid, .x-button-primary {
+  background: var(--btn-bg, var(--x-primary, #0066FF)); color: var(--btn-fg, #FFFFFF);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+.x-button-solid:hover:not(:disabled), .x-button-primary:hover:not(:disabled) {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); filter: brightness(1.1);
+}
+.x-button-outline { border: 2px solid var(--btn-bg, #0066FF); color: var(--btn-bg, #0066FF); background: transparent; }
+.x-button-ghost { color: var(--btn-bg, #0066FF); background: transparent; }
+.x-button-ghost:hover:not(:disabled) { background: rgba(0, 102, 255, 0.1); }
+.x-button-glass { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.12); color: var(--x-foreground, #f8fafc); }
+
+/* Button Sizes */
+.x-button-xs { height: 1.75rem; padding: 0 0.75rem; font-size: 0.75rem; border-radius: 0.5rem; }
+.x-button-sm { height: 2rem; padding: 0 0.875rem; font-size: 0.875rem; border-radius: 0.75rem; }
+.x-button-md { height: 2.5rem; padding: 0 1.25rem; font-size: 0.875rem; border-radius: 0.75rem; }
+.x-button-lg { height: 3rem; padding: 0 1.5rem; font-size: 1rem; border-radius: 1rem; }
+.x-button.w-full { width: 100%; }
+
+/* X-UI Card Component */
 .x-card-glass {
   background: rgba(255, 255, 255, 0.06) !important;
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
-
 .x-card-elevated {
   background: var(--x-card, #0f172a);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+/* X-UI Badge */
 .x-badge-success { background: rgba(16, 185, 129, 0.15); color: #10B981; }
 .x-badge-warning { background: rgba(245, 158, 11, 0.15); color: #F59E0B; }
 .x-badge-error { background: rgba(239, 68, 68, 0.15); color: #EF4444; }
@@ -576,14 +638,13 @@ npm install @xdev-asia/x-ui-react tailwindcss@^4 @tailwindcss/vite
 \`\`\`
 
 ## 2. CSS Configuration (index.css)
+
+> **⚠️ CRITICAL**: Tailwind v4 \`@source\` directive may NOT scan x-ui dist folder correctly!
+> You MUST add explicit CSS for Input, Button, and Card components as shown below.
+
 \`\`\`css
 ${cssContent}
 \`\`\`
-
-> **IMPORTANT**: 
-> - Use \`@source "@xdev-asia/x-ui-react/dist"\` to let Tailwind scan x-ui classes
-> - ThemeProvider auto-injects CSS variables, but component styles need explicit CSS
-> - Add x-card-glass, x-badge-* styles to ensure proper rendering
 
 ## 3. App Setup
 \`\`\`tsx
@@ -595,24 +656,26 @@ ${appSetup}
 ${frameworkConfig}
 \`\`\`
 
-## 5. Common Issues
+## 5. Common Issues & Fixes
+
+### Input has light background instead of dark
+This happens because Tailwind doesn't compile x-ui utility classes.
+**Fix**: Add explicit \`.x-input-outline\` CSS with \`!important\`.
+
+### Browser autofill breaks styling
+**Fix**: Add autofill override:
+\`\`\`css
+.x-input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px #0f172a inset !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+\`\`\`
 
 ### Glass effect not visible
-Add these CSS classes explicitly:
-\`\`\`css
-.x-card-glass {
-  background: rgba(255, 255, 255, 0.06) !important;
-  backdrop-filter: blur(16px) !important;
-}
-\`\`\`
+**Fix**: Add explicit \`.x-card-glass\` CSS (already included above).
 
-### Colors not applying
-Use \`@theme\` directive to expose x-ui variables to Tailwind:
-\`\`\`css
-@theme {
-  --color-x-primary: var(--x-primary, #0066FF);
-}
-\`\`\`
+## 6. Reference
+See \`e-monitoring/frontend/src/index.css\` for a complete working CSS setup with all component styles.
 `;
 
     return { content: [{ type: 'text', text: output }] };

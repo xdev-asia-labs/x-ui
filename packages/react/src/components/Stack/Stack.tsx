@@ -6,8 +6,10 @@ import { cn } from '@xdev-asia/x-ui-core';
 export interface StackProps extends HTMLAttributes<HTMLDivElement> {
     /** Direction */
     direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
-    /** Spacing */
+    /** Spacing (multiplied by 4px) */
     spacing?: number;
+    /** Gap between items (alias for spacing) */
+    gap?: number;
     /** Align items */
     align?: 'start' | 'center' | 'end' | 'stretch' | 'baseline';
     /** Justify content */
@@ -43,7 +45,8 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>(
     (
         {
             direction = 'column',
-            spacing = 4,
+            spacing,
+            gap,
             align = 'stretch',
             justify = 'start',
             wrap = false,
@@ -55,6 +58,8 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>(
         },
         ref
     ) => {
+        // gap is alias for spacing, gap takes priority
+        const gapValue = gap ?? spacing ?? 4;
         const childArray = React.Children.toArray(children).filter(Boolean);
 
         return (
@@ -72,7 +77,7 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>(
                     wrap && 'flex-wrap',
                     className
                 )}
-                style={{ gap: spacing * 4, ...style }}
+                style={{ gap: gapValue * 4, ...style }}
                 {...props}
             >
                 {divider

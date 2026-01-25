@@ -17,6 +17,8 @@ export interface ResponsiveValue<T> {
 export interface GridProps extends HTMLAttributes<HTMLDivElement> {
     /** Number of columns (1-12) or responsive object */
     columns?: number | ResponsiveValue<number>;
+    /** Alias for columns */
+    cols?: number | ResponsiveValue<number>;
     /** Gap between items */
     gap?: number | string;
     /** Row gap */
@@ -115,7 +117,8 @@ function getFirstValue<T>(values: ResponsiveValue<T>): T | undefined {
 export const Grid = forwardRef<HTMLDivElement, GridProps>(
     (
         {
-            columns = 12,
+            columns,
+            cols,
             gap = 8,
             rowGap,
             columnGap,
@@ -128,23 +131,25 @@ export const Grid = forwardRef<HTMLDivElement, GridProps>(
         },
         ref
     ) => {
+        // cols is alias for columns, cols takes priority
+        const columnsValue = cols ?? columns ?? 12;
         const uniqueId = useId().replace(/:/g, '').replace(/r/g, '');
         const gridClassName = `x-grid-r${uniqueId}`;
         const [mounted, setMounted] = useState(false);
 
         const { responsiveCSS, baseColumns } = useMemo(() => {
-            if (isResponsiveValue(columns)) {
+            if (isResponsiveValue(columnsValue)) {
                 const css = generateResponsiveCSS(
                     gridClassName,
                     'grid-template-columns',
-                    columns,
+                    columnsValue,
                     (val) => `repeat(${val}, minmax(0, 1fr))`
                 );
-                const base = getFirstValue(columns) || 12;
+                const base = getFirstValue(columnsValue) || 12;
                 return { responsiveCSS: css, baseColumns: base };
             }
-            return { responsiveCSS: '', baseColumns: columns };
-        }, [columns, gridClassName]);
+            return { responsiveCSS: '', baseColumns: columnsValue };
+        }, [columnsValue, gridClassName]);
 
         useEffect(() => {
             if (responsiveCSS) {
@@ -156,7 +161,7 @@ export const Grid = forwardRef<HTMLDivElement, GridProps>(
         const gridStyle: React.CSSProperties = {
             display: 'grid',
             // Only use inline style if not responsive, or as SSR fallback
-            gridTemplateColumns: isResponsiveValue(columns) && mounted
+            gridTemplateColumns: isResponsiveValue(columnsValue) && mounted
                 ? undefined  // Let CSS handle it
                 : `repeat(${baseColumns}, minmax(0, 1fr))`,
             gap: gap !== undefined ? (typeof gap === 'number' ? `${gap * 4}px` : gap) : undefined,
@@ -170,7 +175,7 @@ export const Grid = forwardRef<HTMLDivElement, GridProps>(
                 ref={ref}
                 className={cn(
                     'x-grid',
-                    isResponsiveValue(columns) && gridClassName,
+                    isResponsiveValue(columnsValue) && gridClassName,
                     alignStyles[align],
                     justifyStyles[justify],
                     className

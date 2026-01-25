@@ -5,7 +5,7 @@ import { cn } from '@xdev-asia/x-ui-core';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     /** Button variant style */
-    variant?: 'solid' | 'outline' | 'ghost' | 'glass' | 'link';
+    variant?: 'solid' | 'outline' | 'ghost' | 'glass' | 'link' | 'primary';
     /** Button size */
     size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
     /** Color scheme */
@@ -27,6 +27,13 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 // Liquid Glass inspired styles
 const variantStyles = {
     solid: `
+        bg-[var(--btn-bg)] text-[var(--btn-fg)]
+        shadow-[0_2px_8px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.1)]
+        hover:shadow-[0_4px_16px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.15)]
+        hover:brightness-110
+        active:scale-[0.98] active:shadow-[0_1px_4px_rgba(0,0,0,0.15)]
+    `,
+    primary: `
         bg-[var(--btn-bg)] text-[var(--btn-fg)]
         shadow-[0_2px_8px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.1)]
         hover:shadow-[0_4px_16px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.15)]
